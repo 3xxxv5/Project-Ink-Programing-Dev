@@ -22,6 +22,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         public void Translate(Vector3 translation)
         {
+            float x = 0, y = 0, z = 0;
             Vector3 offsetValue = Quaternion.Euler(pitch, yaw, roll) * translation;
 
             x += offsetValue.x;
@@ -90,7 +91,7 @@ public class ThirdPersonCamera : MonoBehaviour
         //rotation
         if(Time.timeScale == 1)
         {
-            Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X"),Input,GetAxis("Mouse Y")*(invertY?1:-1));
+            Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")*(invertY?1:-1));
             float mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
 
             targetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor * flx;
