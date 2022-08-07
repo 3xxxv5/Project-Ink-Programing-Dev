@@ -1,88 +1,58 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public Transform playerTran;
+    Transform playerTran;
     CharacterController playerController;
-    Transform cameraTran;
-    //ÉãÏñ»úĞı×ª½Ç¶È
-    Vector3 cameraRotation;
-    UnityEvent leftClick;
+    private bool beginCD = false;
+    private float CDCount = 1;
 
-    //½ÇÉ«Ä¬ÈÏÒÆ¶¯ËÙ¶ÈÎª10
-    [Header("Ä¬ÈÏËÙ¶È")]
+    public Transform characterTran;
+    //è§’è‰²é»˜è®¤ç§»åŠ¨é€Ÿåº¦ä¸º10
+    [Header("é»˜è®¤é€Ÿåº¦")]
     public float moveSpeed = 10f;
-    [Header("³å´ÌËÙ¶È")]
-    public float speedUp = 100f;
-    [Header("³å´ÌÊ±¼ä")]
+    [Header("å†²åˆºè·ç¦»")]
+    public float dashDis = 20f;
+    [Header("å†²åˆºæ—¶é—´")]
     public float lastTime = 0.5f;
-    //Ïà»úÏà¶Ô½ÇÉ«¸ß¶È
-    [Header("Ïà»úÏà¶Ô½ÇÉ«¸ß¶È")]
-    public float cameraHeight = 0.5f;
-    //Ïà»úÏà¶Ô½ÇÉ«¾àÀë
-    [Header("Ïà»úÓë½ÇÉ«¾àÀë")]
-    public float cameraDis = 2f;
+    [Header("å†²åˆºCD")]
+    public float dashCD = 2f;
 
     void Start()
     {
         playerTran = this.transform;
         playerController = this.GetComponent<CharacterController>();
-
-        //»ñÈ¡Ö÷Ïà»ú
-        cameraTran = Camera.main.transform;
-        Vector3 pos = playerTran.position;
-        pos.y += cameraHeight;
-        cameraTran.position = pos;
-
-        //Ïà»úĞı×ª·½ÏòÓë½ÇÉ«Ò»ÖÂ
-        cameraTran.rotation = playerTran.rotation;
-        cameraRotation = cameraTran.eulerAngles;
-
-        //Ëø¶¨Êó±ê,²»ÏÔÊ¾Êó±ê¹â±ê
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //leftClick.AddListener(new UnityAction(ButtonLeftClick));
     }
 
     void Update()
     {
-        Control();
+        PlayerMove();
+        //è®¡ç®—cd
+        if (beginCD)
+        {
+            CDCount -= Time.deltaTime / dashCD;
+            Debug.Log(CDCount);
+            Debug.Log(beginCD);
+            if (CDCount <= 0)
+            {
+                beginCD = false;
+            }
+        }
     }
 
-    void Control()
-    {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-        //Ğı×ªÏà»ú
-
-        cameraRotation.x -= mouseY;
-        cameraRotation.y += mouseX;
-        cameraTran.eulerAngles = cameraRotation;
-
-        //½ÇÉ«ÃæÏò·½ÏòÓëÏà»úÒ»ÖÂ
-        Vector3 camRot = cameraTran.eulerAngles;
-        //camRot.x = 0;camRot.z = 0;
-        playerTran.eulerAngles = camRot;
-
-        playerMove();
-
-        //Ïà»úÎ»ÖÃ¸úËæ½ÇÉ«
-        Vector3 camPos = playerTran.position;
-        camPos.y += cameraHeight;
-        camPos.z -= cameraDis;
-        cameraTran.position = camPos;
-    }
-
-    //½ÇÉ«ÒÆ¶¯
-    void playerMove()
+    //è§’è‰²ç§»åŠ¨
+    void PlayerMove()
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        //Ç°ºóÒÆ¶¯
+        //å‰åç§»åŠ¨
         if (Input.GetKey(KeyCode.W))
         {
             moveZ += moveSpeed * Time.deltaTime;
@@ -92,7 +62,7 @@ public class Player : MonoBehaviour
             moveZ -= moveSpeed * Time.deltaTime;
         }
 
-        //×óÓÒÒÆ¶¯
+        //å·¦å³ç§»åŠ¨
         if (Input.GetKey(KeyCode.A))
         {
             moveX -= moveSpeed * Time.deltaTime;
@@ -101,13 +71,18 @@ public class Player : MonoBehaviour
         {
             moveX += moveSpeed * Time.deltaTime;
         }
-        //test
-        //µã»÷Êó±ê×ó¼ü¼ÓËÙ³å´Ì
-        if (Input.GetMouseButtonDown(0))
-        {
-            moveZ += speedUp * lastTime;
-        }
-        //if(PointerEventData.InputButton.Left)
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
+        
+        //ç‚¹å‡»é¼ æ ‡å·¦é”®åŠ é€Ÿå†²åˆº
+        if (Input.GetMouseButtonDown(0) && beginCD == false)
+        {
+            Vector3 localPos = characterTran.localPosition;
+            localPos.z += dashDis;
+            Vector3 pos = playerTran.TransformPoint(localPos);
+            playerTran.DOMove(pos, lastTime);
+            //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
+            beginCD = true;
+            CDCount = 1;
+        }        
     }
 }
