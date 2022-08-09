@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private bool beginCD = false;
     private float CDCount = 1;
 
+
     public Transform characterTran;
     //角色默认移动速度为10
     [Header("默认速度")]
@@ -19,9 +20,16 @@ public class Player : MonoBehaviour
     [Header("冲刺距离")]
     public float dashDis = 20f;
     [Header("冲刺时间")]
-    public float lastTime = 0.5f;
+    public float lastTime = 1.2f;
     [Header("冲刺CD")]
     public float dashCD = 2f;
+
+    bool isWalk, isIdle, isJump;
+
+    void callbackTest()
+	{
+        Debug.Log("This is a test for Tween!");
+	}
 
     void Start()
     {
@@ -29,11 +37,35 @@ public class Player : MonoBehaviour
         playerController = this.GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        //Sequence seq = DOTween.Sequence();
+        //Debug.Log("start");
+        //seq.AppendInterval(5.0f);
+        //seq.AppendCallback(callbackTest);
+
     }
 
     void Update()
     {
         PlayerMove();
+        //      if(isJump)
+        //{
+        //          playJumpAnimation();
+        //	Sequence seq = DOTween.Sequence();
+        //	Debug.Log("jump");
+        //	seq.AppendInterval(1.2f);
+        //	seq.AppendCallback(playIdleAniamtion);
+        //}
+        if (isWalk)
+        {
+            playWalkAniamtion();
+        }
+        if(isIdle)
+		{
+            playIdleAniamtion();
+		}
+
+
         //计算cd
         if (beginCD)
         {
@@ -47,30 +79,58 @@ public class Player : MonoBehaviour
         }
     }
 
+    void playJumpAnimation()
+	{
+        var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
+        playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
+	}
+
+    void playWalkAniamtion()
+	{
+        var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
+        playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
+    }
+
+    void playIdleAniamtion()
+    {
+        var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
+        playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "idle");
+    }
+
     //角色移动
     void PlayerMove()
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        //前后移动
-        if (Input.GetKey(KeyCode.W))
+        if (!isJump)
         {
-            moveZ += moveSpeed * Time.deltaTime;
+            //前后移动
+            if (Input.GetKey(KeyCode.W))
+            {
+                isWalk = true;
+                isIdle = false;
+                isJump = false;
+                moveZ += moveSpeed * Time.deltaTime;
+            }
+            if(Input.GetKeyUp(KeyCode.W))
+			{
+                isWalk = false;
+                isIdle = true;
+			}
+            //else if (Input.GetKey(KeyCode.S))
+            //{
+            //    moveZ -= moveSpeed * Time.deltaTime;
+            //}
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            moveZ -= moveSpeed * Time.deltaTime;
-        }
-
-        //左右移动
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveX -= moveSpeed * Time.deltaTime;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            moveX += moveSpeed * Time.deltaTime;
-        }
+        ////左右移动
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    moveX -= moveSpeed * Time.deltaTime;
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    moveX += moveSpeed * Time.deltaTime;
+        //}
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
         
         //点击鼠标左键加速冲刺
@@ -79,10 +139,20 @@ public class Player : MonoBehaviour
             Vector3 localPos = characterTran.localPosition;
             localPos.z += dashDis;
             Vector3 pos = playerTran.TransformPoint(localPos);
+            playJumpAnimation();
             playerTran.DOMove(pos, lastTime);
             //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
             beginCD = true;
             CDCount = 1;
+
+            //AnimationSequence
+			//{
+   //             Sequence seq = DOTween.Sequence();
+   //             Debug.Log("jump");
+   //             seq.AppendInterval(1.2f);
+   //             seq.AppendCallback(playIdleAniamtion);
+   //         }
+
         }        
     }
 }

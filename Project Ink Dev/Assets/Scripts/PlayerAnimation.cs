@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-  Rigidbody m_Rigidbody;
+  //Rigidbody m_Rigidbody;
   Animator m_Animator;
 
   [Header("转向速度")]
@@ -16,12 +16,12 @@ public class PlayerAnimation : MonoBehaviour
     // 获取动画组件
     m_Animator = GetComponent<Animator>();
     // 获取刚体组件
-    m_Rigidbody = GetComponent<Rigidbody>();
+    //m_Rigidbody = GetComponent<Rigidbody>();
   }
-  private void OnAnimatorMove()
-  {
-    m_Rigidbody.MoveRotation(m_Rotation);
-  }
+  //private void OnAnimatorMove()
+  //{
+  //  m_Rigidbody.MoveRotation(m_Rotation);
+  //}
   private void TargetPlayerRotation(Vector3 movement)
   {
     // 计算往目标朝向过度的矢量
