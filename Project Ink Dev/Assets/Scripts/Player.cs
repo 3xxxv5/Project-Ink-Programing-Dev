@@ -64,19 +64,19 @@ public class Player : MonoBehaviour
     void playJumpAnimation()
 	{
         var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
-        playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
+        //playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
 	}
 
     void playWalkAniamtion()
 	{
         var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
-        playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
+        //playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
     }
 
     void playIdleAniamtion()
     {
         var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
-        playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "idle");
+       //playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "idle");
     }
 
     //角色移动
