@@ -31,8 +31,8 @@ public class PlayerAnimation : MonoBehaviour
   /// <summary>
   /// 动画进入移动或待机状态<para />
   /// <param name="movement">模型最终朝向向量<para /></param>
-  /// <param name="isExitIdle">是否离开待机状态，true为移动，false为回到待机<para /></param>
-  /// <param name="status">walk or jump or run<para /></param>
+  /// <param name="isExitIdle">是否离开待机状态，true为移动，false为回到待机(idle)<para /></param>
+  /// <param name="status">walk or jump or run(run is not exist)<para /></param>
   /// <returns>无返回</returns>
   /// </summary>
   public void PlayerStatusChange(Vector3 movement, bool isExitIdle, string status)
