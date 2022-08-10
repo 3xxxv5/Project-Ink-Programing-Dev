@@ -83,7 +83,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         targetCameraState.setFromTransform(transform);
         interpolatingCameraState.setFromTransform(transform);   
-        mainCamera.transform.forward = transform.forward;
+        //mainCamera.transform.forward = transform.forward;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
