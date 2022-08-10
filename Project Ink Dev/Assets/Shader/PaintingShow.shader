@@ -30,9 +30,9 @@
 	}
 	SubShader
 	{
-		//Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Opaque" }
 		Blend SrcAlpha OneMinusSrcAlpha , one one
-		ZWrite On
+		ZWrite Off
 
 		LOD 100
 
