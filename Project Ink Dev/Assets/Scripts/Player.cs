@@ -20,16 +20,11 @@ public class Player : MonoBehaviour
     [Header("冲刺距离")]
     public float dashDis = 20f;
     [Header("冲刺时间")]
-    public float lastTime = 1.2f;
+    public float lastTime = 0.5f;
     [Header("冲刺CD")]
     public float dashCD = 2f;
 
     bool isWalk, isIdle, isJump;
-
-    void callbackTest()
-	{
-        Debug.Log("This is a test for Tween!");
-	}
 
     void Start()
     {
@@ -38,24 +33,11 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        //Sequence seq = DOTween.Sequence();
-        //Debug.Log("start");
-        //seq.AppendInterval(5.0f);
-        //seq.AppendCallback(callbackTest);
-
     }
 
     void Update()
     {
         PlayerMove();
-        //      if(isJump)
-        //{
-        //          playJumpAnimation();
-        //	Sequence seq = DOTween.Sequence();
-        //	Debug.Log("jump");
-        //	seq.AppendInterval(1.2f);
-        //	seq.AppendCallback(playIdleAniamtion);
-        //}
         if (isWalk)
         {
             playWalkAniamtion();
@@ -144,14 +126,6 @@ public class Player : MonoBehaviour
             //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
             beginCD = true;
             CDCount = 1;
-
-            //AnimationSequence
-			//{
-   //             Sequence seq = DOTween.Sequence();
-   //             Debug.Log("jump");
-   //             seq.AppendInterval(1.2f);
-   //             seq.AppendCallback(playIdleAniamtion);
-   //         }
 
         }        
     }
