@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnumSpace;
+using DG.Tweening;
 
 [RequireComponent(typeof(BoxCollider))]
 public class spawnItemTrigger : MonoBehaviour{
@@ -15,18 +16,25 @@ public class spawnItemTrigger : MonoBehaviour{
 
     void OnTriggerEnter(Collider other)
     {
-        if(transform.gameObject.tag.Contains("Player"))
+        if(other.gameObject.tag.Contains("Player"))
         {
-
+            
+            Sequence seq = DOTween.Sequence();
+            for(int i=0;i<queue.Count;++i)
+            {
+                var randNumber = Random.Range(0.0f,1.0f);
+                while(randNumber < 0.1f)
+                {
+                    randNumber = Random.Range(0.0f,1.0f);
+                }
+                seq.AppendInterval(1.0f+randNumber);
+                seq.AppendCallback(spawnItem);
+            }
         }
     }
 
     void OnEnable()
     {
-        GetComponent<BoxCollider>().isTrigger = true;
-        gameObject.tag = "SpawnItem";
-        Debug.Log(string.Format("{0}{1}","p","q"));
-
         for(int i=0;i<transform.childCount;++i)
         {
             var go = transform.GetChild(i).gameObject;
@@ -34,16 +42,8 @@ public class spawnItemTrigger : MonoBehaviour{
             go.SetActive(false);
         }
 
-        //queue.Count
-        for(int i=0;i<transform.childCount;++i)
-        {
-            int time = (i+1)*2;
-            Invoke("xxxx",time);
-        }
+        GetComponent<BoxCollider>().isTrigger = true;
     }
 
-    void Update()
-    {
 
-    }
 }
