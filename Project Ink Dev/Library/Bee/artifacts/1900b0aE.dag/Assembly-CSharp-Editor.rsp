@@ -377,6 +377,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Demigiant/DOTweenPro/Editor/DOTweenAnimationInspector.cs"
 "Assets/Demigiant/DOTweenPro/Editor/DOTweenPreviewManager.cs"
+"Assets/Tools/StylizedWater/Scripts/Editor/StylizedWaterCore.cs"
+"Assets/Tools/StylizedWater/Scripts/Editor/StylizedWaterInspector.cs"
 -langversion:9.0
 
 /deterministic

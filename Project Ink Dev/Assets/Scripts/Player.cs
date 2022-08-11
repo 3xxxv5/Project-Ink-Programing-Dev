@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     [Header("冲刺距离")]
     public float dashDis = 20f;
-    [Header("冲刺时间")]
-    public float lastTime = 0.5f;
+    [Header("冲刺速度")]
+    public float dashSpeed = 0.5f;
     [Header("冲刺CD")]
     public float dashCD = 2f;
 
@@ -52,8 +52,8 @@ public class Player : MonoBehaviour
         if (beginCD)
         {
             CDCount -= Time.deltaTime / dashCD;
-            Debug.Log(CDCount);
-            Debug.Log(beginCD);
+            //Debug.Log(CDCount);
+            //Debug.Log(beginCD);
             if (CDCount <= 0)
             {
                 beginCD = false;
@@ -118,11 +118,26 @@ public class Player : MonoBehaviour
         //点击鼠标左键加速冲刺
         if (Input.GetMouseButtonDown(0) && beginCD == false)
         {
-            Vector3 localPos = characterTran.localPosition;
-            localPos.z += dashDis;
-            Vector3 pos = playerTran.TransformPoint(localPos);
-            playJumpAnimation();
-            playerTran.DOMove(pos, lastTime);
+            Vector3 originPos = characterTran.position;
+            Ray ray = new Ray(originPos, characterTran.forward);
+            RaycastHit hitInfo;
+            Vector3 targetPos;
+            float lastTime;
+            if (Physics.Raycast(ray, out hitInfo, dashDis))
+            {
+                Debug.Log(hitInfo.point);
+                targetPos = hitInfo.point;
+                lastTime = (targetPos - originPos).magnitude / dashSpeed;
+            }
+            else
+            {
+                Vector3 localPos = characterTran.localPosition;
+                localPos.z += dashDis;
+                targetPos = playerTran.TransformPoint(localPos);
+                lastTime = dashDis / dashSpeed;
+            }
+            //playJumpAnimation();
+            playerTran.DOMove(targetPos, lastTime);
             //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
             beginCD = true;
             CDCount = 1;
