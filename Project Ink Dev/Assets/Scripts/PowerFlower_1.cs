@@ -22,7 +22,9 @@ public class PowerFlower_1 : Item
 
     void OnEnable()
     {
+        init();
         rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
         rb.velocity = new Vector3(0f,-m_velocity,0f);
     }
 
