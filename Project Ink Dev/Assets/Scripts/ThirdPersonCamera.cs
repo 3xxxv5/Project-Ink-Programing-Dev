@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 
 public class ThirdPersonCamera : MonoBehaviour
@@ -15,7 +17,7 @@ public class ThirdPersonCamera : MonoBehaviour
         
         public void setFromTransform(Transform t)
         {
-            roll = 0;
+            roll = t.eulerAngles.z;
             pitch = t.eulerAngles.x;
             yaw = t.eulerAngles.y;
         }
@@ -83,7 +85,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         targetCameraState.setFromTransform(transform);
         interpolatingCameraState.setFromTransform(transform);   
-        mainCamera.transform.forward = transform.forward;
+        //mainCamera.transform.forward = transform.forward;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -107,9 +109,6 @@ public class ThirdPersonCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
-
-            UnityEditor.EditorApplication.isPlaying = false;
-     
         }
 
         if(Input.GetMouseButtonDown(0))
@@ -118,11 +117,45 @@ public class ThirdPersonCamera : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if(Input.GetKey(KeyCode.F1))
+        if(Input.GetMouseButtonDown(1))
+		{
+            /*var camera = Camera.main;
+			var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
+			Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
+			RaycastHit hitInfo;
+			if (Physics.Raycast(ray, out hitInfo, 20.0f))
+			{
+				//print(hitInfo.transform);
+				transform.DOMove(hitInfo.point - ray.direction * 1.0f, 1.5f);
+			}
+			else
+			{
+				transform.DOMove(ray.origin + ray.direction * 20.0f, 1.5f);
+			}
+			//Debug.Log();
+			Debug.DrawLine(ray.origin, ray.origin + ray.direction * 20.0f, Color.red);
+			//Debug.Log(Screen.width);
+			//transform.DOMove(ray.origin + ray.direction * 15.0f, 1.5f);*/
+
+            Camera.main.DOFieldOfView(60.0f, 0.5f);
+		}
+
+        if(Input.GetMouseButtonUp(1))
+		{
+            Camera.main.DOFieldOfView(45.0f, 0.5f);
+		}
+
+		if (Input.GetKey(KeyCode.BackQuote))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
+        }
+
+        if(Input.GetKey(KeyCode.F1))
+        {
+            SceneManager.LoadScene("SampleScene2");
+            DOTween.Clear(true);
         }
 #endif
 

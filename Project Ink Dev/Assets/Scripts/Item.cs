@@ -10,8 +10,8 @@ public abstract class Item : MonoBehaviour
     public ItemType itemType;
     public InteractiveType interactiveType;
 
-    public float m_velocity;
-    public float m_acceleratetion;
+    public float m_velocity = 1.0f;
+    public float m_acceleratetion = 0f;
     protected Vector3 m_originalPosition; //记录掉落物的生成位置,在OnTriggerEnter实现循环掉落逻辑;将记录界限的Trigger的Tag设为RepeatOrDisappear;
 
     public abstract void SetFallingTrack(); //掉落轨迹,每一个实现该方法的子类都应该在update()中调用该方法
@@ -35,43 +35,46 @@ public abstract class Item : MonoBehaviour
     {
         if(other.gameObject.tag.Contains("Player"))
         {
-            if(itemType == ItemType.main)
+            var player = GameObject.Find("Player_1");
+            if (player.GetComponent<Player>().moveStatus == PlayStatus.Dash)
             {
-                if(interactiveType == InteractiveType.type1)
+                if (itemType == ItemType.Main)
                 {
-                    //main_item_collection+1
-                    Destroy(this.gameObject);
-                    
-                }
-                if(interactiveType == InteractiveType.type2)
-                {
-                    //doSth
-                }
-            }
-            else if(itemType == ItemType.hidden)
-            {
-                if(interactiveType == InteractiveType.type1)
-                {
-                    //hidden_item_collection+1
-                    Destroy(this.gameObject);
-                    
-                }
-                if(interactiveType == InteractiveType.type2)
-                {
-                    //doSth
-                }			
-            }
+                    if (interactiveType == InteractiveType.Type1)
+                    {
+                        //main_item_collection+1
+                        Destroy(this.gameObject);
 
+                    }
+                    if (interactiveType == InteractiveType.Type2)
+                    {
+                        //doSth
+                    }
+                }
+
+                if (itemType == ItemType.Hidden)
+                {
+                    if (interactiveType == InteractiveType.Type1)
+                    {
+                        //hidden_item_collection+1
+                        Destroy(this.gameObject);
+                    }
+                    if (interactiveType == InteractiveType.Type2)
+                    {
+                        //doSth
+                    }
+                }
+            }
 
         }
 
         if(other.gameObject.tag.Contains("RepeatOrDisappear"))
         {
-            if(itemType == ItemType.main)
+            if(itemType == ItemType.Main)
             {
                 transform.position = m_originalPosition;
             }
-            else if(itemType == ItemType.hidden)
+            else if(itemType == ItemType.Hidden)
             {
                 Destroy(this.gameObject);
             }

@@ -5,12 +5,14 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
+
 public class Player : MonoBehaviour
 {
     Transform playerTran;
     CharacterController playerController;
     private bool beginCD = false;
     private float CDCount = 1;
+    public EnumSpace.PlayStatus moveStatus;
 
 
     public Transform characterTran;
@@ -24,36 +26,35 @@ public class Player : MonoBehaviour
     [Header("冲刺CD")]
     public float dashCD = 2f;
 
-    bool isWalk, isIdle, isJump;
-
     void Start()
     {
         playerTran = this.transform;
         playerController = this.GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
     }
+
+    public float getDashCD()
+	{
+        return dashCD;
+	}
+
+    private void SetStatusToIdle()
+	{
+        moveStatus = EnumSpace.PlayStatus.Idle;
+	}
 
     void Update()
     {
         PlayerMove();
-        if (isWalk)
-        {
-            playWalkAniamtion();
-        }
-        if(isIdle)
-		{
-            playIdleAniamtion();
-		}
 
 
         //计算cd
         if (beginCD)
         {
             CDCount -= Time.deltaTime / dashCD;
-            Debug.Log(CDCount);
-            Debug.Log(beginCD);
+            //Debug.Log(CDCount);
+            //Debug.Log(beginCD);
             if (CDCount <= 0)
             {
                 beginCD = false;
@@ -61,22 +62,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    void playJumpAnimation()
+    void LetMove()
 	{
-        var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
-        //playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
-	}
-
-    void playWalkAniamtion()
-	{
-        var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
-        //playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "jump");
-    }
-
-    void playIdleAniamtion()
-    {
-        var playerAnimation = transform.Find("Shrimp").GetComponent<PlayerAnimation>();
-       //playerAnimation.PlayerStatusChange(transform.eulerAngles, true, "idle");
+        var camera = Camera.main;
+        var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
+        Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, dashDis))
+        {
+            //print(hitInfo.transform);
+            transform.DOMove(hitInfo.point - ray.direction * 1.0f, lastTime);
+        }
+        else
+        {
+            transform.DOMove(ray.origin + ray.direction * dashDis, lastTime);
+        }
+        //Debug.Log();
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * dashDis, Color.red);
+        //Debug.Log(Screen.width);
+        //transform.DOMove(ray.origin + ray.direction * 15.0f, 1.5f);
     }
 
     //角色移动
@@ -84,49 +88,42 @@ public class Player : MonoBehaviour
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        if (!isJump)
-        {
             //前后移动
             if (Input.GetKey(KeyCode.W))
             {
-                isWalk = true;
-                isIdle = false;
-                isJump = false;
                 moveZ += moveSpeed * Time.deltaTime;
             }
-            if(Input.GetKeyUp(KeyCode.W))
+			else if (Input.GetKey(KeyCode.S))
 			{
-                isWalk = false;
-                isIdle = true;
+				moveZ -= moveSpeed * Time.deltaTime;
 			}
-            //else if (Input.GetKey(KeyCode.S))
-            //{
-            //    moveZ -= moveSpeed * Time.deltaTime;
-            //}
-        }
-        ////左右移动
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    moveX -= moveSpeed * Time.deltaTime;
-        //}
-        //else if (Input.GetKey(KeyCode.D))
-        //{
-        //    moveX += moveSpeed * Time.deltaTime;
-        //}
-        playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
+		//左右移动
+		if (Input.GetKey(KeyCode.A))
+		{
+			moveX -= moveSpeed * Time.deltaTime;
+		}
+		else if (Input.GetKey(KeyCode.D))
+		{
+			moveX += moveSpeed * Time.deltaTime;
+		}
+		playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
         
         //点击鼠标左键加速冲刺
         if (Input.GetMouseButtonDown(0) && beginCD == false)
         {
-            Vector3 localPos = characterTran.localPosition;
-            localPos.z += dashDis;
-            Vector3 pos = playerTran.TransformPoint(localPos);
-            playJumpAnimation();
-            playerTran.DOMove(pos, lastTime);
+            //Vector3 localPos = characterTran.localPosition;
+            //localPos.z += dashDis;
+            //Vector3 pos = playerTran.TransformPoint(localPos);
+            //playerTran.DOMove(pos, lastTime);
             //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
+            LetMove();
             beginCD = true;
             CDCount = 1;
-
+            //
+            Sequence seq = DOTween.Sequence();
+            moveStatus = EnumSpace.PlayStatus.Dash;
+            seq.AppendInterval(lastTime);
+            seq.AppendCallback(SetStatusToIdle);
         }        
     }
 }

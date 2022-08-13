@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnumSpace;
 
-public class PowerFlower_1 : Item
+public class PowerFlower1 : Item
 {
 
     Rigidbody rb;

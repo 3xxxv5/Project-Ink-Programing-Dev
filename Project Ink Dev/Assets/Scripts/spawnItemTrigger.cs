@@ -22,11 +22,7 @@ public class spawnItemTrigger : MonoBehaviour{
             Sequence seq = DOTween.Sequence();
             for(int i=0;i<queue.Count;++i)
             {
-                var randNumber = Random.Range(0.0f,1.0f);
-                while(randNumber < 0.1f)
-                {
-                    randNumber = Random.Range(0.0f,1.0f);
-                }
+                var randNumber = Random.Range(0.1f,1.0f);
                 seq.AppendInterval(1.0f+randNumber);
                 seq.AppendCallback(spawnItem);
             }
