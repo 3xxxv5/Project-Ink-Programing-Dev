@@ -22,5 +22,10 @@ public class GameMesMananger : MonoBehaviour
 		{
             //doSth
 		}
+
+        if(firstLevelneedHiddenItemNum == firstLevelCurGetHiddenItemNum)
+		{
+            //doSth
+		}
     }
 }
