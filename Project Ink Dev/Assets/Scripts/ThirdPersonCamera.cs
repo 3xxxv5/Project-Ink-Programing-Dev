@@ -78,7 +78,7 @@ public class ThirdPersonCamera : MonoBehaviour
     CameraState targetCameraState = new CameraState();
     CameraState interpolatingCameraState = new CameraState();
 
-    
+
 
 
     void OnEnable()
@@ -87,20 +87,19 @@ public class ThirdPersonCamera : MonoBehaviour
         interpolatingCameraState.setFromTransform(transform);   
         //mainCamera.transform.forward = transform.forward;
         Cursor.lockState = CursorLockMode.Locked;
+
+
     }
 
     void SetInputTranslationDirection()
     {
         //rotation
-        if(Time.timeScale == 1)
-        {
             Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")*(invertY?1:-1));
             float mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
 
             targetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor * flx;
             targetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor * flx;
             targetCameraState.pitch = Mathf.Clamp(targetCameraState.pitch,-1*angle,angle);
-        }
     }
 
     void Update()
@@ -117,8 +116,24 @@ public class ThirdPersonCamera : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if(Input.GetMouseButtonDown(1))
-		{
+
+
+		if (Input.GetKey(KeyCode.BackQuote))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+        }
+
+        if(Input.GetKey(KeyCode.F1))
+        {
+            SceneManager.LoadScene("SampleScene2");
+            DOTween.Clear(true);
+        }
+#endif
+
+        if (Input.GetMouseButtonDown(1))
+        {
             /*var camera = Camera.main;
 			var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
 			Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
@@ -138,26 +153,15 @@ public class ThirdPersonCamera : MonoBehaviour
 			//transform.DOMove(ray.origin + ray.direction * 15.0f, 1.5f);*/
 
             Camera.main.DOFieldOfView(60.0f, 0.5f);
-		}
 
-        if(Input.GetMouseButtonUp(1))
-		{
+
+
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
             Camera.main.DOFieldOfView(45.0f, 0.5f);
-		}
-
-		if (Input.GetKey(KeyCode.BackQuote))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
         }
-
-        if(Input.GetKey(KeyCode.F1))
-        {
-            SceneManager.LoadScene("SampleScene2");
-            DOTween.Clear(true);
-        }
-#endif
 
         SetInputTranslationDirection();
 

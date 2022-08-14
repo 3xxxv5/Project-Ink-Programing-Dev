@@ -29,6 +29,7 @@ public abstract class Item : MonoBehaviour
         m_originalPosition = transform.position;
         GetComponent<BoxCollider>().isTrigger = true;
         gameObject.tag = "Item";
+
     }
 
     protected void DefaultOnTriggerEnterImplement(Collider other)

@@ -12,6 +12,8 @@ public class PowerFlower1 : Item
 	{
         if (itemType == ItemType.Main)
         {
+            var go = transform.parent.parent.Find("Play_Music");
+            go.GetComponent<DropMusicPlay>().PlayMusic();
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
@@ -26,6 +28,8 @@ public class PowerFlower1 : Item
 
         if (itemType == ItemType.Hidden)
         {
+            var go = transform.parent.parent.Find("Play_Music");
+            go.GetComponent<DropMusicPlay>().PlayMusic();
             if (interactiveType == InteractiveType.Type1)
             {
                 //hidden_item_collection+1
