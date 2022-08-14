@@ -8,9 +8,64 @@ public class PowerFlower1 : Item
 
     Rigidbody rb;
 
+    void CollideWithPlayerBehavior()
+	{
+        if (itemType == ItemType.Main)
+        {
+            if (interactiveType == InteractiveType.Type1)
+            {
+                //main_item_collection+1
+                Destroy(this.gameObject);
+
+            }
+            if (interactiveType == InteractiveType.Type2)
+            {
+                //doSth
+            }
+        }
+
+        if (itemType == ItemType.Hidden)
+        {
+            if (interactiveType == InteractiveType.Type1)
+            {
+                //hidden_item_collection+1
+                Destroy(this.gameObject);
+            }
+            if (interactiveType == InteractiveType.Type2)
+            {
+                //doSth
+            }
+        }
+    }
+
+    void CollideWithRebirthBehavior()
+	{
+        if (itemType == ItemType.Main)
+        {
+            transform.position = m_originalPosition;
+        }
+        else if (itemType == ItemType.Hidden)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     protected override void OnTriggerEnter(Collider other)
     {
-        DefaultOnTriggerEnterImplement(other);
+        switch(other.gameObject.tag)
+		{
+            case "Player":
+                var player = GameObject.Find("Player_1");
+                if (player.GetComponent<Player>().moveStatus == PlayStatus.Dash)
+				{
+                    CollideWithPlayerBehavior();
+				}
+                break;
+            case "RepeatOrDisappear":
+                CollideWithRebirthBehavior();
+                break;
+        }
+        //DefaultOnTriggerEnterImplement(other);
     }
 
     public override void SetFallingTrack()
@@ -28,7 +83,7 @@ public class PowerFlower1 : Item
         rb.velocity = new Vector3(0f,-m_velocity,0f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         SetFallingTrack();
     }
