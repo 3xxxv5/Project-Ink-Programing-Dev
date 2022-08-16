@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateItem : PowerFlower1
 {
-    Rigidbody rb;
+    //Rigidbody rb;
     Transform ts;
     [Header("旋转轴相对物体位置")]
     public Vector3 pivot = new Vector3(2, 0, 0);

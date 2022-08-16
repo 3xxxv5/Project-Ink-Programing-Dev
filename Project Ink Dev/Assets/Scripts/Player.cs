@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
             transform.DOMove(ray.origin + ray.direction * dashDis, lastTime);
         }
         //Debug.Log();
-        Debug.DrawLine(ray.origin, ray.origin + ray.direction * dashDis, Color.red);
+        //Debug.DrawLine(ray.origin, ray.origin + ray.direction * dashDis, Color.red);
         //Debug.Log(Screen.width);
         //transform.DOMove(ray.origin + ray.direction * 15.0f, 1.5f);
     }

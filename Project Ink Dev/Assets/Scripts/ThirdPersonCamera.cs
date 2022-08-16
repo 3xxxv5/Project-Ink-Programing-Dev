@@ -132,7 +132,7 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 #endif
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
             /*var camera = Camera.main;
 			var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
@@ -154,7 +154,10 @@ public class ThirdPersonCamera : MonoBehaviour
 
             Camera.main.DOFieldOfView(60.0f, 0.5f);
 
-
+            var camera = Camera.main;
+            var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
+            Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 20, Color.red);
 
         }
 

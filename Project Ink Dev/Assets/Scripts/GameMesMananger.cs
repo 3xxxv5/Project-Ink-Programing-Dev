@@ -12,8 +12,13 @@ public class GameMesMananger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.GetComponent<UserInterface>().RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
     }
+
+    public void updateUI()
+	{
+        gameObject.GetComponent<UserInterface>().RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
+	}
 
     // Update is called once per frame
     void Update()

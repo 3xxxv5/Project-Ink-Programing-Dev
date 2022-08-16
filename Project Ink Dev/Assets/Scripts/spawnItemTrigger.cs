@@ -10,8 +10,12 @@ public class spawnItemTrigger : MonoBehaviour{
     Queue<GameObject> queue = new Queue<GameObject>();
     void spawnItem()
     {
-        var item = queue.Dequeue();
-        item.SetActive(true);
+        if(queue.Count>0)
+		{
+            var item = queue.Dequeue();
+            item.SetActive(true);
+        }
+
     }
 
     void OnTriggerEnter(Collider other)

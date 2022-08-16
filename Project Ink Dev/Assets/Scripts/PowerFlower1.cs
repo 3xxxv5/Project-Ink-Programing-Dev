@@ -6,18 +6,23 @@ using EnumSpace;
 public class PowerFlower1 : Item
 {
 
-    Rigidbody rb;
+    public Rigidbody rb;
+    
 
     void CollideWithPlayerBehavior()
 	{
+        GameObject gameMsgGo = GameObject.Find("Game_Msg_Manager");
+        var manager = gameMsgGo.GetComponent<GameMesMananger>();
         if (itemType == ItemType.Main)
         {
-            //var go = transform.parent.parent.Find("Play_Music");
-            //go.GetComponent<DropMusicPlay>().PlayMusic();
+            
+            var go = transform.parent.parent.Find("Play_Music");
+            go.GetComponent<DropMusicPlay>().PlayMusic();
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
-                //GameObject.Find("Game_Msg_Manager").GetComponent<GameMesMananger>().firstLevelCurGetMainItemNum++;
+                manager.firstLevelCurGetMainItemNum++;
+                manager.updateUI();
                 Destroy(this.gameObject);
 
             }
@@ -29,12 +34,13 @@ public class PowerFlower1 : Item
 
         if (itemType == ItemType.Hidden)
         {
-            //var go = transform.parent.parent.Find("Play_Music");
-            //go.GetComponent<DropMusicPlay>().PlayMusic();
+            var go = transform.parent.parent.Find("Play_Music");
+            go.GetComponent<DropMusicPlay>().PlayMusic();
             if (interactiveType == InteractiveType.Type1)
             {
                 //hidden_item_collection+1
-                //GameObject.Find("Game_Msg_Manager").GetComponent<GameMesMananger>().firstLevelCurGetHiddenItemNum++;
+                manager.firstLevelCurGetHiddenItemNum++;
+                manager.updateUI();
                 Destroy(this.gameObject);
             }
             if (interactiveType == InteractiveType.Type2)
@@ -50,9 +56,11 @@ public class PowerFlower1 : Item
         if (itemType == ItemType.Main)
         {
             transform.position = m_originalPosition;
+            Debug.Log("rebirth");
         }
         else if (itemType == ItemType.Hidden)
         {
+            Debug.Log("Destroy");
             Destroy(this.gameObject);
         }
     }
