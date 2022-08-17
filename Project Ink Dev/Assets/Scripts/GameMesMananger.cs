@@ -9,10 +9,10 @@ public class GameMesMananger : MonoBehaviour
 
     public int firstLevelneedHiddenItemNum = 5;
     public int firstLevelCurGetHiddenItemNum = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
-        gameObject.GetComponent<UserInterface>().RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
+        //gameObject.GetComponent<UserInterface>().RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
     }
 
     public void updateUI()

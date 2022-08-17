@@ -9,8 +9,9 @@ public class UserInterface : MonoBehaviour
 
   private void Start()
   {
-    CurrentScore = GameObject.Find("Canvas/Text[CurrentScore]").GetComponent<TextMeshProUGUI>();
-    TargetScore = GameObject.Find("Canvas/Text[TargetScore]").GetComponent<TextMeshProUGUI>();
+        CurrentScore = GameObject.Find("Canvas/Text[CurrentScore]").GetComponent<TextMeshProUGUI>();
+        TargetScore = GameObject.Find("Canvas/Text[TargetScore]").GetComponent<TextMeshProUGUI>();
+        RefreshScore(0, 15);
   }
   // private void Update()
   // {
