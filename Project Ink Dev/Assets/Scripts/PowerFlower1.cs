@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnumSpace;
+using DG.Tweening;
 
 public class PowerFlower1 : Item
 {
-
-    public Rigidbody rb;
     
+    private Rigidbody rb;
+    
+    void Boom(Collider other)
+	{
+        PoolManager.release(VFXPrefab, other.transform.position, other.transform.rotation);
+	}
 
-    void CollideWithPlayerBehavior()
+    void CollideWithPlayerBehavior(Collider other)
 	{
         GameObject gameMsgGo = GameObject.Find("Game_Msg_Manager");
         var manager = gameMsgGo.GetComponent<GameMesMananger>();
@@ -23,6 +28,11 @@ public class PowerFlower1 : Item
                 //main_item_collection+1
                 manager.firstLevelCurGetMainItemNum++;
                 manager.updateUI();
+
+                Boom(other);
+                Camera.main.DOShakePosition(0.5f);
+               // Camera.main.DOShakeRotation(0.5f);
+
                 Destroy(this.gameObject);
 
             }
@@ -41,6 +51,11 @@ public class PowerFlower1 : Item
                 //hidden_item_collection+1
                 manager.firstLevelCurGetHiddenItemNum++;
                 manager.updateUI();
+
+                Boom(other);
+                Camera.main.DOShakePosition(0.5f);
+                //Camera.main.DOShakeRotation(0.5f);
+
                 Destroy(this.gameObject);
             }
             if (interactiveType == InteractiveType.Type2)
@@ -73,7 +88,7 @@ public class PowerFlower1 : Item
                 var player = GameObject.Find("Player_1");
                 if (player.GetComponent<Player>().moveStatus == PlayStatus.Dash)
 				{
-                    CollideWithPlayerBehavior();
+                    CollideWithPlayerBehavior(other);
 				}
                 break;
             case "RepeatOrDisappear":

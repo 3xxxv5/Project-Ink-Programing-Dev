@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     public float lastTime = 0.5f;
     [Header("冲刺CD")]
     public float dashCD = 2f;
+    [Header("冲刺曲线")]
+    public AnimationCurve curv = new AnimationCurve(new Keyframe(0f, 0f, 0f, 0f), new Keyframe(1f, 1.0f, 0f, 0f));
+
 
     void Start()
     {
@@ -71,11 +74,11 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, dashDis))
         {
             //print(hitInfo.transform);
-            transform.DOMove(hitInfo.point - ray.direction * 1.0f, lastTime);
+            transform.DOMove(hitInfo.point - ray.direction * 1.0f, lastTime).SetEase(curv);
         }
         else
         {
-            transform.DOMove(ray.origin + ray.direction * dashDis, lastTime);
+            transform.DOMove(ray.origin + ray.direction * dashDis, lastTime).SetEase(curv);
         }
         //Debug.Log();
         //Debug.DrawLine(ray.origin, ray.origin + ray.direction * dashDis, Color.red);

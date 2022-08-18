@@ -13,8 +13,8 @@ public class ThirdPersonCamera : MonoBehaviour
         public float roll;
         public float pitch;
         public float yaw;
-
         
+
         public void setFromTransform(Transform t)
         {
             roll = t.eulerAngles.z;
@@ -102,6 +102,19 @@ public class ThirdPersonCamera : MonoBehaviour
             targetCameraState.pitch = Mathf.Clamp(targetCameraState.pitch,-1*angle,angle);
     }
 
+
+#if UNITY_EDITOR
+    static float i = 0;
+    void DashStorage()
+	{
+        i += Time.deltaTime;
+        if (i >= 2.0f)
+            i = 2.0f;
+        Debug.Log(i);
+	}
+
+#endif
+
     void Update()
     {
 #if UNITY_EDITOR
@@ -158,12 +171,13 @@ public class ThirdPersonCamera : MonoBehaviour
             var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
             Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
             Debug.DrawLine(ray.origin, ray.origin + ray.direction * 20, Color.red);
-
+            DashStorage();
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             Camera.main.DOFieldOfView(45.0f, 0.5f);
+            i = 0f;
         }
 
         SetInputTranslationDirection();

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroy: 0
-  canSetAct: 0
+  canSetAct: 1
   lifeTime: 3
 --- !u!1 &228892914651007611
 GameObject:
@@ -333,8 +333,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.25
-      minScalar: 0.1
+      scalar: 1.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1025,7 +1025,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 200
+        scalar: 300
         minScalar: 30
         maxCurve:
           serializedVersion: 2

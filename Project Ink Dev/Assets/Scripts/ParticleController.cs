@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleController : MonoBehaviour
 {
     public bool canDestroy = false;
-    public bool canSetAct = false;
+    public bool canSetAct = true;
     public float lifeTime = 3.0f;
 
     WaitForSeconds waitLifeTime;

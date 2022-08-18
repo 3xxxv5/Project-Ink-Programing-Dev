@@ -14,6 +14,8 @@ public abstract class Item : MonoBehaviour
     public float m_acceleratetion = 0f;
     protected Vector3 m_originalPosition; //记录掉落物的生成位置,在OnTriggerEnter实现循环掉落逻辑;将记录界限的Trigger的Tag设为RepeatOrDisappear;
 
+    public GameObject VFXPrefab;
+
     public abstract void SetFallingTrack(); //掉落轨迹,每一个实现该方法的子类都应该在update()中调用该方法
 
     //其它对象进入触发器时的逻辑
@@ -66,7 +68,7 @@ public abstract class Item : MonoBehaviour
                     }
                 }
             }
-
+            
         }
 
         if(other.gameObject.tag.Contains("RepeatOrDisappear"))
