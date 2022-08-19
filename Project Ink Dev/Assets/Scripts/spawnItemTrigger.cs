@@ -5,10 +5,10 @@ using EnumSpace;
 using DG.Tweening;
 
 [RequireComponent(typeof(BoxCollider))]
-public class spawnItemTrigger : MonoBehaviour{
+public class SpawnItemTrigger : MonoBehaviour{
 
     Queue<GameObject> queue = new Queue<GameObject>();
-    void spawnItem()
+    void SpawnItem()
     {
         if(queue.Count>0)
 		{
@@ -26,9 +26,9 @@ public class spawnItemTrigger : MonoBehaviour{
             Sequence seq = DOTween.Sequence();
             for(int i=0;i<queue.Count;++i)
             {
-                var randNumber = Random.Range(0.1f,1.0f);
-                seq.AppendInterval(1.0f+randNumber);
-                seq.AppendCallback(spawnItem);
+                int randNumber = Random.Range(1,10);
+                seq.AppendInterval(1.0f+randNumber*0.1f);
+                seq.AppendCallback(SpawnItem);
             }
         }
     }
