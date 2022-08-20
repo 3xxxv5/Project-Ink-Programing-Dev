@@ -23,4 +23,10 @@ namespace EnumSpace
     Launch = 12, // 发射青蛙独有
   }
 
+    public enum CameraStatus
+	{
+        Shock,
+        Common
+	}
+
 }

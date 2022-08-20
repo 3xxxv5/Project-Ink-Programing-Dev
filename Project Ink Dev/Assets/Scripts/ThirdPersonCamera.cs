@@ -110,7 +110,7 @@ public class ThirdPersonCamera : MonoBehaviour
         i += Time.deltaTime;
         if (i >= 2.0f)
             i = 2.0f;
-        Debug.Log(i);
+        //Debug.Log(i);
 	}
 
 #endif
@@ -165,7 +165,7 @@ public class ThirdPersonCamera : MonoBehaviour
 			//Debug.Log(Screen.width);
 			//transform.DOMove(ray.origin + ray.direction * 15.0f, 1.5f);*/
 
-            Camera.main.DOFieldOfView(60.0f, 0.5f);
+            Camera.main.DOFieldOfView(45.0f, 0.5f);
 
             var camera = Camera.main;
             var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
@@ -176,11 +176,12 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            Camera.main.DOFieldOfView(45.0f, 0.5f);
+            Camera.main.DOFieldOfView(60.0f, 0.5f);
             i = 0f;
         }
 
-        SetInputTranslationDirection();
+        if(gameObject.GetComponent<Player>().GetPlayerMoveStatus()!=EnumSpace.PlayStatus.Dash)
+            SetInputTranslationDirection();
 
         float rotationLerpPct = 1.0f - Mathf.Exp((Mathf.Log(1.0f-0.99f) / rotationLerpTime) * Time.deltaTime);
         interpolatingCameraState.LerpTowards(targetCameraState,rotationLerpPct);

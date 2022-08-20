@@ -8,26 +8,22 @@ public class PowerFlower1 : Item
 {
     
     private Rigidbody rb;
-    private bool cameraInShock = false;
+
 
     void Boom(Collider other)
 	{
         PoolManager.release(VFXPrefab, other.transform.position, other.transform.rotation);
 	}
 
-    void SetShockToFalse()
-	{
-        cameraInShock = false;
-	}
 
     void SetCameraShock()
 	{
+        CameraStatusController.Instance().SetShock();
         Camera.main.DOShakePosition(0.5f);
-        cameraInShock = true;
 
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(0.5f);
-        seq.AppendCallback(SetShockToFalse);
+        seq.AppendCallback(CameraStatusController.Instance().SetCommon);
     }
 
     void CollideWithPlayerBehavior(Collider other)
@@ -72,7 +68,7 @@ public class PowerFlower1 : Item
 
         DropMusicPlay.PlayMusic();
         Boom(other);
-        if (!cameraInShock)
+        if (CameraStatusController.Instance().GetCameraStatus()==CameraStatus.Common)
         {
             SetCameraShock();
         }
