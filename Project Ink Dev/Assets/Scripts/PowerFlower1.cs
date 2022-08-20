@@ -8,6 +8,7 @@ public class PowerFlower1 : Item
 {
     
     private Rigidbody rb;
+    private float rebirthTimeTemp;
 
 
     void Boom(Collider other)
@@ -28,15 +29,13 @@ public class PowerFlower1 : Item
 
     void CollideWithPlayerBehavior(Collider other)
 	{
-        //GameObject gameMsgGo = GameObject.Find("Game_Msg_Manager");
-        //var manager = gameMsgGo.GetComponent<GameMesMananger>();
         if (itemType == ItemType.Main)
         {
             
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
-                GameMesMananger.firstLevelneedMainItemNum++;
+                GameMesMananger.firstLevelCurGetMainItemNum++;
 
                // Camera.main.DOShakeRotation(0.5f);
 
@@ -76,7 +75,7 @@ public class PowerFlower1 : Item
     }
 
 
-    void CollideWithRebirthBehavior()
+    /*void CollideWithRebirthBehavior()
 	{
         if (itemType == ItemType.Main)
         {
@@ -88,7 +87,7 @@ public class PowerFlower1 : Item
             Debug.Log("Destroy");
             Destroy(this.gameObject);
         }
-    }
+    }*/
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -101,7 +100,7 @@ public class PowerFlower1 : Item
 				}
                 break;
             case "RepeatOrDisappear":
-                CollideWithRebirthBehavior();
+                //CollideWithRebirthBehavior();
                 break;
         }
         //DefaultOnTriggerEnterImplement(other);
@@ -114,15 +113,45 @@ public class PowerFlower1 : Item
         rb.AddForce(force);
     }
 
-    void OnEnable()
+    
+	public override void DropRebirth()
+	{
+		if(m_rebirthTime<0.00001f)
+		{
+            m_rebirthTime = rebirthTimeTemp;
+
+            switch(itemType)
+			{
+                case  ItemType.Main:
+                    Debug.Log("Rebirth");
+                    transform.position = m_originalPosition;
+                    break;
+                case ItemType.Hidden:
+                    Debug.Log("Destroy");
+                    Destroy(this.gameObject);
+                    break;
+            }
+		}
+
+        m_rebirthTime -= Time.deltaTime;
+	}
+
+	void OnEnable()
     {
         init();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.velocity = new Vector3(0f,-m_velocity,0f);
+        rebirthTimeTemp = m_rebirthTime;
     }
 
-    void FixedUpdate()
+	void Update()
+	{
+        DropRebirth();
+
+    }
+
+	void FixedUpdate()
     {
         SetFallingTrack();
     }
