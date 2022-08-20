@@ -1278,8 +1278,8 @@ MonoBehaviour:
   m_velocity: 1
   m_acceleratetion: 0
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
-  pivot: {x: 2, y: 0, z: 0}
-  rotateSpeed: 3
+  pivot: {x: 0, y: 2, z: 0}
+  rotateSpeed: 1
 --- !u!1 &239322398
 GameObject:
   m_ObjectHideFlags: 0
