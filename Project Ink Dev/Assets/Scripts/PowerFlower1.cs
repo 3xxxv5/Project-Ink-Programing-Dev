@@ -8,29 +8,40 @@ public class PowerFlower1 : Item
 {
     
     private Rigidbody rb;
-    
+    private bool cameraInShock = false;
+
     void Boom(Collider other)
 	{
         PoolManager.release(VFXPrefab, other.transform.position, other.transform.rotation);
 	}
 
+    void SetShockToFalse()
+	{
+        cameraInShock = false;
+	}
+
+    void SetCameraShock()
+	{
+        Camera.main.DOShakePosition(0.5f);
+        cameraInShock = true;
+
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(SetShockToFalse);
+    }
+
     void CollideWithPlayerBehavior(Collider other)
 	{
-        GameObject gameMsgGo = GameObject.Find("Game_Msg_Manager");
-        var manager = gameMsgGo.GetComponent<GameMesMananger>();
+        //GameObject gameMsgGo = GameObject.Find("Game_Msg_Manager");
+        //var manager = gameMsgGo.GetComponent<GameMesMananger>();
         if (itemType == ItemType.Main)
         {
             
-            var go = transform.parent.parent.Find("Play_Music");
-            go.GetComponent<DropMusicPlay>().PlayMusic();
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
-                manager.firstLevelCurGetMainItemNum++;
-                manager.updateUI();
+                GameMesMananger.firstLevelneedMainItemNum++;
 
-                Boom(other);
-                Camera.main.DOShakePosition(0.5f);
                // Camera.main.DOShakeRotation(0.5f);
 
                 Destroy(this.gameObject);
@@ -44,16 +55,11 @@ public class PowerFlower1 : Item
 
         if (itemType == ItemType.Hidden)
         {
-            var go = transform.parent.parent.Find("Play_Music");
-            go.GetComponent<DropMusicPlay>().PlayMusic();
             if (interactiveType == InteractiveType.Type1)
             {
                 //hidden_item_collection+1
-                manager.firstLevelCurGetHiddenItemNum++;
-                manager.updateUI();
+                GameMesMananger.firstLevelCurGetHiddenItemNum++;
 
-                Boom(other);
-                Camera.main.DOShakePosition(0.5f);
                 //Camera.main.DOShakeRotation(0.5f);
 
                 Destroy(this.gameObject);
@@ -63,6 +69,14 @@ public class PowerFlower1 : Item
                 //doSth
             }
         }
+
+        DropMusicPlay.PlayMusic();
+        Boom(other);
+        if (!cameraInShock)
+        {
+            SetCameraShock();
+        }
+        GameMesMananger.updateUI();
     }
 
 
@@ -85,8 +99,7 @@ public class PowerFlower1 : Item
         switch(other.gameObject.tag)
 		{
             case "Player":
-                var player = GameObject.Find("Player_1");
-                if (player.GetComponent<Player>().moveStatus == PlayStatus.Dash)
+                if (other.gameObject.GetComponent<Player>().GetPlayerMoveStatus() == PlayStatus.Dash)
 				{
                     CollideWithPlayerBehavior(other);
 				}

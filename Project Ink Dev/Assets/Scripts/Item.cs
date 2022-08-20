@@ -34,12 +34,12 @@ public abstract class Item : MonoBehaviour
 
     }
 
-    protected void DefaultOnTriggerEnterImplement(Collider other)
+    /*protected void DefaultOnTriggerEnterImplement(Collider other)
     {
         if(other.gameObject.tag.Contains("Player"))
         {
             var player = GameObject.Find("Player_1");
-            if (player.GetComponent<Player>().moveStatus == PlayStatus.Dash)
+            if (player.GetComponent<Player>().GetPlayerMoveStatus() == PlayStatus.Dash)
             {
                 if (itemType == ItemType.Main)
                 {
@@ -82,6 +82,6 @@ public abstract class Item : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-    }
+    }*/
 
 }

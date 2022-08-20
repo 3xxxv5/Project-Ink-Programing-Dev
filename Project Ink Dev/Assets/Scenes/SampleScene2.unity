@@ -3188,6 +3188,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1473372429450112692, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.35000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473372429450112692, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7100003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473372429450112692, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.31
+      objectReference: {fileID: 0}
     - target: {fileID: 6177442222546853056, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4255,7 +4267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbe29a588ff00c4ea39170e59c8091c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicName: 
 --- !u!1 &675157320
 GameObject:
   m_ObjectHideFlags: 0
@@ -9274,10 +9285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26aef0ff15175a9448da67c3a1a8f3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevelneedMainItemNum: 15
-  firstLevelCurGetMainItemNum: 0
-  firstLevelneedHiddenItemNum: 5
-  firstLevelCurGetHiddenItemNum: 0
 --- !u!114 &1408556919
 MonoBehaviour:
   m_ObjectHideFlags: 0

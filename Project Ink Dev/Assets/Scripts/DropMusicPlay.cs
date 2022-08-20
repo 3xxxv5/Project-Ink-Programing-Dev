@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DropMusicPlay : MonoBehaviour
 {
-    public string musicName;
-    AudioSource music;
-    AudioClip waitPlay;
-    int musicNum;
+    static string musicName;
+    static AudioSource music;
+    static AudioClip waitPlay;
+    static int musicNum;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class DropMusicPlay : MonoBehaviour
         waitPlay = Resources.Load<AudioClip>(musicName);
     }
 
-    public void PlayMusic()
+    public static void PlayMusic()
 	{
         musicNum = Random.Range(1, 13);
         musicName = string.Format("{0}{1}{2}", "music/", "cut", musicNum);
@@ -33,4 +33,10 @@ public class DropMusicPlay : MonoBehaviour
     {
         
     }
+
+	private void OnDestroy()
+	{
+        music = null;
+        waitPlay = null;
+	}
 }

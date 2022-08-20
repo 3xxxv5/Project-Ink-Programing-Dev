@@ -4,20 +4,45 @@ using UnityEngine;
 
 public class GameMesMananger : MonoBehaviour
 {
-    public int firstLevelneedMainItemNum = 15;
-    public int firstLevelCurGetMainItemNum = 0;
+	/*private static GameMesMananger instance = null;
+	private static readonly object obj = new object();
+	private GameMesMananger() { }
+	public static GameMesMananger Instance()
+	{
+		if (instance == null)
+		{
+			lock (obj)
+			{
+				if (instance == null)
+				{
+					instance = new GameMesMananger();
+				}
+			}
+		}
 
-    public int firstLevelneedHiddenItemNum = 5;
-    public int firstLevelCurGetHiddenItemNum = 0;
+		return instance;
+	}*/
+
+	public static int firstLevelneedMainItemNum = 15;
+	public static int firstLevelCurGetMainItemNum = 0;
+
+	 public static int firstLevelneedHiddenItemNum = 5;
+	 public static int firstLevelCurGetHiddenItemNum = 0;
+
+
+
+	private static UserInterface ui = null;
 
     void Start()
     {
-        //gameObject.GetComponent<UserInterface>().RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
+		
+		ui = gameObject.AddComponent<UserInterface>();
+        //ui.RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
     }
 
-    public void updateUI()
+    public static void updateUI()
 	{
-        gameObject.GetComponent<UserInterface>().RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
+		ui.RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
 	}
 
     // Update is called once per frame
@@ -33,4 +58,9 @@ public class GameMesMananger : MonoBehaviour
             //doSth
 		}
     }
+
+	private void OnDestroy()
+	{
+		ui = null;
+	}
 }

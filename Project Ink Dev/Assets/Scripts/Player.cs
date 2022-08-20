@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     CharacterController playerController;
     private bool beginCD = false;
     private float CDCount = 1;
-    public EnumSpace.PlayStatus moveStatus;
+    private EnumSpace.PlayStatus moveStatus;
 
 
     public Transform characterTran;
@@ -36,6 +36,11 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public EnumSpace.PlayStatus GetPlayerMoveStatus()
+	{
+        return moveStatus;
+	}
 
     public float getDashCD()
 	{
