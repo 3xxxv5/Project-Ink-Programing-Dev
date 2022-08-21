@@ -19,10 +19,6 @@ public class PlayerFrog : BasePlayer
         if (moveStatus != EnumSpace.PlayStatus.Faint)
         {
             PlayerMove();
-            if (moveStatus == EnumSpace.PlayStatus.Idle)
-            {
-                characterGO.GetComponent<FrogAnimator>().Idle();
-            }
         }
         //º∆À„cd
         IsInCD();
@@ -55,5 +51,10 @@ public class PlayerFrog : BasePlayer
     {
         characterGO.GetComponent<FrogAnimator>().Walk();
         ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+    }
+
+    protected override void PlayIdleAnim()
+    {
+        characterGO.GetComponent<FrogAnimator>().Idle();
     }
 }
