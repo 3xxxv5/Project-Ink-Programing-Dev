@@ -34,7 +34,7 @@ public class PlayerFrog : BasePlayer
             if (timer > threshold && moveStatus == EnumSpace.PlayStatus.Idle)
             {
                 characterGO.GetComponent<FrogAnimator>().Charge();
-                moveStatus = EnumSpace.PlayStatus.Charge;
+                ChangeMoveStatus(EnumSpace.PlayStatus.Charge);
             }
         }
 
@@ -42,8 +42,14 @@ public class PlayerFrog : BasePlayer
         if(Input.GetMouseButtonUp(0))
         {
             characterGO.GetComponent<FrogAnimator>().Launch();
-            moveStatus = EnumSpace.PlayStatus.Idle;
+            ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
             timer = 0;
         }
+    }
+
+    protected override void PlayWalkAnim()
+    {
+        characterGO.GetComponent<FrogAnimator>().Walk();
+        ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
     }
 }
