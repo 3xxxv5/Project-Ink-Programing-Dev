@@ -30,11 +30,12 @@ public class PlayerFrog : BasePlayer
         if(Input.GetMouseButton(0))
         {
             timer += Time.deltaTime;
+            characterGO.GetComponent<FrogAnimator>().Charge();
+            ChangeMoveStatus(EnumSpace.PlayStatus.Charge);
             //按住鼠标时间超过阈值判定为蓄力，播放蓄力动画
             if (timer > threshold && moveStatus == EnumSpace.PlayStatus.Idle)
             {
-                characterGO.GetComponent<FrogAnimator>().Charge();
-                ChangeMoveStatus(EnumSpace.PlayStatus.Charge);
+                //toDo
             }
         }
 
@@ -42,7 +43,7 @@ public class PlayerFrog : BasePlayer
         if(Input.GetMouseButtonUp(0))
         {
             characterGO.GetComponent<FrogAnimator>().Launch();
-            ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+            //ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
             timer = 0;
         }
     }
