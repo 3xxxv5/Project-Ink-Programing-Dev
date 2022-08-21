@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class LevelSelection : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class LevelSelection : MonoBehaviour
     if (m_unlock == true)
     {
       SceneManager.LoadScene(sceneName);
+      DOTween.Clear(true);
     }
   }
 }
