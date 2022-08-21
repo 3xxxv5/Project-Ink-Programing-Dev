@@ -11,7 +11,6 @@ public abstract class BasePlayer : MonoBehaviour
     protected bool beginCD = false;
     protected float CDCount = 1;
     protected EnumSpace.PlayStatus moveStatus;
-    protected EnumSpace.AnimState animState;
 
     public GameObject characterGO;
     //角色默认移动速度为10
