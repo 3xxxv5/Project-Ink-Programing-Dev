@@ -18,10 +18,6 @@ public class Player : BasePlayer
         if (moveStatus != EnumSpace.PlayStatus.Faint)
         {
             PlayerMove();
-            if(moveStatus == EnumSpace.PlayStatus.Idle)
-            {
-                characterGO.GetComponent<ShrimpAnimator>().Idle();
-            }
         }
             
         //计算cd
@@ -43,12 +39,9 @@ public class Player : BasePlayer
             CDCount = 1;
 
             //播放冲刺动画
-            if (characterGO)
-            {
-                characterGO.GetComponent<ShrimpAnimator>().Dash();
-            }
+            characterGO.GetComponent<ShrimpAnimator>().Dash();
+            ChangeMoveStatus(EnumSpace.PlayStatus.Dash);
             Sequence seq = DOTween.Sequence();
-            moveStatus = EnumSpace.PlayStatus.Dash;
             seq.AppendInterval(lastTime);
             seq.AppendCallback(SetStatusToIdle);
         }
@@ -57,6 +50,10 @@ public class Player : BasePlayer
     protected override void PlayWalkAnim()
     {
         characterGO.GetComponent<ShrimpAnimator>().Walk();
-        ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+    }
+
+    protected override void PlayIdleAnim()
+    {
+        characterGO.GetComponent<ShrimpAnimator>().Idle();
     }
 }

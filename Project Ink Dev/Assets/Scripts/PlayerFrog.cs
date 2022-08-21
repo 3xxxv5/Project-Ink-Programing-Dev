@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class PlayerFrog : BasePlayer
 {
     private float timer = 0;
 
-    [Header("–Ó¡¶„–÷µ")]
+    [Header("ËìÑÂäõÈòàÂÄº")]
     public float threshold = 0.2f;
 
     void Start()
@@ -19,22 +19,18 @@ public class PlayerFrog : BasePlayer
         if (moveStatus != EnumSpace.PlayStatus.Faint)
         {
             PlayerMove();
-            if (moveStatus == EnumSpace.PlayStatus.Idle)
-            {
-                characterGO.GetComponent<FrogAnimator>().Idle();
-            }
         }
-        //º∆À„cd
+        //ËÆ°ÁÆócd
         IsInCD();
     }
 
     protected override void MouseClick()
     {
-        //∞¥◊° Û±Ítimerø™ ºº∆ ±
+        //Êåâ‰ΩèÈº†Ê†átimerÂºÄÂßãËÆ°Êó∂
         if(Input.GetMouseButton(0))
         {
             timer += Time.deltaTime;
-            //∞¥◊° Û±Í ±º‰≥¨π˝„–÷µ≈–∂®Œ™–Ó¡¶£¨≤•∑≈–Ó¡¶∂Øª≠
+            //Êåâ‰ΩèÈº†Ê†áÊó∂Èó¥Ë∂ÖËøáÈòàÂÄºÂà§ÂÆö‰∏∫ËìÑÂäõÔºåÊí≠ÊîæËìÑÂäõÂä®Áîª
             if (timer > threshold && moveStatus == EnumSpace.PlayStatus.Idle)
             {
                 characterGO.GetComponent<FrogAnimator>().Charge();
@@ -42,7 +38,7 @@ public class PlayerFrog : BasePlayer
             }
         }
 
-        //Ãß∆ Û±Í∑¢…‰
+        //Êä¨Ëµ∑Èº†Ê†áÂèëÂ∞Ñ
         if(Input.GetMouseButtonUp(0))
         {
             characterGO.GetComponent<FrogAnimator>().Launch();
@@ -54,6 +50,10 @@ public class PlayerFrog : BasePlayer
     protected override void PlayWalkAnim()
     {
         characterGO.GetComponent<FrogAnimator>().Walk();
-        ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+    }
+
+    protected override void PlayIdleAnim()
+    {
+        characterGO.GetComponent<FrogAnimator>().Idle();
     }
 }

@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-//½ÇÉ«¿ØÖÆÆ÷»ùÀà
+//è§’è‰²æ§åˆ¶å™¨åŸºç±»
 public abstract class BasePlayer : MonoBehaviour
 {
     protected Transform playerTran;
@@ -11,27 +11,29 @@ public abstract class BasePlayer : MonoBehaviour
     protected bool beginCD = false;
     protected float CDCount = 1;
     protected EnumSpace.PlayStatus moveStatus;
+    protected EnumSpace.AnimState animState;
 
     public GameObject characterGO;
-    //½ÇÉ«Ä¬ÈÏÒÆ¶¯ËÙ¶ÈÎª10
-    [Header("Ä¬ÈÏËÙ¶È")]
+    //è§’è‰²é»˜è®¤ç§»åŠ¨é€Ÿåº¦ä¸º10
+    [Header("é»˜è®¤é€Ÿåº¦")]
     public float moveSpeed = 10f;
-    [Header("³å´Ì¾àÀë")]
+    [Header("å†²åˆºè·ç¦»")]
     public float dashDis = 20f;
-    [Header("³å´ÌÊ±¼ä")]
+    [Header("å†²åˆºæ—¶é—´")]
     public float lastTime = 0.5f;
-    [Header("³å´ÌCD")]
+    [Header("å†²åˆºCD")]
     public float dashCD = 2f;
-    [Header("³å´ÌÇúÏß")]
+    [Header("å†²åˆºæ›²çº¿")]
     public AnimationCurve curv = new AnimationCurve(new Keyframe(0f, 0f, 0f, 0f), new Keyframe(1f, 1.0f, 0f, 0f));
 
-    //ËùÓĞ³õÊ¼»¯Ê±µ÷ÓÃ
+    //æ‰€æœ‰åˆå§‹åŒ–æ—¶è°ƒç”¨
     protected void Init()
     {
         playerTran = this.transform;
         playerController = this.GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
     }
 
     public EnumSpace.PlayStatus GetPlayerMoveStatus()
@@ -42,6 +44,7 @@ public abstract class BasePlayer : MonoBehaviour
     public void ChangeMoveStatus(EnumSpace.PlayStatus status)
     {
         moveStatus = status;
+        Debug.Log(status);
     }
 
     public void SetStatusToIdle()
@@ -66,7 +69,7 @@ public abstract class BasePlayer : MonoBehaviour
         }
     }
 
-    //ÉäÏß¼ì²â
+    //å°„çº¿æ£€æµ‹
     protected void LetMove()
     {
         var camera = Camera.main;
@@ -84,17 +87,19 @@ public abstract class BasePlayer : MonoBehaviour
         }
     }
 
-    //³éÏó·½·¨£¬Êó±êµã»÷´¥·¢³å´Ì
+    //æŠ½è±¡æ–¹æ³•ï¼Œé¼ æ ‡ç‚¹å‡»è§¦å‘å†²åˆº
     protected abstract void MouseClick();
-    //²¥·Åwalk¶¯»­
+    //æ’­æ”¾walkåŠ¨ç”»
     protected abstract void PlayWalkAnim();
+    //
+    protected abstract void PlayIdleAnim();
 
-    //½ÇÉ«ÒÆ¶¯
+    //è§’è‰²ç§»åŠ¨
     protected void PlayerMove()
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        //Ç°ºóÒÆ¶¯
+        //å‰åç§»åŠ¨
         if (Input.GetKey(KeyCode.W))
         {
             moveZ += moveSpeed * Time.deltaTime;
@@ -103,7 +108,7 @@ public abstract class BasePlayer : MonoBehaviour
         {
             moveZ -= moveSpeed * Time.deltaTime;
         }
-        //×óÓÒÒÆ¶¯
+        //å·¦å³ç§»åŠ¨
         if (Input.GetKey(KeyCode.A))
         {
             moveX -= moveSpeed * Time.deltaTime;
@@ -112,11 +117,24 @@ public abstract class BasePlayer : MonoBehaviour
         {
             moveX += moveSpeed * Time.deltaTime;
         }
+
         if (moveX != 0 || moveZ != 0)
         {
-            ChangeMoveStatus(EnumSpace.PlayStatus.Walk);
-            PlayWalkAnim();
+            if (moveStatus != EnumSpace.PlayStatus.Walk)
+            {
+                ChangeMoveStatus(EnumSpace.PlayStatus.Walk);
+                PlayWalkAnim();
+            }
         }
+        else
+        {
+            if (moveStatus == EnumSpace.PlayStatus.Walk)
+            {
+                PlayIdleAnim();
+                ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+            }
+        }
+
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
 
         MouseClick();
