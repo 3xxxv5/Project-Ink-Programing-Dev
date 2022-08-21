@@ -14,19 +14,18 @@ namespace EnumSpace
 
   public enum PlayStatus
   {
-    // 小于十是bool
+    // 全部为Trigger
     Idle = 1,
-    Dash = 2,   // 虾独有
-    Walk = 3,
-    // 大于十是trigger
+    Walk = 2,
+    Dash = 3, // 冲刺鹤、虾独有
     Charge = 11, // 蓄力青蛙独有
     Launch = 12, // 发射青蛙独有
   }
 
-    public enum CameraStatus
-	{
-        Shock,
-        Common
-	}
+  public enum CameraStatus
+  {
+    Shock,
+    Common
+  }
 
 }
