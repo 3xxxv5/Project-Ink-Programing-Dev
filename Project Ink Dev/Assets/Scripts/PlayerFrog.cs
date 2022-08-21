@@ -19,6 +19,10 @@ public class PlayerFrog : BasePlayer
         if (moveStatus != EnumSpace.PlayStatus.Faint)
         {
             PlayerMove();
+            if (moveStatus == EnumSpace.PlayStatus.Idle)
+            {
+                characterGO.GetComponent<FrogAnimator>().Idle();
+            }
         }
         //º∆À„cd
         IsInCD();

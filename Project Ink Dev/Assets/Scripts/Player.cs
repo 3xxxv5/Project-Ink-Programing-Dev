@@ -16,7 +16,14 @@ public class Player : BasePlayer
     void Update()
     {
         if (moveStatus != EnumSpace.PlayStatus.Faint)
+        {
             PlayerMove();
+            if(moveStatus == EnumSpace.PlayStatus.Idle)
+            {
+                characterGO.GetComponent<ShrimpAnimator>().Idle();
+            }
+        }
+            
         //计算cd
         IsInCD();
     }
