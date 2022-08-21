@@ -7,10 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: tree_1
-  m_Shader: {fileID: 4800000, guid: 5abfc9700aa231149972bf1975510577, type: 3}
+  m_Name: tree_5
+  m_Shader: {fileID: 4800000, guid: 48b01939ff578864e8e0eebf1ac01df0, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _ISDCS_ON
+  - _ISEDANDTEXT_ON
+  - _ISSIMPLESTYLE_ON
+  - _ISSTYLE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -22,6 +26,10 @@ Material:
     m_TexEnvs:
     - _BumpMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverTex:
+        m_Texture: {fileID: 2800000, guid: 46be8b87db5706743865c4861db25830, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -45,11 +53,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainNormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6a47dac3fd9d9ce4da028da565c5e5cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2d1ee9c9a455dd44bad01882ed891dd4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 76a34bd17a80b4449a0ce3c7016654cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -62,6 +70,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _White1:
+        m_Texture: {fileID: 2800000, guid: 77cc09b13d78709418620cbfd7bdadfe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _White2:
+        m_Texture: {fileID: 2800000, guid: ea5604846d79e9747b1b165099e5a5f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _White3:
+        m_Texture: {fileID: 2800000, guid: 3354a4f3a8a11384d84794cdd47ab8aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _black:
+        m_Texture: {fileID: 2800000, guid: b84f3074a766e5e4f849805b87cddc44, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -78,6 +102,13 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Ink: 1.46
+    - _IsDCS: 1
+    - _IsEDAndText: 1
+    - _IsEdgeDetect: 0
+    - _IsEdgeDetectOpt: 0
+    - _IsOrigin: 0
+    - _IsSimpleStyle: 1
+    - _IsStyle: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -89,9 +120,21 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Thred: 0.52
+    - _Tooniness: 5.2
     - _UVSec: 0
     - _ZWrite: 1
+    - _blackScale: 2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _InColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutColor: {r: 1, g: 1, b: 1, a: 1}
+    - _White1Adjust: {r: 0, g: 0, b: 0, a: 0}
+    - _White1Color: {r: 1, g: 1, b: 1, a: 1}
+    - _White2Adjust: {r: 0, g: 0, b: 0, a: 0}
+    - _White2Color: {r: 1, g: 1, b: 1, a: 1}
+    - _White3Adjust: {r: 0, g: 0, b: 0, a: 0}
+    - _White3Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

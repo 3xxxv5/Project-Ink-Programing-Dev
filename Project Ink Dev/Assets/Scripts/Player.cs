@@ -18,6 +18,10 @@ public class Player : BasePlayer
         if (moveStatus != EnumSpace.PlayStatus.Faint)
         {
             PlayerMove();
+            if(moveStatus == EnumSpace.PlayStatus.Idle)
+            {
+                characterGO.GetComponent<ShrimpAnimator>().Idle();
+            }
         }
             
         //计算cd
@@ -54,10 +58,5 @@ public class Player : BasePlayer
     {
         characterGO.GetComponent<ShrimpAnimator>().Walk();
         ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
-    }
-
-    protected override void PlayIdleAnim()
-    {
-        characterGO.GetComponent<ShrimpAnimator>().Idle();
     }
 }

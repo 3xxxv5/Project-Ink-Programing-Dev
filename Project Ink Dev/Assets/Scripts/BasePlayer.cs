@@ -88,8 +88,6 @@ public abstract class BasePlayer : MonoBehaviour
     protected abstract void MouseClick();
     //播放walk动画
     protected abstract void PlayWalkAnim();
-    //播放idle动画
-    protected abstract void PlayIdleAnim();
 
     //角色移动
     protected void PlayerMove()
@@ -119,12 +117,8 @@ public abstract class BasePlayer : MonoBehaviour
             ChangeMoveStatus(EnumSpace.PlayStatus.Walk);
             PlayWalkAnim();
         }
-        else
-        {
-            ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
-            PlayIdleAnim();
-        }
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
+
         MouseClick();
     }
 }
