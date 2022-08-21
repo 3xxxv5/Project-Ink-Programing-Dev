@@ -1346,6 +1346,23 @@ MonoBehaviour:
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   pivot: {x: 0, y: 2, z: 0}
   rotateSpeed: 1
+--- !u!1 &229576138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7775013041258864462, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+  m_PrefabInstance: {fileID: 443575984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &229576139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229576138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab18efd1a5189e4fbaf52b4340799f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &239322398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,6 +3144,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: characterGO
+      value: 
+      objectReference: {fileID: 229576138}
+    - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: curv.m_Curve.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3269,6 +3290,14 @@ PrefabInstance:
     - target: {fileID: 1473372429450112692, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116597572327993740, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116597572327993740, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.698
       objectReference: {fileID: 0}
     - target: {fileID: 6177442222546853056, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: m_Materials.Array.data[0]

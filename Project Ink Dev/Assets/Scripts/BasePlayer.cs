@@ -12,8 +12,7 @@ public abstract class BasePlayer : MonoBehaviour
     protected float CDCount = 1;
     protected EnumSpace.PlayStatus moveStatus;
 
-
-    public Transform characterTran;
+    public GameObject characterGO;
     //角色默认移动速度为10
     [Header("默认速度")]
     public float moveSpeed = 10f;
@@ -38,6 +37,11 @@ public abstract class BasePlayer : MonoBehaviour
     public EnumSpace.PlayStatus GetPlayerMoveStatus()
     {
         return moveStatus;
+    }
+
+    public void ChangeMoveStatus(EnumSpace.PlayStatus status)
+    {
+        moveStatus = status;
     }
 
     public void SetStatusToIdle()
@@ -82,6 +86,8 @@ public abstract class BasePlayer : MonoBehaviour
 
     //抽象方法，鼠标点击触发冲刺
     protected abstract void MouseClick();
+    //播放walk动画
+    protected abstract void PlayWalkAnim();
 
     //角色移动
     protected void PlayerMove()
@@ -106,9 +112,13 @@ public abstract class BasePlayer : MonoBehaviour
         {
             moveX += moveSpeed * Time.deltaTime;
         }
+        if (moveX != 0 || moveZ != 0)
+        {
+            ChangeMoveStatus(EnumSpace.PlayStatus.Walk);
+            PlayWalkAnim();
+        }
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
 
-
-         MouseClick();
+        MouseClick();
     }
 }
