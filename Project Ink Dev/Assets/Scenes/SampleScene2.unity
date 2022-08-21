@@ -3127,6 +3127,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: characterGO
+      value: 
+      objectReference: {fileID: 443575985}
+    - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: curv.m_Curve.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3270,6 +3274,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -4.31
       objectReference: {fileID: 0}
+    - target: {fileID: 5116597572327993740, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116597572327993740, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.698
+      objectReference: {fileID: 0}
     - target: {fileID: 6177442222546853056, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3288,6 +3300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+--- !u!1 &443575985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5497240167679535926, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+  m_PrefabInstance: {fileID: 443575984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &454938459
 GameObject:
   m_ObjectHideFlags: 0
