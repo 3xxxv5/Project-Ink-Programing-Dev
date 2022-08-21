@@ -2190,6 +2190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8596222193733276521}
   - component: {fileID: 2426250935034497299}
+  - component: {fileID: 235990824634387343}
   m_Layer: 0
   m_Name: Crane
   m_TagString: Untagged
@@ -2234,6 +2235,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &235990824634387343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935205598832445907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4addfb5013bfe58469c2f4851cda454b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9001394048014603551
 GameObject:
   m_ObjectHideFlags: 0
