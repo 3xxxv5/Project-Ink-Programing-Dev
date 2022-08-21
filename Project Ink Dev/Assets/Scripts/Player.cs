@@ -15,7 +15,8 @@ public class Player : BasePlayer
 
     void Update()
     {
-        PlayerMove();
+        if (moveStatus != EnumSpace.PlayStatus.Faint)
+            PlayerMove();
         //计算cd
         IsInCD();
     }

@@ -40,10 +40,15 @@ public abstract class BasePlayer : MonoBehaviour
         return moveStatus;
     }
 
-    protected void SetStatusToIdle()
+    public void SetStatusToIdle()
     {
         moveStatus = EnumSpace.PlayStatus.Idle;
     }
+
+    public void SetToFaint()
+	{
+        moveStatus = EnumSpace.PlayStatus.Faint;
+	}
 
     public void IsInCD()
     {
@@ -103,6 +108,7 @@ public abstract class BasePlayer : MonoBehaviour
         }
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
 
-        MouseClick();
+
+         MouseClick();
     }
 }

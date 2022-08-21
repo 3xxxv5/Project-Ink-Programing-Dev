@@ -37,7 +37,7 @@ public class GameMesMananger : MonoBehaviour
     {
 		
 		ui = gameObject.AddComponent<UserInterface>();
-        //ui.RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
+        ui.RefreshScore(firstLevelCurGetMainItemNum, firstLevelneedMainItemNum);
     }
 
     public static void updateUI()

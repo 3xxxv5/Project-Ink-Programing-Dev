@@ -20,6 +20,7 @@ namespace EnumSpace
     Dash = 3, // 冲刺鹤、虾独有
     Charge = 11, // 蓄力青蛙独有
     Launch = 12, // 发射青蛙独有
+    Faint,
   }
 
   public enum CameraStatus
