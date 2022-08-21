@@ -50,7 +50,8 @@ public class GameMesMananger : MonoBehaviour
     {
         if(firstLevelCurGetMainItemNum == firstLevelneedMainItemNum)
 		{
-            //doSth
+			//doSth
+			GameObject.Find("Frog").SetActive(true);
 		}
 
         if(firstLevelneedHiddenItemNum == firstLevelCurGetHiddenItemNum)
