@@ -46,4 +46,10 @@ public class Player : BasePlayer
             seq.AppendCallback(SetStatusToIdle);
         }
     }
+
+    protected override void PlayWalkAnim()
+    {
+        characterGO.GetComponent<ShrimpAnimator>().Walk();
+        ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+    }
 }

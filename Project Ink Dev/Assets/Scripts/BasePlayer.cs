@@ -39,6 +39,11 @@ public abstract class BasePlayer : MonoBehaviour
         return moveStatus;
     }
 
+    public void ChangeMoveStatus(EnumSpace.PlayStatus status)
+    {
+        moveStatus = status;
+    }
+
     public void SetStatusToIdle()
     {
         moveStatus = EnumSpace.PlayStatus.Idle;
@@ -81,6 +86,8 @@ public abstract class BasePlayer : MonoBehaviour
 
     //抽象方法，鼠标点击触发冲刺
     protected abstract void MouseClick();
+    //播放walk动画
+    protected abstract void PlayWalkAnim();
 
     //角色移动
     protected void PlayerMove()
@@ -105,9 +112,13 @@ public abstract class BasePlayer : MonoBehaviour
         {
             moveX += moveSpeed * Time.deltaTime;
         }
+        if (moveX != 0 || moveZ != 0)
+        {
+            ChangeMoveStatus(EnumSpace.PlayStatus.Walk);
+            PlayWalkAnim();
+        }
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
 
-
-         MouseClick();
+        MouseClick();
     }
 }
