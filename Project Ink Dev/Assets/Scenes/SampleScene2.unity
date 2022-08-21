@@ -1072,7 +1072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3dbcd3cad160ad54c916bc3e2ee71cc7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3dbcd3cad160ad54c916bc3e2ee71cc7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1227,7 +1227,7 @@ GameObject:
   - component: {fileID: 211718571}
   m_Layer: 0
   m_Name: hidden5*
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4576,7 +4576,7 @@ GameObject:
   - component: {fileID: 721686657}
   m_Layer: 0
   m_Name: main8*
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8943,7 +8943,7 @@ GameObject:
   - component: {fileID: 1371854924}
   m_Layer: 0
   m_Name: main10*
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11643,7 +11643,7 @@ GameObject:
   - component: {fileID: 1681717401}
   m_Layer: 0
   m_Name: main12*
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
