@@ -12,8 +12,7 @@ public abstract class BasePlayer : MonoBehaviour
     protected float CDCount = 1;
     protected EnumSpace.PlayStatus moveStatus;
 
-
-    public Transform characterTran;
+    public GameObject characterGO;
     //角色默认移动速度为10
     [Header("默认速度")]
     public float moveSpeed = 10f;
