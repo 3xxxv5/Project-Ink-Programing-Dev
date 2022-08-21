@@ -34,7 +34,12 @@ public class Player : BasePlayer
             LetMove();
             beginCD = true;
             CDCount = 1;
-            //
+
+            //播放冲刺动画
+            if (characterGO)
+            {
+                characterGO.GetComponent<ShrimpAnimator>().Dash();
+            }
             Sequence seq = DOTween.Sequence();
             moveStatus = EnumSpace.PlayStatus.Dash;
             seq.AppendInterval(lastTime);
