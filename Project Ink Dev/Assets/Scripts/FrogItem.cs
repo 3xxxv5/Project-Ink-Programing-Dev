@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class FrogItem : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class FrogItem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("stage_1");
+            PlayerPrefs.SetInt("PoMoLevel" + 1, 1);
+            GameMesMananger.SetStage(1);
+            DOTween.Clear(true);
+            SceneManager.LoadScene("stage_2");
+            DOTween.Clear(true);
         }
     }
 }

@@ -12,8 +12,8 @@ public class UserInterface : MonoBehaviour
 
   private void Awake()
   {
-    CurrentScore = GameObject.Find("Canvas/Text[CurrentScore]").GetComponent<TextMeshProUGUI>();
-    TargetScore = GameObject.Find("Canvas/Text[TargetScore]").GetComponent<TextMeshProUGUI>();
+    //CurrentScore = GameObject.Find("Canvas/Text[CurrentScore]").GetComponent<TextMeshProUGUI>();
+    //TargetScore = GameObject.Find("Canvas/Text[TargetScore]").GetComponent<TextMeshProUGUI>();
     collectionFull = Resources.Load<Sprite>("Image/collection_full");
     collectionEmpty = Resources.Load<Sprite>("Image/collection_empty");
     ImageList = GameObject.FindGameObjectsWithTag("Collections");
@@ -22,7 +22,7 @@ public class UserInterface : MonoBehaviour
   {
     foreach (GameObject image in ImageList)
     {
-      Debug.Log("test");
+      //Debug.Log("test");
       image.GetComponent<Image>().sprite = collectionEmpty;
     }
   }
@@ -32,8 +32,20 @@ public class UserInterface : MonoBehaviour
   // }
   public void RefreshScore(int cScore, int tScore)
   {
-    CurrentScore.text = "Current:" + cScore.ToString();
-    TargetScore.text = "total:" + tScore.ToString();
-    ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
+        //CurrentScore.text = "Current:" + cScore.ToString();
+        //TargetScore.text = "total:" + tScore.ToString();
+        if (cScore == 0 || cScore > tScore)
+            return;
+        ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
   }
+
+    public void RefreshHideScore(int hideScore, int tHideScore)
+    {
+        if (hideScore == 0 || hideScore > tHideScore)
+            return;
+        int length = ImageList.Length;
+        Image tmp = ImageList[length - tHideScore + hideScore - 1].GetComponent<Image>();
+        tmp.sprite = collectionFull;
+        tmp.color = Color.blue;
+    }
 }

@@ -29,15 +29,17 @@ public class PowerFlower1 : Item
 
     void CollideWithPlayerBehavior(Collider other)
 	{
+        var stageNum = GameMesMananger.getCurStageNum();
+        Debug.Log(stageNum);
         if (itemType == ItemType.Main)
         {
             
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
-                GameMesMananger.firstLevelCurGetMainItemNum++;
-
-               // Camera.main.DOShakeRotation(0.5f);
+                GameMesMananger.SetCurMainItemNumAdd(stageNum);
+                Debug.Log(GameMesMananger.GetCurMainItemNum(stageNum));
+                // Camera.main.DOShakeRotation(0.5f);
 
                 Destroy(this.gameObject);
 
@@ -53,8 +55,8 @@ public class PowerFlower1 : Item
             if (interactiveType == InteractiveType.Type1)
             {
                 //hidden_item_collection+1
-                GameMesMananger.firstLevelCurGetHiddenItemNum++;
-
+                GameMesMananger.SetCurHiddenItemNumAdd(stageNum);
+                Debug.Log(GameMesMananger.GetCurHiddenItemNum(stageNum));
                 //Camera.main.DOShakeRotation(0.5f);
 
                 Destroy(this.gameObject);
@@ -72,6 +74,7 @@ public class PowerFlower1 : Item
             SetCameraShock();
         }
         GameMesMananger.updateUI();
+        CanOpenNewStage.UpdateStage();
     }
 
 
