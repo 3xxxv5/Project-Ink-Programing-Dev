@@ -4563,6 +4563,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: LAST_TIME
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: characterGO
       value: 
       objectReference: {fileID: 229576138}
@@ -18172,6 +18176,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2143546352693173579, guid: bd57f43d160c24c4ca61fe6c2c4c419c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9141876240009889707, guid: bd57f43d160c24c4ca61fe6c2c4c419c, type: 3}
       propertyPath: m_Name
       value: ----- UI -----
