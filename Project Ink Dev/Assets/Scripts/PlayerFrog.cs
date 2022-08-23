@@ -21,27 +21,32 @@ public class PlayerFrog : BasePlayer
             PlayerMove();
         }
         //计算cd
-        IsInCD();
+        CheckIsInCD();
     }
 
     protected override void MouseClick()
     {
         //按住鼠标timer开始计时
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0) && beginCD == false)
         {
             timer += Time.deltaTime;
-            characterGO.GetComponent<FrogAnimator>().Charge();
-            ChangeMoveStatus(EnumSpace.PlayStatus.Charge);
+            
             //按住鼠标时间超过阈值判定为蓄力，播放蓄力动画
             if (timer > threshold && moveStatus == EnumSpace.PlayStatus.Idle)
             {
                 //toDo
+                characterGO.GetComponent<FrogAnimator>().Charge();
+                SetMoveStatus(EnumSpace.PlayStatus.Charge);
             }
         }
 
         //抬起鼠标发射
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0) && beginCD == false)
         {
+            //判断条件不同，抬起鼠标才开始计算cd
+            beginCD = true;
+            cd = 1;
+
             characterGO.GetComponent<FrogAnimator>().Launch();
             //ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
             timer = 0;

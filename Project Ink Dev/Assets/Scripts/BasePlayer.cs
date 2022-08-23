@@ -9,17 +9,17 @@ public abstract class BasePlayer : MonoBehaviour
     protected Transform playerTran;
     protected CharacterController playerController;
     protected bool beginCD = false;
-    protected float CDCount = 1;
+    protected float cd = 1;
     protected EnumSpace.PlayStatus moveStatus;
 
     public GameObject characterGO;
     //角色默认移动速度为10
     [Header("默认速度")]
-    public float moveSpeed = 10f;
+    public float MOVE_SPEED = 10f;
     [Header("冲刺距离")]
-    public float dashDis = 20f;
+    public float DASH_DIS = 20f;
     [Header("冲刺时间")]
-    public float lastTime = 0.5f;
+    public float LAST_TIME = 0.5f;
     [Header("冲刺CD")]
     public float dashCD = 2f;
     [Header("冲刺曲线")]
@@ -32,7 +32,7 @@ public abstract class BasePlayer : MonoBehaviour
         playerController = this.GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+        SetMoveStatus(EnumSpace.PlayStatus.Idle);
     }
 
     public EnumSpace.PlayStatus GetPlayerMoveStatus()
@@ -40,28 +40,28 @@ public abstract class BasePlayer : MonoBehaviour
         return moveStatus;
     }
 
-    public void ChangeMoveStatus(EnumSpace.PlayStatus status)
+    public void SetMoveStatus(EnumSpace.PlayStatus status)
     {
         moveStatus = status;
-        Debug.Log(status);
+        //Debug.Log(status);
     }
 
     public void SetStatusToIdle()
     {
-        moveStatus = EnumSpace.PlayStatus.Idle;
+        SetMoveStatus(EnumSpace.PlayStatus.Idle);
     }
 
     public void SetToFaint()
 	{
-        moveStatus = EnumSpace.PlayStatus.Faint;
+        SetMoveStatus(EnumSpace.PlayStatus.Faint);
 	}
 
-    public void IsInCD()
+    public void CheckIsInCD()
     {
         if (beginCD)
         {
-            CDCount -= Time.deltaTime / dashCD;
-            if (CDCount <= 0)
+            cd -= Time.deltaTime / dashCD;
+            if (cd <= 0)
             {
                 beginCD = false;
             }
@@ -75,14 +75,14 @@ public abstract class BasePlayer : MonoBehaviour
         var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
         Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, dashDis))
+        if (Physics.Raycast(ray, out hitInfo, DASH_DIS))
         {
             //print(hitInfo.transform);
-            transform.DOMove(hitInfo.point - ray.direction * 1.0f, lastTime).SetEase(curv);
+            transform.DOMove(hitInfo.point - ray.direction * 1.0f, LAST_TIME).SetEase(curv);
         }
         else
         {
-            transform.DOMove(ray.origin + ray.direction * dashDis, lastTime).SetEase(curv);
+            transform.DOMove(ray.origin + ray.direction * DASH_DIS, LAST_TIME).SetEase(curv);
         }
     }
 
@@ -101,27 +101,27 @@ public abstract class BasePlayer : MonoBehaviour
         //前后移动
         if (Input.GetKey(KeyCode.W))
         {
-            moveZ += moveSpeed * Time.deltaTime;
+            moveZ += MOVE_SPEED * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            moveZ -= moveSpeed * Time.deltaTime;
+            moveZ -= MOVE_SPEED * Time.deltaTime;
         }
         //左右移动
         if (Input.GetKey(KeyCode.A))
         {
-            moveX -= moveSpeed * Time.deltaTime;
+            moveX -= MOVE_SPEED * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            moveX += moveSpeed * Time.deltaTime;
+            moveX += MOVE_SPEED * Time.deltaTime;
         }
 
         if (moveX != 0 || moveZ != 0)
         {
             if (moveStatus != EnumSpace.PlayStatus.Walk)
             {
-                ChangeMoveStatus(EnumSpace.PlayStatus.Walk);
+                SetMoveStatus(EnumSpace.PlayStatus.Walk);
                 PlayWalkAnim();
             }
         }
@@ -130,7 +130,7 @@ public abstract class BasePlayer : MonoBehaviour
             if (moveStatus == EnumSpace.PlayStatus.Walk)
             {
                 PlayIdleAnim();
-                ChangeMoveStatus(EnumSpace.PlayStatus.Idle);
+                SetMoveStatus(EnumSpace.PlayStatus.Idle);
             }
         }
 

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 
 
-public class Player : BasePlayer
+public class PlayerShrimp : BasePlayer
 {
     void Start()
     {
@@ -20,8 +20,8 @@ public class Player : BasePlayer
             PlayerMove();
         }
             
-        //计算cd
-        IsInCD();
+        //更新cd
+        CheckIsInCD();
     }
 
     protected override void MouseClick()
@@ -36,13 +36,13 @@ public class Player : BasePlayer
             //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
             LetMove();
             beginCD = true;
-            CDCount = 1;
+            cd = 1;
 
             //播放冲刺动画
             characterGO.GetComponent<ShrimpAnimator>().Dash();
-            ChangeMoveStatus(EnumSpace.PlayStatus.Dash);
+            SetMoveStatus(EnumSpace.PlayStatus.Dash);
             Sequence seq = DOTween.Sequence();
-            seq.AppendInterval(lastTime);
+            seq.AppendInterval(LAST_TIME);
             seq.AppendCallback(SetStatusToIdle);
         }
     }

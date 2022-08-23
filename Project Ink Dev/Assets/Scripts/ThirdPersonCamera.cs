@@ -180,7 +180,7 @@ public class ThirdPersonCamera : MonoBehaviour
             i = 0f;
         }
 
-        if(gameObject.GetComponent<Player>().GetPlayerMoveStatus()!=EnumSpace.PlayStatus.Dash)
+        //if(gameObject.GetComponent<Player>().GetPlayerMoveStatus()!=EnumSpace.PlayStatus.Dash)
             SetInputTranslationDirection();
 
         float rotationLerpPct = 1.0f - Mathf.Exp((Mathf.Log(1.0f-0.99f) / rotationLerpTime) * Time.deltaTime);
