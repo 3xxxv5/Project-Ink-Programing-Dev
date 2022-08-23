@@ -46,12 +46,12 @@ public class SaveManager
       sr.Close();
       Save save = JsonUtility.FromJson<Save>(JsonString);
       // GameMesMananger.firstLevelCurGetHiddenItemNum = save.hideCollections;
-
       return save;
     }
     else
     {
       Debug.LogError("File Not Found.");
+      return null;
     }
   }
 }
