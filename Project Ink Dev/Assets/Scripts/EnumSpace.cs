@@ -17,9 +17,9 @@ namespace EnumSpace
     // 全部为Trigger
     Idle = 1,
     Walk = 2,
-    Dash = 3, // 冲刺鹤、虾独有
-    Charge = 11, // 蓄力青蛙独有
-    Launch = 12, // 发射青蛙独有
+    Dash = 3, // 冲刺虾独有
+    Charge = 11, // 蓄力鹤、青蛙独有
+    Launch = 12, // 发射鹤、青蛙独有
     Faint,
   }
 

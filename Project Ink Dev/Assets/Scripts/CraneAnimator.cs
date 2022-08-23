@@ -24,10 +24,15 @@ public class CraneAnimator : PlayerAnimator
   /// <summary>
   /// 播放冲刺动画，播放完成后会回到Idle
   /// </summary>
-  public void Dash()
+  public void Launch()
   {
-    PlayerStatusChange(EnumSpace.PlayStatus.Dash, this.m_Animator);
+    PlayerStatusChange(EnumSpace.PlayStatus.Launch, this.m_Animator);
     // 动画播放完自动回到idle
     this.m_nowStatus = EnumSpace.PlayStatus.Idle;
+  }
+  public void Charge()
+  {
+    PlayerStatusChange(EnumSpace.PlayStatus.Charge, this.m_Animator);
+    this.m_nowStatus = EnumSpace.PlayStatus.Charge;
   }
 }
