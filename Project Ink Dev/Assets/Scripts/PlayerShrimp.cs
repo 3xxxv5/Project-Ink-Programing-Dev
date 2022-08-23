@@ -19,9 +19,10 @@ public class PlayerShrimp : BasePlayer
         {
             PlayerMove();
         }
-            
+
         //更新cd
-        CheckIsInCD();
+        if (isMouseButtonUp)
+            CheckIsInCD();
     }
 
     protected override void CheckDash()
@@ -37,6 +38,7 @@ public class PlayerShrimp : BasePlayer
             LetMove();
             beginCD = true;
             cd = 1;
+            isMouseButtonUp = true;
 
             //播放冲刺动画
             characterGO.GetComponent<ShrimpAnimator>().Dash();

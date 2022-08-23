@@ -4571,6 +4571,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 229576138}
     - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: coolingFull
+      value: 
+      objectReference: {fileID: 525846084}
+    - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: curv.m_Curve.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -5661,6 +5665,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518672123}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &525846084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 750127672194135795, guid: bd57f43d160c24c4ca61fe6c2c4c419c, type: 3}
+  m_PrefabInstance: {fileID: 1988818962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &549203968
 GameObject:
   m_ObjectHideFlags: 0

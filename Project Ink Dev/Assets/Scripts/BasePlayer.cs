@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 //角色控制器基类
@@ -11,8 +12,10 @@ public abstract class BasePlayer : MonoBehaviour
     protected bool beginCD = false;
     protected float cd = 1;
     protected EnumSpace.PlayStatus moveStatus;
+    protected bool isMouseButtonUp = false;
 
     public GameObject characterGO;
+    public Image coolingFull;
     //角色默认移动速度为10
     [Header("默认速度")]
     public float MOVE_SPEED = 10f;
@@ -61,6 +64,7 @@ public abstract class BasePlayer : MonoBehaviour
         if (beginCD)
         {
             cd -= Time.deltaTime / dashCD;
+            coolingFull.fillAmount = 1 - cd;
             if (cd <= 0)
             {
                 beginCD = false;
