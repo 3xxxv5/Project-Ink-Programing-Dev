@@ -37,7 +37,7 @@ public class SaveManager
   /// <summary>
   /// 读取存档<para />
   /// </summary>
-  public void LoadByJSON()
+  public Save LoadByJSON()
   {
     if (File.Exists(Application.dataPath + "/Data.pomo"))
     {
@@ -46,6 +46,8 @@ public class SaveManager
       sr.Close();
       Save save = JsonUtility.FromJson<Save>(JsonString);
       // GameMesMananger.firstLevelCurGetHiddenItemNum = save.hideCollections;
+
+      return save;
     }
     else
     {
