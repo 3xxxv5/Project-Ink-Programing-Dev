@@ -24,7 +24,7 @@ public class PlayerShrimp : BasePlayer
         CheckIsInCD();
     }
 
-    protected override void MouseClick()
+    protected override void CheckDash()
     {
         //点击鼠标左键加速冲刺
         if (Input.GetMouseButtonDown(0) && beginCD == false)

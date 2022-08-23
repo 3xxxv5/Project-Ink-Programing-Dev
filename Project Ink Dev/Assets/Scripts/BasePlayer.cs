@@ -87,7 +87,7 @@ public abstract class BasePlayer : MonoBehaviour
     }
 
     //抽象方法，鼠标点击触发冲刺
-    protected abstract void MouseClick();
+    protected abstract void CheckDash();
     //播放walk动画
     protected abstract void PlayWalkAnim();
     //
@@ -136,6 +136,6 @@ public abstract class BasePlayer : MonoBehaviour
 
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
 
-        MouseClick();
+        CheckDash();
     }
 }
