@@ -19,11 +19,6 @@ public class LevelSelection : MonoBehaviour
   }
   private void UpdateLevelStatus()
   {
-    int previousLevelNum = int.Parse(gameObject.name) - 1;
-    if (PlayerPrefs.GetInt("PoMoLevel" + previousLevelNum) > 0)
-    {
-      this.m_unlock = true;
-    }
     if (this.m_unlock == false)
     {
       m_button.enabled = false;

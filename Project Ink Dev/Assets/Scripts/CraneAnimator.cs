@@ -3,7 +3,6 @@ using UnityEngine;
 public class CraneAnimator : PlayerAnimator
 {
   private Animator m_Animator;
-  private EnumSpace.PlayStatus m_nowStatus = EnumSpace.PlayStatus.Idle;
   void Start()
   {
     // 获取动画组件
