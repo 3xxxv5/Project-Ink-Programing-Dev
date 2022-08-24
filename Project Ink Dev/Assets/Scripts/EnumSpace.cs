@@ -29,4 +29,9 @@ namespace EnumSpace
     Common
   }
 
+    public enum BulletTimeStatus
+    {
+        IN,
+        OUT,
+    }
 }

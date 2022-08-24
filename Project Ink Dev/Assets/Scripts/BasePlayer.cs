@@ -64,7 +64,7 @@ public abstract class BasePlayer : MonoBehaviour
         if (beginCD)
         {
             cd -= Time.deltaTime / dashCD;
-            coolingFull.fillAmount = 1 - cd;
+            //coolingFull.fillAmount = 1 - cd;
             if (cd <= 0)
             {
                 beginCD = false;
