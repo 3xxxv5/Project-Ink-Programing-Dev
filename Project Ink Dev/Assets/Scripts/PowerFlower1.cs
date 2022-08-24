@@ -29,7 +29,7 @@ public class PowerFlower1 : Item
 
     void CollideWithPlayerBehavior(Collider other)
 	{
-        var stageNum = GameMesMananger.getCurStageNum();
+        var stageNum = GameMesMananger.Instance().getCurStageNum();
         Debug.Log(stageNum);
         if (itemType == ItemType.Main)
         {
@@ -37,8 +37,8 @@ public class PowerFlower1 : Item
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
-                GameMesMananger.SetCurMainItemNumAdd(stageNum);
-                Debug.Log(GameMesMananger.GetCurMainItemNum(stageNum));
+                GameMesMananger.Instance().SetCurMainItemNumAdd(stageNum);
+                
                 // Camera.main.DOShakeRotation(0.5f);
 
                 Destroy(this.gameObject);
@@ -55,8 +55,8 @@ public class PowerFlower1 : Item
             if (interactiveType == InteractiveType.Type1)
             {
                 //hidden_item_collection+1
-                GameMesMananger.SetCurHiddenItemNumAdd(stageNum);
-                Debug.Log(GameMesMananger.GetCurHiddenItemNum(stageNum));
+                GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
+                
                 //Camera.main.DOShakeRotation(0.5f);
 
                 Destroy(this.gameObject);
@@ -73,7 +73,10 @@ public class PowerFlower1 : Item
         {
             SetCameraShock();
         }
-        GameMesMananger.updateUI();
+        Debug.Log("Main: "+GameMesMananger.Instance().GetCurMainItemNum(stageNum));
+        Debug.Log("Hidden: " + GameMesMananger.Instance().GetCurHiddenItemNum(stageNum));
+        GameUIManager.updateUI();
+
         CanOpenNewStage.UpdateStage();
     }
 
@@ -126,11 +129,11 @@ public class PowerFlower1 : Item
             switch(itemType)
 			{
                 case  ItemType.Main:
-                    Debug.Log("Rebirth");
+                    //Debug.Log("Rebirth");
                     transform.position = m_originalPosition;
                     break;
                 case ItemType.Hidden:
-                    Debug.Log("Destroy");
+                    //Debug.Log("Destroy");
                     Destroy(this.gameObject);
                     break;
             }

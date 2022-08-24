@@ -22,7 +22,7 @@ public class DropMusicPlay : MonoBehaviour
 	{
         musicNum = Random.Range(1, 13);
         musicName = string.Format("{0}{1}{2}", "music/", "cut", musicNum);
-        Debug.Log(musicName);
+        //Debug.Log(musicName);
         waitPlay = Resources.Load<AudioClip>(musicName);
         music.clip = waitPlay;
         music.Play();

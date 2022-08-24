@@ -8,14 +8,15 @@ public class CanOpenNewStage : MonoBehaviour
 
     private static bool CanOpenStage()
     {
-        return GameMesMananger.GetMainItemNum(GameMesMananger.getCurStageNum())
-            == GameMesMananger.GetCurMainItemNum(GameMesMananger.getCurStageNum());
+        return GameMesMananger.Instance().GetMainItemNum(GameMesMananger.Instance().getCurStageNum())
+            == GameMesMananger.Instance().GetCurMainItemNum(GameMesMananger.Instance().getCurStageNum());
     }
 
     private static void OpenNewStage()
     {
         if (CanOpenStage())
             stageKey.SetActive(true);
+        
     }
 
     public static void UpdateStage()
@@ -26,16 +27,23 @@ public class CanOpenNewStage : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        if (GameMesMananger.getCurStageNum() == 0)
-        {
-            stageKey = GameObject.Find("frog");
-            stageKey.SetActive(false);
-        }
-    }
+		if (GameMesMananger.Instance().getCurStageNum() == 0)
+		{
+			stageKey = GameObject.Find("frog");
+			stageKey.SetActive(false);
+		}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		if (GameMesMananger.Instance().getCurStageNum() == 1)
+		{
+			stageKey = GameObject.Find("crane");
+			stageKey.SetActive(false);
+		}
+
+		//if (GameMesMananger.getCurStageNum() == 2)
+		//{
+		//    stageKey = GameObject.Find("frog");
+		//    stageKey.SetActive(false);
+		//}
+	}
+
 }

@@ -5,37 +5,54 @@ using DG.Tweening;
 
 public class LevelSelection : MonoBehaviour
 {
-  [SerializeField] private bool m_unlock = false; // 默认为关卡锁定
-  private Button m_button;
-  private Image m_image;
-  private void Start()
-  {
-    m_button = gameObject.GetComponent<Button>();
-    m_image = gameObject.GetComponent<Image>();
-  }
-  private void Update()
-  {
-    UpdateLevelStatus();
-  }
-  private void UpdateLevelStatus()
-  {
-    if (this.m_unlock == false)
+    [SerializeField] private bool m_unlock = false; // 默认为关卡锁定
+    private Button m_button;
+    private Image m_image;
+    
+    private void Start()
     {
-      m_button.enabled = false;
-      m_image.color = Color.gray;
+        m_button = gameObject.GetComponent<Button>();
+        m_image = gameObject.GetComponent<Image>();
     }
-    else
+    
+    private void Update()
     {
-      m_button.enabled = true;
-      m_image.color = Color.white;
+        UpdateLevelStatus();
     }
-  }
-  public void PressSelection(string sceneName)
-  {
-    if (m_unlock == true)
+    
+    private void UpdateLevelStatus()
     {
-      SceneManager.LoadScene(sceneName);
-      DOTween.Clear(true);
+        if (this.m_unlock == false)
+        {
+            m_button.enabled = false;
+            m_image.color = Color.gray;
+        }
+        else
+        {
+            m_button.enabled = true;
+            m_image.color = Color.white;
+        }
     }
-  }
+    
+    public void PressSelection(string sceneName)
+    {
+            if (m_unlock == true)
+            {
+                if(sceneName=="SampleScene2")
+		        {
+                GameMesMananger.Instance().SetStage(0);
+		        }
+                else if(sceneName=="stage_2")
+		        {
+                GameMesMananger.Instance().SetStage(1);
+                }
+                else if(sceneName=="stage_3")
+		        {
+                GameMesMananger.Instance().SetStage(2);
+                }
+                 SceneManager.LoadScene(sceneName);
+                 GameUIManager.updateUI();
+                 DOTween.Clear(true);
+            }
+     }
 }
