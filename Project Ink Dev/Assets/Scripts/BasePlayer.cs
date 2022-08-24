@@ -11,7 +11,6 @@ public abstract class BasePlayer : MonoBehaviour
     protected CharacterController playerController;
     protected bool beginCD = false;
     protected float cd = 1;
-    protected EnumSpace.PlayStatus moveStatus;
     protected bool isMouseButtonUp = false;
 
     public GameObject characterGO;
@@ -22,7 +21,7 @@ public abstract class BasePlayer : MonoBehaviour
     [Header("冲刺距离")]
     public float DASH_DIS = 20f;
     [Header("冲刺时间")]
-    public float LAST_TIME = 0.5f;
+    public float LAST_TIME = 2.0f;
     [Header("冲刺CD")]
     public float dashCD = 2f;
     [Header("冲刺曲线")]
@@ -35,36 +34,19 @@ public abstract class BasePlayer : MonoBehaviour
         playerController = this.GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        SetMoveStatus(EnumSpace.PlayStatus.Idle);
+        PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Idle);
     }
 
-    public EnumSpace.PlayStatus GetPlayerMoveStatus()
-    {
-        return moveStatus;
-    }
 
-    public void SetMoveStatus(EnumSpace.PlayStatus status)
-    {
-        moveStatus = status;
-        //Debug.Log(status);
-    }
 
-    public void SetStatusToIdle()
-    {
-        SetMoveStatus(EnumSpace.PlayStatus.Idle);
-    }
 
-    public void SetToFaint()
-	{
-        SetMoveStatus(EnumSpace.PlayStatus.Faint);
-	}
 
     public void CheckIsInCD()
     {
         if (beginCD)
         {
             cd -= Time.deltaTime / dashCD;
-            //coolingFull.fillAmount = 1 - cd;
+            coolingFull.fillAmount = 1 - cd;
             if (cd <= 0)
             {
                 beginCD = false;
@@ -123,18 +105,18 @@ public abstract class BasePlayer : MonoBehaviour
 
         if (moveX != 0 || moveZ != 0)
         {
-            if (moveStatus != EnumSpace.PlayStatus.Walk)
+            if (PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Walk)
             {
-                SetMoveStatus(EnumSpace.PlayStatus.Walk);
+                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Walk);
                 PlayWalkAnim();
             }
         }
         else
         {
-            if (moveStatus == EnumSpace.PlayStatus.Walk)
+            if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == EnumSpace.PlayStatus.Walk)
             {
                 PlayIdleAnim();
-                SetMoveStatus(EnumSpace.PlayStatus.Idle);
+                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Idle);
             }
         }
 

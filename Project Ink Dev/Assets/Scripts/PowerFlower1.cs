@@ -100,7 +100,7 @@ public class PowerFlower1 : Item
         switch(other.gameObject.tag)
 		{
             case "Player":
-                //if (other.gameObject.GetComponent<Player>().GetPlayerMoveStatus() == PlayStatus.Dash)
+                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash)
 				{
                     CollideWithPlayerBehavior(other);
 				}

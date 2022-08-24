@@ -21,10 +21,10 @@ public class Obstacle : MonoBehaviour
             //var player = playerGo.GetComponent<Player>();
             var camera = Camera.main;
 
-            //player.SetToFaint();
+            PlayerStatusManager.Instance().SetToFaint();
             Sequence seq = DOTween.Sequence();
             seq.AppendInterval(2.0f);
-            //seq.AppendCallback(player.SetStatusToIdle);
+            seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
             var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
             Vector3 aim = playerGo.transform.position - (screenRay.direction  * 5.0f);
             playerGo.transform.DOMove(aim,2.0f);
