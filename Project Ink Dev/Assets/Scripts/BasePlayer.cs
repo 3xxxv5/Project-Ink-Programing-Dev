@@ -55,9 +55,9 @@ public abstract class BasePlayer : MonoBehaviour
     }
 
     public void SetToFaint()
-	{
+    {
         SetMoveStatus(EnumSpace.PlayStatus.Faint);
-	}
+    }
 
     public void CheckIsInCD()
     {
@@ -97,29 +97,43 @@ public abstract class BasePlayer : MonoBehaviour
     //
     protected abstract void PlayIdleAnim();
 
+    protected bool CanMove()
+    {
+        if (moveStatus != EnumSpace.PlayStatus.Charge && moveStatus != EnumSpace.PlayStatus.Dash && moveStatus != EnumSpace.PlayStatus.Launch)
+        {
+            return true;
+        }
+        return false;
+    }
+
     //角色移动
     protected void PlayerMove()
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        //前后移动
-        if (Input.GetKey(KeyCode.W))
+        if (CanMove())
         {
-            moveZ += MOVE_SPEED * Time.deltaTime;
+            //前后移动
+            if (Input.GetKey(KeyCode.W))
+            {
+                moveZ += MOVE_SPEED * Time.deltaTime;
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                moveZ -= MOVE_SPEED * Time.deltaTime;
+            }
+            //左右移动
+            if (Input.GetKey(KeyCode.A))
+            {
+                moveX -= MOVE_SPEED * Time.deltaTime;
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                moveX += MOVE_SPEED * Time.deltaTime;
+            }
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            moveZ -= MOVE_SPEED * Time.deltaTime;
-        }
-        //左右移动
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveX -= MOVE_SPEED * Time.deltaTime;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            moveX += MOVE_SPEED * Time.deltaTime;
-        }
+
+
 
         if (moveX != 0 || moveZ != 0)
         {

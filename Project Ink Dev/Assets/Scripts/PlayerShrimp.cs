@@ -46,6 +46,7 @@ public class PlayerShrimp : BasePlayer
             Sequence seq = DOTween.Sequence();
             seq.AppendInterval(LAST_TIME);
             seq.AppendCallback(SetStatusToIdle);
+            Debug.Log(moveStatus);
         }
     }
 
