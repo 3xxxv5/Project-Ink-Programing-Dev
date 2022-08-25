@@ -58,7 +58,8 @@ public class FlowerSplit : Item
 		switch (other.gameObject.tag)
 		{
 			case "Player":
-				if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash)
+				//if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
+				//	PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
 				{
 					CollideWithPlayerBehavior(other);
 				}
@@ -99,8 +100,9 @@ public class FlowerSplit : Item
 		Destroy(this.gameObject);
 	}
 
-	void SetTrigger()
+	void SetBoxEnable()
 	{
+		gameObject.GetComponent<BoxCollider>().enabled = true;
 		gameObject.GetComponent<BoxCollider>().isTrigger = true;
 	}
 
@@ -110,10 +112,10 @@ public class FlowerSplit : Item
 		rb.useGravity = false;
 		rb.velocity = new Vector3(0f, -m_velocity, 0f);
 		rebirthTimeTemp = m_rebirthTime;
-		gameObject.GetComponent<BoxCollider>().isTrigger = false;
 		Sequence seq = DOTween.Sequence();
 		seq.AppendInterval(SPLIT_FLY_TIME);
-		seq.AppendCallback(SetTrigger);
+		seq.AppendCallback(SetBoxEnable);
+
 	}
 
 	void Update()

@@ -14,7 +14,7 @@ public abstract class Item : MonoBehaviour
     public float m_velocity = 1.0f;
     public float m_acceleratetion = 0f;
     public float m_rebirthTime = 3.0f;
-    protected Vector3 m_originalPosition; //记录掉落物的生成位置,在OnTriggerEnter实现循环掉落逻辑;将记录界限的Trigger的Tag设为RepeatOrDisappear;
+    public Vector3 m_originalPosition; //记录掉落物的生成位置,在OnTriggerEnter实现循环掉落逻辑;将记录界限的Trigger的Tag设为RepeatOrDisappear;
 
     public GameObject VFXPrefab;
 
@@ -40,6 +40,11 @@ public abstract class Item : MonoBehaviour
 
     }
 
+    protected void SetOriginalPosition(Vector3 pos)
+	{
+        m_originalPosition = pos;
+	}
+
     protected void SpawnSplitItem(float x,float z)
 	{
         var playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -49,12 +54,12 @@ public abstract class Item : MonoBehaviour
             var newSplitItem1 = GameObject.Instantiate(splitItem, transform.position,
                 transform.rotation);
             newSplitItem1.tag = "NeedCollectFourDrop";
-            newSplitItem1.GetComponent<BoxCollider>().isTrigger = false;
+            newSplitItem1.GetComponent<BoxCollider>().enabled = false;
 
             var newSplitItem2 = GameObject.Instantiate(splitItem, transform.position,
                 transform.rotation);
             newSplitItem2.tag = "NeedCollectFourDrop";
-            newSplitItem2.GetComponent<BoxCollider>().isTrigger = false;
+            newSplitItem2.GetComponent<BoxCollider>().enabled = false;
 
             PlayerShrimp shrimp = null;
             PlayerFrog frog = null;
@@ -87,6 +92,10 @@ public abstract class Item : MonoBehaviour
 
             newSplitItem1.transform.DOMove(moveDest1, SPLIT_FLY_TIME);
             newSplitItem2.transform.DOMove(moveDest2, SPLIT_FLY_TIME);
+
+            newSplitItem1.GetComponent<FlowerSplit>().SetOriginalPosition(moveDest1);
+            newSplitItem2.GetComponent<FlowerSplit>().SetOriginalPosition(moveDest2);
+
             /////////////////////////////////////////////////////////////////////////////////
             GameMesMananger.Instance().map.Add(newSplitItem1, LEFT_NUM);
             GameMesMananger.Instance().map.Add(newSplitItem2, LEFT_NUM);

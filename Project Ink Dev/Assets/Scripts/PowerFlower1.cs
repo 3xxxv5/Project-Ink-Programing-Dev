@@ -41,7 +41,7 @@ public class PowerFlower1 : Item
                 
                 // Camera.main.DOShakeRotation(0.5f);
 
-                Destroy(this.gameObject);
+
 
             }
             if (interactiveType == InteractiveType.Type2)
@@ -53,7 +53,7 @@ public class PowerFlower1 : Item
                     return;
                 }
 
-                SpawnSplitItem(3.0f, 3.0f);
+                SpawnSplitItem(10.0f, 10.0f);
             }
         }
 
@@ -66,7 +66,7 @@ public class PowerFlower1 : Item
                 
                 //Camera.main.DOShakeRotation(0.5f);
 
-                Destroy(this.gameObject);
+
             }
             if (interactiveType == InteractiveType.Type2)
             {
@@ -77,7 +77,7 @@ public class PowerFlower1 : Item
                     return;
                 }
 
-                SpawnSplitItem(3.0f, 3.0f);
+                SpawnSplitItem(10.0f, 10.0f);
             }
         }
 
@@ -92,6 +92,7 @@ public class PowerFlower1 : Item
         GameUIManager.updateUI();
 
         CanOpenNewStage.UpdateStage();
+        Destroy(this.gameObject);
     }
 
 
@@ -114,7 +115,8 @@ public class PowerFlower1 : Item
         switch(other.gameObject.tag)
 		{
             case "Player":
-                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash)
+                //if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash || 
+                //    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
 				{
                     CollideWithPlayerBehavior(other);
 				}
@@ -136,9 +138,9 @@ public class PowerFlower1 : Item
     
 	public override void DropRebirth()
 	{
-		if(rebirthTimeTemp < 0.00001f)
+		if(m_rebirthTime < 0.00001f)
 		{
-            rebirthTimeTemp = m_rebirthTime;
+            m_rebirthTime = rebirthTimeTemp;
 
             switch(itemType)
 			{
@@ -153,7 +155,7 @@ public class PowerFlower1 : Item
             }
 		}
 
-        rebirthTimeTemp -= Time.deltaTime;
+        m_rebirthTime -= Time.deltaTime;
 	}
 
 	void OnEnable()
