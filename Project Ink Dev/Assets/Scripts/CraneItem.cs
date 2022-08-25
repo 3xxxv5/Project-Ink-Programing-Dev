@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
-public class FrogItem : MonoBehaviour
+public class CraneItem : MonoBehaviour
 {
-    void OnEnable()
+    void Start()
     {
         GetComponent<BoxCollider>().isTrigger = true;
     }
@@ -17,8 +17,8 @@ public class FrogItem : MonoBehaviour
         {
             //PlayerPrefs.SetInt("PoMoLevel" + 1, 1);
             DOTween.Clear(true);
-            GameMesMananger.Instance().SetStage(1);
-            SceneManager.LoadScene("stage_2");
+            GameMesMananger.Instance().SetStage(2);
+            SceneManager.LoadScene("stage_3");
             GameUIManager.updateUI();
             DOTween.Clear(true);
         }

@@ -19,7 +19,7 @@ public class PlayerCrane : BasePlayer
     // Update is called once per frame
     void Update()
     {
-        if (moveStatus != EnumSpace.PlayStatus.Faint)
+        if (PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Faint)
         {
             PlayerMove();
         }
@@ -33,10 +33,10 @@ public class PlayerCrane : BasePlayer
         if (Input.GetMouseButton(0) && beginCD == false)
         {
             timer += Time.unscaledDeltaTime;
-            if (timer > threshold && moveStatus != EnumSpace.PlayStatus.Charge)
+            if (timer > threshold && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
             {
                 characterGO.GetComponent<CraneAnimator>().Charge();
-                SetMoveStatus(EnumSpace.PlayStatus.Charge);
+                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Charge);
             }
         }
 
@@ -45,7 +45,7 @@ public class PlayerCrane : BasePlayer
             beginCD = true;
             cd = 1;
             characterGO.GetComponent<CraneAnimator>().Launch();
-            SetMoveStatus(EnumSpace.PlayStatus.Launch);
+            PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Launch);
             timer = 0;
             if(bulletTimeStatus == EnumSpace.BulletTimeStatus.IN)
             {

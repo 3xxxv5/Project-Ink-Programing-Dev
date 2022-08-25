@@ -15,7 +15,8 @@ public class PlayerShrimp : BasePlayer
 
     void Update()
     {
-        if (moveStatus != EnumSpace.PlayStatus.Faint)
+        if (PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Faint &&
+            PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Dash)
         {
             PlayerMove();
         }
@@ -42,11 +43,15 @@ public class PlayerShrimp : BasePlayer
 
             //播放冲刺动画
             characterGO.GetComponent<ShrimpAnimator>().Dash();
-            SetMoveStatus(EnumSpace.PlayStatus.Dash);
+            PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Dash);
             Sequence seq = DOTween.Sequence();
             seq.AppendInterval(LAST_TIME);
+<<<<<<< HEAD
             seq.AppendCallback(SetStatusToIdle);
             Debug.Log(moveStatus);
+=======
+            seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
+>>>>>>> 70155d913743b95a4f30708d1a378c73cb41062c
         }
     }
 

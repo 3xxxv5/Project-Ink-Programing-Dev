@@ -44,14 +44,14 @@ public class PowerFlower3 : Item
 
     void CollideWithPlayerBehavior(Collider other)
     {
-        var stageNum = GameMesMananger.getCurStageNum();
+        var stageNum = GameMesMananger.Instance().getCurStageNum();
         if (itemType == ItemType.Main)
         {
 
             if (interactiveType == InteractiveType.Type1)
             {
                 //main_item_collection+1
-                GameMesMananger.SetCurMainItemNumAdd(stageNum);
+                GameMesMananger.Instance().SetCurMainItemNumAdd(stageNum);
 
                 // Camera.main.DOShakeRotation(0.5f);
 
@@ -69,7 +69,7 @@ public class PowerFlower3 : Item
             if (interactiveType == InteractiveType.Type1)
             {
                 //hidden_item_collection+1
-                GameMesMananger.SetCurHiddenItemNumAdd(stageNum);
+                GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
 
                 //Camera.main.DOShakeRotation(0.5f);
 
@@ -87,7 +87,7 @@ public class PowerFlower3 : Item
         {
             SetCameraShock();
         }
-        GameMesMananger.updateUI();
+        GameUIManager.updateUI();
         CanOpenNewStage.UpdateStage();
     }
 
@@ -96,7 +96,7 @@ public class PowerFlower3 : Item
         switch (other.gameObject.tag)
         {
             case "Player":
-                //if (other.gameObject.GetComponent<Player>().GetPlayerMoveStatus() == PlayStatus.Dash)
+                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash)
                 {
                     if(canPick)
                         CollideWithPlayerBehavior(other);

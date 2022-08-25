@@ -20,7 +20,8 @@ public class PlayerFrog : BasePlayer
 
     void Update()
     {
-        if (moveStatus != EnumSpace.PlayStatus.Faint)
+        if (PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Faint &&
+    PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Dash)
         {
             PlayerMove();
         }
@@ -55,11 +56,11 @@ public class PlayerFrog : BasePlayer
             timer += Time.deltaTime / MAX_DASH_STORAGE_TIME;
 
             //按住鼠标时间超过阈值判定为蓄力，播放蓄力动画
-            if (timer > threshold && moveStatus != EnumSpace.PlayStatus.Charge)
+            if (timer > threshold && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
             {
                 //toDo
                 characterGO.GetComponent<FrogAnimator>().Charge();
-                SetMoveStatus(EnumSpace.PlayStatus.Charge);
+                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Charge);
             }
             if (timer > 1.0f)
                 timer = 1.0f;
@@ -77,10 +78,10 @@ public class PlayerFrog : BasePlayer
             LetMove();
 
             characterGO.GetComponent<FrogAnimator>().Launch();
-            SetMoveStatus(EnumSpace.PlayStatus.Launch);
+            PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Launch);
             Sequence seq = DOTween.Sequence();
             seq.AppendInterval(LAST_TIME);
-            seq.AppendCallback(SetStatusToIdle);
+            seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
             //seq.AppendCallback(SetCanStorage);
             timer = 0;
             storageFull.fillAmount = timer;
