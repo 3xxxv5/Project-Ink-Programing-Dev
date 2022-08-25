@@ -40,13 +40,6 @@ public abstract class BasePlayer : MonoBehaviour
 
 
 
-<<<<<<< HEAD
-    public void SetToFaint()
-    {
-        SetMoveStatus(EnumSpace.PlayStatus.Faint);
-    }
-=======
->>>>>>> 70155d913743b95a4f30708d1a378c73cb41062c
 
     public void CheckIsInCD()
     {
@@ -86,21 +79,12 @@ public abstract class BasePlayer : MonoBehaviour
     //
     protected abstract void PlayIdleAnim();
 
-    protected bool CanMove()
-    {
-        if (moveStatus != EnumSpace.PlayStatus.Charge && moveStatus != EnumSpace.PlayStatus.Dash && moveStatus != EnumSpace.PlayStatus.Launch)
-        {
-            return true;
-        }
-        return false;
-    }
-
     //角色移动
     protected void PlayerMove()
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        if (CanMove())
+        if(CanMove())
         {
             //前后移动
             if (Input.GetKey(KeyCode.W))
@@ -122,8 +106,6 @@ public abstract class BasePlayer : MonoBehaviour
             }
         }
 
-
-
         if (moveX != 0 || moveZ != 0)
         {
             if (PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Walk)
@@ -144,5 +126,15 @@ public abstract class BasePlayer : MonoBehaviour
         playerController.Move(playerTran.TransformDirection(new Vector3(moveX, moveY, moveZ)));
 
         CheckDash();
+    }
+
+    protected bool CanMove()
+    {
+        EnumSpace.PlayStatus status = PlayerStatusManager.Instance().GetPlayerMoveStatus();
+        if (status != EnumSpace.PlayStatus.Dash && status != EnumSpace.PlayStatus.Charge && status != EnumSpace.PlayStatus.Launch)
+        {
+            return true;
+        }
+        return false;
     }
 }

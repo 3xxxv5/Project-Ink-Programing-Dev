@@ -46,12 +46,7 @@ public class PlayerShrimp : BasePlayer
             PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Dash);
             Sequence seq = DOTween.Sequence();
             seq.AppendInterval(LAST_TIME);
-<<<<<<< HEAD
-            seq.AppendCallback(SetStatusToIdle);
-            Debug.Log(moveStatus);
-=======
             seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
->>>>>>> 70155d913743b95a4f30708d1a378c73cb41062c
         }
     }
 
