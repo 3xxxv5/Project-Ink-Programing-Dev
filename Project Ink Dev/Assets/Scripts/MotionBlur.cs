@@ -4,6 +4,7 @@ using System.Collections;
 public class MotionBlur : PostEffectBase {
 
 	public Shader motionBlurShader;
+
 	private Material motionBlurMaterial = null;
 
 	public Material material {  
@@ -24,7 +25,7 @@ public class MotionBlur : PostEffectBase {
 
 	[System.Obsolete]
 	void OnRenderImage (RenderTexture src, RenderTexture dest) {
-		if (material != null) {
+		if (material != null && CameraStatusController.Instance().enableMotionBlur) {
 			if (accumulationTexture == null || accumulationTexture.width != src.width || accumulationTexture.height != src.height) {
 				DestroyImmediate(accumulationTexture);
 				accumulationTexture = new RenderTexture(src.width, src.height, 0);

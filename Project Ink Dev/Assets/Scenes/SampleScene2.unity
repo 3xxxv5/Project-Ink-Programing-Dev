@@ -4762,6 +4762,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 702fc172e80c01a49a61832c0ba5cb55, type: 2}
+--- !u!114 &443575991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443575985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a923ff6005e8d7e42a9cfb6d7ff7dd59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motionBlurShader: {fileID: 4800000, guid: 239b1890cbb808149b61f3a7e09baccd, type: 3}
+  blurAmount: 0.9
 --- !u!1 &452671357
 GameObject:
   m_ObjectHideFlags: 0

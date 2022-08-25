@@ -25,6 +25,7 @@ public class CameraStatusController
 	 }
 
 	private CameraStatus cameraStatues = CameraStatus.Common;
+	public bool enableMotionBlur = false;
 
 	public CameraStatus GetCameraStatus()
 	{
@@ -39,5 +40,15 @@ public class CameraStatusController
 	public void SetCommon()
 	{
 		cameraStatues = CameraStatus.Common;
+	}
+
+	public void SetMotionBlurTrue()
+	{
+		enableMotionBlur = true;
+	}
+
+	public void SetMotionBlurFalse()
+	{
+		enableMotionBlur = false;
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,6 +70,10 @@ public abstract class BasePlayer : MonoBehaviour
         {
             transform.DOMove(ray.origin + ray.direction * DASH_DIS, LAST_TIME).SetEase(curv);
         }
+        CameraStatusController.Instance().SetMotionBlurTrue();
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(LAST_TIME);
+        seq.AppendCallback(CameraStatusController.Instance().SetMotionBlurFalse);
     }
 
     //抽象方法，鼠标点击触发冲刺
