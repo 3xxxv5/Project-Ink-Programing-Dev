@@ -171,13 +171,13 @@ public class ThirdPersonCamera : MonoBehaviour
             var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
             Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
             Debug.DrawLine(ray.origin, ray.origin + ray.direction * 20, Color.red);
-            DashStorage();
+            //DashStorage();
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             Camera.main.DOFieldOfView(60.0f, 0.5f);
-            i = 0f;
+            //i = 0f;
         }
 
         if(PlayerStatusManager.Instance().GetPlayerMoveStatus()!=EnumSpace.PlayStatus.Dash)
