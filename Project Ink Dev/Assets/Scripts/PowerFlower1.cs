@@ -47,6 +47,13 @@ public class PowerFlower1 : Item
             if (interactiveType == InteractiveType.Type2)
             {
                 //doSth
+                if (splitItem == null)
+                {
+                    Debug.LogError("如果是类型2的掉落物，请挂上撞击后分裂的物体");
+                    return;
+                }
+
+                SpawnSplitItem(3.0f, 3.0f);
             }
         }
 
@@ -64,6 +71,13 @@ public class PowerFlower1 : Item
             if (interactiveType == InteractiveType.Type2)
             {
                 //doSth
+                if (splitItem == null)
+                {
+                    Debug.LogError("如果是类型2的掉落物，请挂上撞击后分裂的物体");
+                    return;
+                }
+
+                SpawnSplitItem(3.0f, 3.0f);
             }
         }
 
@@ -122,9 +136,9 @@ public class PowerFlower1 : Item
     
 	public override void DropRebirth()
 	{
-		if(m_rebirthTime<0.00001f)
+		if(rebirthTimeTemp < 0.00001f)
 		{
-            m_rebirthTime = rebirthTimeTemp;
+            rebirthTimeTemp = m_rebirthTime;
 
             switch(itemType)
 			{
@@ -139,7 +153,7 @@ public class PowerFlower1 : Item
             }
 		}
 
-        m_rebirthTime -= Time.deltaTime;
+        rebirthTimeTemp -= Time.deltaTime;
 	}
 
 	void OnEnable()

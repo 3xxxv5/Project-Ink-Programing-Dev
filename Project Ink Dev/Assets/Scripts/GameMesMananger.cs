@@ -32,6 +32,8 @@ public class GameMesMananger
 
 	private  int curStageNum = 0;
 
+	public Dictionary<GameObject, int> map = new Dictionary<GameObject, int>();
+
 	public  int getCurStageNum()
 	{
 		return curStageNum;

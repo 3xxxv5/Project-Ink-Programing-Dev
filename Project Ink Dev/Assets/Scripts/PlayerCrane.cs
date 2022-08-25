@@ -97,4 +97,9 @@ public class PlayerCrane : BasePlayer
         //结束将状态置为OUT
         bulletTimeStatus = EnumSpace.BulletTimeStatus.OUT;
     }
+
+	public override Vector3 GetMoveDest()
+	{
+        return moveDest;
+	}
 }
