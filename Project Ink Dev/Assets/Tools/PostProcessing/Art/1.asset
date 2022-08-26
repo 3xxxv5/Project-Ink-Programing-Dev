@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       focusDistance: 3.62
-      aperture: 5.48
+      aperture: 5.7
       focalLength: 96
       useCameraFov: 1
       kernelSize: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
         neutralWhiteClip: 8.1
       basic:
         postExposure: -0.84
-        temperature: -4
+        temperature: 0
         tint: 14
         hueShift: 0
         saturation: 0.9
@@ -136,7 +136,7 @@ MonoBehaviour:
         mode: 1
         log:
           slope: {r: 0.9323071, g: 1, b: 0.7611588, a: 0.27480915}
-          power: {r: 0.91944176, g: 0.8388831, b: 1, a: -0.21374045}
+          power: {r: 0.88563263, g: 0.80051404, b: 1, a: -0.21374045}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
