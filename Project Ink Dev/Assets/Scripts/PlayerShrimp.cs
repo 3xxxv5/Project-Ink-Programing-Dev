@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -59,4 +59,9 @@ public class PlayerShrimp : BasePlayer
     {
         characterGO.GetComponent<ShrimpAnimator>().Idle();
     }
+
+	public override Vector3 GetMoveDest()
+	{
+        return moveDest;
+	}
 }

@@ -39,11 +39,11 @@ public class CanOpenNewStage : MonoBehaviour
 			stageKey.SetActive(false);
 		}
 
-		//if (GameMesMananger.getCurStageNum() == 2)
-		//{
-		//    stageKey = GameObject.Find("frog");
-		//    stageKey.SetActive(false);
-		//}
+		if (GameMesMananger.Instance().getCurStageNum() == 2)
+		{
+			stageKey = GameObject.Find("Final_HITBOX");
+			stageKey.SetActive(false);
+		}
 	}
 
 }

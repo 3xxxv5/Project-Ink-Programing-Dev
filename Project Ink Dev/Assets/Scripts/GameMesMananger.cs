@@ -30,7 +30,9 @@ public class GameMesMananger
 	private  int[] hiddenItemNum = new int[3] { 5, 5, 7};
 	private  int[] curGetHiddenItemNum = new int[3] { 0, 0, 0};
 
-	private  int curStageNum = 0;
+	private  int curStageNum = -1;
+
+	public Dictionary<GameObject, int> map = new Dictionary<GameObject, int>();
 
 	public  int getCurStageNum()
 	{

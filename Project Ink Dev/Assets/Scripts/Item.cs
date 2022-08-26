@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnumSpace;
+using DG.Tweening;
 
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -13,9 +14,12 @@ public abstract class Item : MonoBehaviour
     public float m_velocity = 1.0f;
     public float m_acceleratetion = 0f;
     public float m_rebirthTime = 3.0f;
-    protected Vector3 m_originalPosition; //记录掉落物的生成位置,在OnTriggerEnter实现循环掉落逻辑;将记录界限的Trigger的Tag设为RepeatOrDisappear;
+    public Vector3 m_originalPosition; //记录掉落物的生成位置,在OnTriggerEnter实现循环掉落逻辑;将记录界限的Trigger的Tag设为RepeatOrDisappear;
 
     public GameObject VFXPrefab;
+
+    public GameObject splitItem;
+    public float SPLIT_FLY_TIME = 1.0f;
 
     public abstract void SetFallingTrack(); //掉落轨迹,每一个实现该方法的子类都应该在update()中调用该方法
 
@@ -28,7 +32,6 @@ public abstract class Item : MonoBehaviour
     protected abstract void OnTriggerEnter(Collider other);
 
 
-    //每一个实现该类的子类都应该在OnEnable()中调用该方法
     protected void init()
     {
         m_originalPosition = transform.position;
@@ -36,6 +39,68 @@ public abstract class Item : MonoBehaviour
         gameObject.tag = "Item";
 
     }
+
+    protected void SetOriginalPosition(Vector3 pos)
+	{
+        m_originalPosition = pos;
+	}
+
+    protected void SpawnSplitItem(float x,float z)
+	{
+        var playerGO = GameObject.FindGameObjectWithTag("Player");
+        int LEFT_NUM = 4;
+        for(int i=-1;i<1;++i)
+		{
+            var newSplitItem1 = GameObject.Instantiate(splitItem, transform.position,
+                transform.rotation);
+            newSplitItem1.tag = "NeedCollectFourDrop";
+            newSplitItem1.GetComponent<BoxCollider>().enabled = false;
+
+            var newSplitItem2 = GameObject.Instantiate(splitItem, transform.position,
+                transform.rotation);
+            newSplitItem2.tag = "NeedCollectFourDrop";
+            newSplitItem2.GetComponent<BoxCollider>().enabled = false;
+
+            PlayerShrimp shrimp = null;
+            PlayerFrog frog = null;
+            PlayerCrane crane = null;
+            if (playerGO.GetComponent<PlayerShrimp>())
+                shrimp = playerGO.GetComponent<PlayerShrimp>();
+            if (playerGO.GetComponent<PlayerFrog>())
+                frog = playerGO.GetComponent<PlayerFrog>();
+            if (playerGO.GetComponent<PlayerCrane>())
+                crane = playerGO.GetComponent<PlayerCrane>();
+
+            Vector3 moveDest1 = Vector3.zero;
+            Vector3 moveDest2 = Vector3.zero;
+            i = i < 0 ? -1 : 1;
+            if(shrimp)
+			{
+                moveDest1 = shrimp.GetMoveDest() + new Vector3(i * x, 0, -i * z);
+                moveDest2 = shrimp.GetMoveDest() + new Vector3(i * x, 0, i * z);
+			}
+            else if(frog)
+			{
+                moveDest1 = frog.GetMoveDest() + new Vector3(i * x, 0, -i * z);
+                moveDest2 = frog.GetMoveDest() + new Vector3(i * x, 0, i * z);
+            }
+            else if(crane)
+			{
+                moveDest1 = crane.GetMoveDest() + new Vector3(i * x, 0, -i * z);
+                moveDest2 = crane.GetMoveDest() + new Vector3(i * x, 0, i * z);
+            }
+
+            newSplitItem1.transform.DOMove(moveDest1, SPLIT_FLY_TIME);
+            newSplitItem2.transform.DOMove(moveDest2, SPLIT_FLY_TIME);
+
+            newSplitItem1.GetComponent<FlowerSplit>().SetOriginalPosition(moveDest1);
+            newSplitItem2.GetComponent<FlowerSplit>().SetOriginalPosition(moveDest2);
+
+            /////////////////////////////////////////////////////////////////////////////////
+            GameMesMananger.Instance().map.Add(newSplitItem1, LEFT_NUM);
+            GameMesMananger.Instance().map.Add(newSplitItem2, LEFT_NUM);
+        }
+	}
 
     
 
