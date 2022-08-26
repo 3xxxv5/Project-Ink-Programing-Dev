@@ -96,7 +96,8 @@ public class PowerFlower3 : Item
         switch (other.gameObject.tag)
         {
             case "Player":
-                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash)
+                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
+                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
                 {
                     if(canPick)
                         CollideWithPlayerBehavior(other);
