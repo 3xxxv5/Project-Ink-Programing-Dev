@@ -8,12 +8,16 @@ using DG.Tweening;
 public class SpawnItem : MonoBehaviour{
 
     Queue<GameObject> queue = new Queue<GameObject>();
+    private const string MUSIC_PATH = "music/cut3";
     void SpawnItemFunc()
     {
         if(queue.Count>0)
 		{
             var item = queue.Dequeue();
             item.SetActive(true);
+            AudioClip clip = Resources.Load<AudioClip>(MUSIC_PATH);
+            AudioSource audioSource = item.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
         }
 
     }
@@ -38,6 +42,7 @@ public class SpawnItem : MonoBehaviour{
         for(int i=0;i<transform.childCount;++i)
         {
             var go = transform.GetChild(i).gameObject;
+            go.AddComponent<AudioSource>();
             queue.Enqueue(go);
             go.SetActive(false);
         }

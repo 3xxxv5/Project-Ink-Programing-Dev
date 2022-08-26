@@ -32,7 +32,7 @@ public class StartMenuManager : MonoBehaviour
   }
   public void EndingGame()
   {
-    //UnityEditor.EditorApplication.isPlaying = false;
+    UnityEditor.EditorApplication.isPlaying = false;
     Application.Quit();
   }
 }

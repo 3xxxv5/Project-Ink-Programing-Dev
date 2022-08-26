@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,14 +40,11 @@ public class PlayerFrog : BasePlayer
         if (Physics.Raycast(ray, out hitInfo, DASH_DIS * multi))
         {
             //print(hitInfo.transform);
-            moveDest = hitInfo.point - ray.direction * 1.0f;
-            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
-
+            transform.DOMove(hitInfo.point - ray.direction * 1.0f, LAST_TIME).SetEase(curv);
         }
         else
         {
-            moveDest = ray.origin + ray.direction * DASH_DIS * multi;
-            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+            transform.DOMove(ray.origin + ray.direction * DASH_DIS * multi, LAST_TIME).SetEase(curv);
         }
     }
 
@@ -101,9 +98,4 @@ public class PlayerFrog : BasePlayer
     {
         characterGO.GetComponent<FrogAnimator>().Idle();
     }
-
-	public override Vector3 GetMoveDest()
-	{
-        return moveDest;
-	}
 }

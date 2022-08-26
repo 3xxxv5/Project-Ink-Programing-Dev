@@ -12,7 +12,6 @@ public abstract class BasePlayer : MonoBehaviour
     protected bool beginCD = false;
     protected float cd = 1;
     protected bool isMouseButtonUp = false;
-    protected Vector3 moveDest;
 
     public GameObject characterGO;
     public Image coolingFull;
@@ -65,13 +64,11 @@ public abstract class BasePlayer : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, DASH_DIS))
         {
             //print(hitInfo.transform);
-            moveDest = hitInfo.point - ray.direction * 1.0f;
-            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+            transform.DOMove(hitInfo.point - ray.direction * 1.0f, LAST_TIME).SetEase(curv);
         }
         else
         {
-            moveDest = ray.origin + ray.direction * DASH_DIS;
-            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+            transform.DOMove(ray.origin + ray.direction * DASH_DIS, LAST_TIME).SetEase(curv);
         }
         CameraStatusController.Instance().SetMotionBlurTrue();
         Sequence seq = DOTween.Sequence();
@@ -85,8 +82,6 @@ public abstract class BasePlayer : MonoBehaviour
     protected abstract void PlayWalkAnim();
     //
     protected abstract void PlayIdleAnim();
-    //
-    public abstract Vector3 GetMoveDest();
 
     //角色移动
     protected void PlayerMove()

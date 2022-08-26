@@ -41,19 +41,12 @@ public class PowerFlower1 : Item
                 
                 // Camera.main.DOShakeRotation(0.5f);
 
-
+                Destroy(this.gameObject);
 
             }
             if (interactiveType == InteractiveType.Type2)
             {
                 //doSth
-                if (splitItem == null)
-                {
-                    Debug.LogError("如果是类型2的掉落物，请挂上撞击后分裂的物体");
-                    return;
-                }
-
-                SpawnSplitItem(10.0f, 10.0f);
             }
         }
 
@@ -66,18 +59,11 @@ public class PowerFlower1 : Item
                 
                 //Camera.main.DOShakeRotation(0.5f);
 
-
+                Destroy(this.gameObject);
             }
             if (interactiveType == InteractiveType.Type2)
             {
                 //doSth
-                if (splitItem == null)
-                {
-                    Debug.LogError("如果是类型2的掉落物，请挂上撞击后分裂的物体");
-                    return;
-                }
-
-                SpawnSplitItem(10.0f, 10.0f);
             }
         }
 
@@ -92,7 +78,6 @@ public class PowerFlower1 : Item
         GameUIManager.updateUI();
 
         CanOpenNewStage.UpdateStage();
-        Destroy(this.gameObject);
     }
 
 
@@ -115,8 +100,7 @@ public class PowerFlower1 : Item
         switch(other.gameObject.tag)
 		{
             case "Player":
-                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash || 
-                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
+                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash)
 				{
                     CollideWithPlayerBehavior(other);
 				}
@@ -138,7 +122,7 @@ public class PowerFlower1 : Item
     
 	public override void DropRebirth()
 	{
-		if(m_rebirthTime < 0.00001f)
+		if(m_rebirthTime<0.00001f)
 		{
             m_rebirthTime = rebirthTimeTemp;
 
