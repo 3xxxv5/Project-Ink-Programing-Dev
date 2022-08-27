@@ -93,7 +93,7 @@ public abstract class BasePlayer : MonoBehaviour
     {
         float moveX = 0, moveY = 0, moveZ = 0;
 
-        if(CanMove())
+        if(CanMove() && GuideMesManager.Instance.guideStatus != EnumSpace.GuideStatus.InGuide)
         {
             //前后移动
             if (Input.GetKey(KeyCode.W))
