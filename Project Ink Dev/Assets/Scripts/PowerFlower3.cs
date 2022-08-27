@@ -91,8 +91,8 @@ public class PowerFlower3 : Item
         switch (other.gameObject.tag)
         {
             case "Player":
-                //if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
-                //    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
+                if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
+                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
                 {
                     Debug.Log(matAlpha - 0.05f);
                     Debug.Log(mr.sharedMaterials[1].GetFloat("_AlphaScale"));
