@@ -58,8 +58,8 @@ public class FlowerSplit : Item
 		switch (other.gameObject.tag)
 		{
 			case "Player":
-				//if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
-				//	PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
+				if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
+					PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
 				{
 					CollideWithPlayerBehavior(other);
 				}
