@@ -1,4 +1,4 @@
-﻿
+
 Shader "Unity/02-AlphaBlend" {
 	Properties {
 		_Color ("Main Tint", Color) = (1,1,1,1)
@@ -12,6 +12,7 @@ Shader "Unity/02-AlphaBlend" {
 		{
 			Tags{"LightMode" = "ForwardBase"}
 			ZWrite Off
+			Cull Off
 			Blend SrcAlpha OneMinusSrcAlpha
 
 

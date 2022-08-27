@@ -7,7 +7,7 @@ using EnumSpace;
 public class PowerFlower3 : Item
 {
     MeshRenderer mr;
-    float matAlpha = 0.8f;
+    float matAlpha = 0.9f;
     public float keepTime = 3.0f;
     private float rebirthTimeTemp;
     private float keepTimeTemp;
@@ -52,13 +52,7 @@ public class PowerFlower3 : Item
             {
                 //main_item_collection+1
                 GameMesMananger.Instance().SetCurMainItemNumAdd(stageNum);
-                if (GameMesMananger.Instance().save != null)
-                {
-                    if (GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(gameObject.name)) == null)
-                    {
-                        GameMesMananger.Instance().save.itemMap.Add(gameObject.name);
-                    }
-                }
+                
             }
         }
 
@@ -68,6 +62,14 @@ public class PowerFlower3 : Item
             {
                 //hidden_item_collection+1
                 GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
+
+                if (GameMesMananger.Instance().save != null)
+                {
+                    if (GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(gameObject.name)) == null)
+                    {
+                        GameMesMananger.Instance().save.itemMap.Add(gameObject.name);
+                    }
+                }
 
                 //Camera.main.DOShakeRotation(0.5f);
             }
@@ -92,7 +94,9 @@ public class PowerFlower3 : Item
                 if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
                     PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
                 {
-                    if(canPick)
+                    Debug.Log(matAlpha - 0.05f);
+                    Debug.Log(mr.sharedMaterials[1].GetFloat("_AlphaScale"));
+                    if (mr.sharedMaterials[0].GetFloat("_AlphaScale") > matAlpha-0.05f)
                         CollideWithPlayerBehavior(other);
                 }
                 break;
@@ -116,11 +120,11 @@ public class PowerFlower3 : Item
             switch (itemType)
             {
                 case ItemType.Main:
-                    Debug.Log("Rebirth");
+                    //Debug.Log("Rebirth");
                     transform.position = m_originalPosition;
                     break;
                 case ItemType.Hidden:
-                    Debug.Log("Destroy");
+                    //Debug.Log("Destroy");
                     Destroy(this.gameObject);
                     break;
             }
@@ -134,14 +138,22 @@ public class PowerFlower3 : Item
         if (!canPick)
         {
             keepTime += Time.deltaTime;
-            mr.material.SetFloat("_AlphaScale", 1-matAlpha);
+            //mr.material.SetFloat("_AlphaScale", 1-matAlpha);
+            foreach(var m in mr.sharedMaterials)
+			{
+                m.SetFloat("_AlphaScale", 1 - matAlpha);
+			}
             if (keepTime >= keepTimeTemp)
                 canPick = true;
         }
         else
         {
             keepTime -= Time.deltaTime;
-            mr.material.SetFloat("_AlphaScale", matAlpha);
+            //mr.material.SetFloat("_AlphaScale", matAlpha);
+            foreach (var m in mr.sharedMaterials)
+            {
+                m.SetFloat("_AlphaScale", matAlpha);
+            }
             if (keepTime <= 0)
                 canPick = false;
         }
