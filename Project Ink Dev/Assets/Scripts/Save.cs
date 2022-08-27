@@ -6,13 +6,16 @@ using System.IO;
 [System.Serializable]
 public class Save
 {
-  public List<int> hideCollections = new List<int>();
-  public List<bool> isLevelPass = new List<bool>();
+    public List<int> hideCollections = new List<int>() { 0, 0, 0 };
+    public List<bool> isLevelPass = new List<bool>() { true, false, false };
+    public List<string> itemMap = new List<string>();
 }
 
 #region 具体存档方法
 public class SaveManager
 {
+
+    private static string path = Application.dataPath + "/Data.pomo";
   /// <summary>
   /// 创建Save类存放数据<para />
   /// </summary>
@@ -26,22 +29,21 @@ public class SaveManager
   /// <summary>
   /// 将创建的Save转换为Json存为文件<para />
   /// </summary>
-  public void SaveByJSON()
+  public static void SaveByJSON(Save save)
   {
-    Save save = CreateSave();
     string JsonString = JsonUtility.ToJson(save);
-    StreamWriter sw = new StreamWriter(Application.dataPath + "/Data.pomo");
+    StreamWriter sw = new StreamWriter(path);
     sw.Write(JsonString);
     sw.Close();
   }
   /// <summary>
   /// 读取存档<para />
   /// </summary>
-  public Save LoadByJSON()
+  public static Save LoadByJSON()
   {
-    if (File.Exists(Application.dataPath + "/Data.pomo"))
+    if (File.Exists(path))
     {
-      StreamReader sr = new StreamReader(Application.dataPath + "/Data.pomp");
+      StreamReader sr = new StreamReader(path);
       string JsonString = sr.ReadToEnd();
       sr.Close();
       Save save = JsonUtility.FromJson<Save>(JsonString);
@@ -50,8 +52,8 @@ public class SaveManager
     }
     else
     {
-      Debug.LogError("File Not Found.");
-      return null;
+            Save save = new Save();
+            return save;
     }
   }
 }

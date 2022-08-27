@@ -31,8 +31,10 @@ public class GameMesMananger
 	private  int[] curGetHiddenItemNum = new int[3] { 0, 0, 0};
 
 	private  int curStageNum = -1;
+	public Save save = SaveManager.LoadByJSON();
 
-	public Dictionary<GameObject, int> map = new Dictionary<GameObject, int>();
+	public Dictionary<GameObject, string> map1 = new Dictionary<GameObject, string>();
+	public Dictionary<string, int> map2 = new Dictionary<string, int>();
 
 	public  int getCurStageNum()
 	{

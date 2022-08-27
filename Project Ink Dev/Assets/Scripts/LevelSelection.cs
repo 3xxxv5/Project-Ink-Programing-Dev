@@ -8,11 +8,13 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private bool m_unlock = false; // 默认为关卡锁定
     private Button m_button;
     private Image m_image;
+    private int stageIndex;
     
     private void Start()
     {
         m_button = gameObject.GetComponent<Button>();
         m_image = gameObject.GetComponent<Image>();
+        stageIndex = int.Parse(m_button.gameObject.name);
     }
     
     private void Update()
@@ -22,6 +24,12 @@ public class LevelSelection : MonoBehaviour
     
     private void UpdateLevelStatus()
     {
+        if(GameMesMananger.Instance().save != null && GameMesMananger.Instance().save.isLevelPass.Count >= stageIndex)
+		{
+            if (GameMesMananger.Instance().save.isLevelPass[stageIndex - 1] == true)
+                this.m_unlock = true;
+		}
+
         if (this.m_unlock == false)
         {
             m_button.enabled = false;

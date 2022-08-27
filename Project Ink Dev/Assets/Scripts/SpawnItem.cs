@@ -14,10 +14,13 @@ public class SpawnItem : MonoBehaviour{
         if(queue.Count>0)
 		{
             var item = queue.Dequeue();
-            item.SetActive(true);
-            AudioClip clip = Resources.Load<AudioClip>(MUSIC_PATH);
-            AudioSource audioSource = item.GetComponent<AudioSource>();
-            audioSource.PlayOneShot(clip);
+            if (GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(item.name)) == null)
+            {
+                item.SetActive(true);
+                AudioClip clip = Resources.Load<AudioClip>(MUSIC_PATH);
+                AudioSource audioSource = item.GetComponent<AudioSource>();
+                audioSource.PlayOneShot(clip);
+            }
         }
 
     }

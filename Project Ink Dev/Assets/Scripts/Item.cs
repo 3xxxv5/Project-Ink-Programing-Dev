@@ -49,6 +49,7 @@ public abstract class Item : MonoBehaviour
 	{
         var playerGO = GameObject.FindGameObjectWithTag("Player");
         int LEFT_NUM = 4;
+        GameMesMananger.Instance().map2.Add(gameObject.name, LEFT_NUM);
         for(int i=-1;i<1;++i)
 		{
             var newSplitItem1 = GameObject.Instantiate(splitItem, transform.position,
@@ -97,8 +98,8 @@ public abstract class Item : MonoBehaviour
             newSplitItem2.GetComponent<FlowerSplit>().SetOriginalPosition(moveDest2);
 
             /////////////////////////////////////////////////////////////////////////////////
-            GameMesMananger.Instance().map.Add(newSplitItem1, LEFT_NUM);
-            GameMesMananger.Instance().map.Add(newSplitItem2, LEFT_NUM);
+            GameMesMananger.Instance().map1.Add(newSplitItem1, gameObject.name);
+            GameMesMananger.Instance().map1.Add(newSplitItem2, gameObject.name);
         }
 	}
 

@@ -52,15 +52,13 @@ public class PowerFlower3 : Item
             {
                 //main_item_collection+1
                 GameMesMananger.Instance().SetCurMainItemNumAdd(stageNum);
-
-                // Camera.main.DOShakeRotation(0.5f);
-
-                Destroy(this.gameObject);
-
-            }
-            if (interactiveType == InteractiveType.Type2)
-            {
-                //doSth
+                if (GameMesMananger.Instance().save != null)
+                {
+                    if (GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(gameObject.name)) == null)
+                    {
+                        GameMesMananger.Instance().save.itemMap.Add(gameObject.name);
+                    }
+                }
             }
         }
 
@@ -72,12 +70,6 @@ public class PowerFlower3 : Item
                 GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
 
                 //Camera.main.DOShakeRotation(0.5f);
-
-                Destroy(this.gameObject);
-            }
-            if (interactiveType == InteractiveType.Type2)
-            {
-                //doSth
             }
         }
 
@@ -89,6 +81,7 @@ public class PowerFlower3 : Item
         }
         GameUIManager.updateUI();
         CanOpenNewStage.UpdateStage();
+        Destroy(this.gameObject);
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -97,7 +90,7 @@ public class PowerFlower3 : Item
         {
             case "Player":
                 if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
-                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
+                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
                 {
                     if(canPick)
                         CollideWithPlayerBehavior(other);

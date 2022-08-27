@@ -63,9 +63,16 @@ public class PowerFlower1 : Item
             {
                 //hidden_item_collection+1
                 GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
-                
-                //Camera.main.DOShakeRotation(0.5f);
+                if(GameMesMananger.Instance().save != null)
+				{
+                    if(GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(gameObject.name))==null)
+					{
+                        GameMesMananger.Instance().save.itemMap.Add(gameObject.name);
+					}
+                }
 
+                //if (GameMesMananger.Instance().save.itemMap[gameObject.name])
+                //    Debug.Log(gameObject.name);
 
             }
             if (interactiveType == InteractiveType.Type2)
@@ -92,6 +99,7 @@ public class PowerFlower1 : Item
         GameUIManager.updateUI();
 
         CanOpenNewStage.UpdateStage();
+        Debug.Log(PlayerStatusManager.Instance().GetPlayerMoveStatus());
         Destroy(this.gameObject);
     }
 
@@ -116,7 +124,7 @@ public class PowerFlower1 : Item
 		{
             case "Player":
                 if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash || 
-                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Charge)
+                    PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
 				{
                     CollideWithPlayerBehavior(other);
 				}

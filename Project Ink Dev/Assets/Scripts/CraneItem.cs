@@ -17,7 +17,10 @@ public class CraneItem : MonoBehaviour
         {
             //PlayerPrefs.SetInt("PoMoLevel" + 1, 1);
             DOTween.Clear(true);
+            GameMesMananger.Instance().save.hideCollections[1] = GameMesMananger.Instance().GetCurHiddenItemNum(GameMesMananger.Instance().getCurStageNum());
+            GameMesMananger.Instance().save.isLevelPass[2] = true;
             GameMesMananger.Instance().SetStage(2);
+            SaveManager.SaveByJSON(GameMesMananger.Instance().save);
             SceneManager.LoadScene("stage_3");
             GameUIManager.updateUI();
             DOTween.Clear(true);

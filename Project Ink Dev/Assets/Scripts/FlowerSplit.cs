@@ -70,34 +70,47 @@ public class FlowerSplit : Item
 	void CollideWithPlayerBehavior(Collider other)
 	{
 		var stageNum = GameMesMananger.Instance().getCurStageNum();
-		if(gameObject.tag.Contains("NeedCollectFourDrop"))
+		if(gameObject.tag.Contains("NeedCollectFourDrop") && other.gameObject.tag.Contains("Player"))
 		{
-			--GameMesMananger.Instance().map[gameObject];
-			Debug.Log(GameMesMananger.Instance().map[gameObject]);
-			if(GameMesMananger.Instance().map[gameObject]==0)
+			if (PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Dash ||
+					PlayerStatusManager.Instance().GetPlayerMoveStatus() == PlayStatus.Launch)
 			{
-				switch(itemType)
+				var instance = GameMesMananger.Instance();
+				--instance.map2[instance.map1[gameObject]];
+				Debug.Log(instance.map2[instance.map1[gameObject]]);
+				if (instance.map2[instance.map1[gameObject]] == 0)
 				{
-					case ItemType.Main:
-						GameMesMananger.Instance().SetCurMainItemNumAdd(stageNum);
-						break;
-					case ItemType.Hidden:
-						GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
-						break;
+					switch (itemType)
+					{
+						case ItemType.Main:
+							GameMesMananger.Instance().SetCurMainItemNumAdd(stageNum);
+							break;
+						case ItemType.Hidden:
+							GameMesMananger.Instance().SetCurHiddenItemNumAdd(stageNum);
+							if (GameMesMananger.Instance().save != null)
+							{
+								if (GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(GameMesMananger.Instance().map1[gameObject])) == null) 
+								{
+									GameMesMananger.Instance().save.itemMap.Add(GameMesMananger.Instance().map1[gameObject]);
+								}
+							}
+							break;
+					}
 				}
+				DropMusicPlay.PlayMusic();
+				Boom(other);
+				if (CameraStatusController.Instance().GetCameraStatus() == CameraStatus.Common)
+				{
+					SetCameraShock();
+				}
+				GameUIManager.updateUI();
+
+				CanOpenNewStage.UpdateStage();
+				Destroy(this.gameObject);
 			}
 		}
 
-		DropMusicPlay.PlayMusic();
-		Boom(other);
-		if (CameraStatusController.Instance().GetCameraStatus() == CameraStatus.Common)
-		{
-			SetCameraShock();
-		}
-		GameUIManager.updateUI();
 
-		CanOpenNewStage.UpdateStage();
-		Destroy(this.gameObject);
 	}
 
 	void SetBoxEnable()

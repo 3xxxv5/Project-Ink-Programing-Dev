@@ -4574,7 +4574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeDetectShader: {fileID: 4800000, guid: ae66daafe12b16a47b0143a3a50cf5f2, type: 3}
-  edgesOnly: 0.49
+  edgesOnly: 0.35
   edgeColor: {r: 0, g: 0, b: 0, a: 1}
   backgroundColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
 --- !u!1 &452671357
@@ -6707,6 +6707,7 @@ GameObject:
   - component: {fileID: 766509678}
   - component: {fileID: 766509677}
   - component: {fileID: 766509676}
+  - component: {fileID: 766509680}
   m_Layer: 0
   m_Name: Game_Msg_Manager
   m_TagString: Untagged
@@ -6765,6 +6766,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &766509680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766509675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c075eb8ad429c074e8354f9be56b11ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &773193362
 GameObject:
   m_ObjectHideFlags: 0
@@ -8771,7 +8784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7753118293194598719, guid: 098d8476fc4cc974387e5ddd90087ab9, type: 3}
       propertyPath: m_Name
-      value: flower_1_2_h
+      value: flower_1_2_h+
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3229201096141873846, guid: 098d8476fc4cc974387e5ddd90087ab9, type: 3}
@@ -10439,7 +10452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5485958075616533076, guid: 3567a304db7b7ed41a9a679fcecefb10, type: 3}
       propertyPath: m_Name
-      value: flower_1_1_h
+      value: flower_1_1_h+
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5622961071367459211, guid: 3567a304db7b7ed41a9a679fcecefb10, type: 3}

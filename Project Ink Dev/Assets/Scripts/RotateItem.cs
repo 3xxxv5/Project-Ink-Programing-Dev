@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,4 +28,9 @@ public class RotateItem : PowerFlower1
         Vector3 force = new Vector3(0f, -m * m_acceleratetion, 0f);
         rb1.AddForce(force);
     }
+
+	private void FixedUpdate()
+	{
+        SetFallingTrack();
+	}
 }
