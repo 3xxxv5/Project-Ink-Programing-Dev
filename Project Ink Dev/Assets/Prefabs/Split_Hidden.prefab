@@ -647,7 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   interactiveType: 0
-  m_velocity: 0
+  m_velocity: 2
   m_acceleratetion: 0
   m_rebirthTime: 3
   m_originalPosition: {x: 0, y: 0, z: 0}
