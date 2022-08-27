@@ -45,7 +45,7 @@ public class GameMesMananger
 	public  void SetStage(int stageNum)
 	{
 		curStageNum = stageNum;
-		Debug.Log(curStageNum);
+		//Debug.Log(curStageNum);
 		//////////////////////////////////
 		DOTween.Clear(true);
 	}
