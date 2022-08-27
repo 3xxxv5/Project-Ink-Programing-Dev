@@ -10,6 +10,15 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+
+Project Ink Dev/[Ll]ibrary/
+Project Ink Dev/[Tt]emp/
+Project Ink Dev/[Oo]bj/
+Project Ink Dev/[Bb]uild/
+Project Ink Dev/[Bb]uilds/
+Project Ink Dev/[Ll]ogs/
+Project Ink Dev/[Uu]ser[Ss]ettings/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
