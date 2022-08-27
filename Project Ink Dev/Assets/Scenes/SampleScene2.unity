@@ -688,7 +688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70421803}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
   m_Name: 
@@ -702,8 +702,30 @@ MonoBehaviour:
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 0.1, y: 0, z: 0}
+  pivot: {x: 2, y: 0, z: 0}
   rotateSpeed: 0.8
+  M_REBIRTHTIME: 0
+--- !u!114 &70421807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70421803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 1
+  interactiveType: 0
+  m_velocity: 1
+  m_acceleratetion: 0
+  m_rebirthTime: 3
+  m_originalPosition: {x: 0, y: 0, z: 0}
+  VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
+  splitItem: {fileID: 0}
+  SPLIT_FLY_TIME: 1
 --- !u!1 &89175098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 926003211}
     m_Modifications:
+    - target: {fileID: 2276259824760344720, guid: 367338f9205891b4791330045ed130ae, type: 3}
+      propertyPath: pivot.x
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6555520855441585628, guid: 367338f9205891b4791330045ed130ae, type: 3}
       propertyPath: m_Name
       value: 43 (1)_h
@@ -4574,7 +4600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeDetectShader: {fileID: 4800000, guid: ae66daafe12b16a47b0143a3a50cf5f2, type: 3}
-  edgesOnly: 0.35
+  edgesOnly: 0.25
   edgeColor: {r: 0, g: 0, b: 0, a: 1}
   backgroundColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
 --- !u!1 &452671357
@@ -8239,7 +8265,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6555520855441585629, guid: 367338f9205891b4791330045ed130ae, type: 3}
   m_PrefabInstance: {fileID: 6555520856467040708}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1025727519
+--- !u!114 &1025727524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8248,18 +8274,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 101421979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 4
+  m_rebirthTime: 3
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
+  pivot: {x: 2, y: 0, z: 0}
+  rotateSpeed: 3
+  M_REBIRTHTIME: 0
 --- !u!1 &1031459128
 GameObject:
   m_ObjectHideFlags: 0
@@ -8799,7 +8828,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7753118293194598719, guid: 098d8476fc4cc974387e5ddd90087ab9, type: 3}
   m_PrefabInstance: {fileID: 1175211025}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1175211028
+--- !u!114 &1175211031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8808,20 +8837,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1175211027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 5
+  m_rebirthTime: 3
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 2, y: 0, z: 0}
-  rotateSpeed: 3
 --- !u!1001 &1185579625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10467,7 +10494,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5485958075616533076, guid: 3567a304db7b7ed41a9a679fcecefb10, type: 3}
   m_PrefabInstance: {fileID: 1544185101}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1544185104
+--- !u!114 &1544185107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10476,20 +10503,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544185103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 5
+  m_rebirthTime: 6
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 2, y: 0, z: 0}
-  rotateSpeed: 3
 --- !u!1 &1549064262
 GameObject:
   m_ObjectHideFlags: 0
@@ -11597,7 +11622,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7753118293194598719, guid: 098d8476fc4cc974387e5ddd90087ab9, type: 3}
   m_PrefabInstance: {fileID: 1658991209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1658991212
+--- !u!114 &1658991215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11606,20 +11631,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1658991211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 5
+  m_rebirthTime: 3
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 2, y: 0, z: 0}
-  rotateSpeed: 3
 --- !u!1001 &1671874946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11691,7 +11714,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6555520855441585629, guid: 367338f9205891b4791330045ed130ae, type: 3}
   m_PrefabInstance: {fileID: 1671874946}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1671874953
+--- !u!114 &1671874958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11700,7 +11723,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 215053415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
@@ -11712,6 +11735,9 @@ MonoBehaviour:
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
+  pivot: {x: 2, y: 0, z: 0}
+  rotateSpeed: 3
+  M_REBIRTHTIME: 0
 --- !u!1001 &1680360554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12684,7 +12710,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6555520855441585628, guid: 367338f9205891b4791330045ed130ae, type: 3}
   m_PrefabInstance: {fileID: 1706696619}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1706696622
+--- !u!114 &1706696627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12693,18 +12719,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1706696621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 4
+  m_rebirthTime: 3
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
+  pivot: {x: 2, y: 0, z: 0}
+  rotateSpeed: 3
+  M_REBIRTHTIME: 0
 --- !u!1 &1714487835
 GameObject:
   m_ObjectHideFlags: 0
@@ -14143,7 +14172,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6555520855441585629, guid: 367338f9205891b4791330045ed130ae, type: 3}
   m_PrefabInstance: {fileID: 1830355664}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1830355671
+--- !u!114 &1830355676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14152,18 +14181,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1171386643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7026c448d279545b10893bc5160e0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 4
+  m_rebirthTime: 6
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
+  pivot: {x: 2, y: 0, z: 0}
+  rotateSpeed: 3
+  M_REBIRTHTIME: 0
 --- !u!1 &1841948593
 GameObject:
   m_ObjectHideFlags: 0
@@ -16454,6 +16486,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6182569}
     m_Modifications:
+    - target: {fileID: 3229201096141873846, guid: 098d8476fc4cc974387e5ddd90087ab9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6977004558434317189, guid: 098d8476fc4cc974387e5ddd90087ab9, type: 3}
       propertyPath: m_RootOrder
       value: 0

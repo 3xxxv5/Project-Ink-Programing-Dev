@@ -12,6 +12,7 @@ public class PlayerFrog : BasePlayer
     public float MAX_DASH_STORAGE_TIME = 1.0f;
     public float MAX_DASH_MULTI = 3.0f;
     public Image storageFull;
+    public float DEFAULT_DASH_DISTANCE = 50;
 
     void Start()
     {
@@ -28,6 +29,29 @@ public class PlayerFrog : BasePlayer
         //计算cd
         if (isMouseButtonUp)
             CheckIsInCD();
+    }
+
+    protected void LetMoveDefault()
+	{
+        var camera = Camera.main;
+        var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
+        Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, DEFAULT_DASH_DISTANCE))
+        {
+            //print(hitInfo.transform);
+            moveDest = hitInfo.point - ray.direction * 1.0f;
+            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+        }
+        else
+        {
+            moveDest = ray.origin + ray.direction * DEFAULT_DASH_DISTANCE;
+            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+        }
+        CameraStatusController.Instance().SetMotionBlurTrue();
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(LAST_TIME);
+        seq.AppendCallback(CameraStatusController.Instance().SetMotionBlurFalse);
     }
 
     protected new void LetMove()
@@ -59,7 +83,7 @@ public class PlayerFrog : BasePlayer
             timer += Time.deltaTime / MAX_DASH_STORAGE_TIME;
 
             //按住鼠标时间超过阈值判定为蓄力，播放蓄力动画
-            if (timer > threshold && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
+            if (timer > threshold / MAX_DASH_STORAGE_TIME && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
             {
                 //toDo
                 characterGO.GetComponent<FrogAnimator>().Charge();
@@ -78,7 +102,10 @@ public class PlayerFrog : BasePlayer
             beginCD = true;
             cd = 1;
 
-            LetMove();
+            if (timer > threshold / MAX_DASH_STORAGE_TIME)
+                LetMove();
+            else
+                LetMoveDefault();
 
             characterGO.GetComponent<FrogAnimator>().Launch();
             PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Launch);

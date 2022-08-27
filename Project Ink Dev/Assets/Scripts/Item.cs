@@ -77,18 +77,27 @@ public abstract class Item : MonoBehaviour
             i = i < 0 ? -1 : 1;
             if(shrimp)
 			{
-                moveDest1 = shrimp.GetMoveDest() + new Vector3(i * x, 0, -i * z);
-                moveDest2 = shrimp.GetMoveDest() + new Vector3(i * x, 0, i * z);
-			}
+                //moveDest1 = shrimp.GetMoveDest() + new Vector3(i * x, 0, -i * z);
+                //moveDest2 = shrimp.GetMoveDest() + new Vector3(i * x, 0, i * z);
+
+                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x;
+                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * z * i + playerGO.transform.forward * z;
+            }
             else if(frog)
 			{
-                moveDest1 = frog.GetMoveDest() + new Vector3(i * x, 0, -i * z);
-                moveDest2 = frog.GetMoveDest() + new Vector3(i * x, 0, i * z);
+                //moveDest1 = frog.GetMoveDest() + new Vector3(i * x, 0, -i * z);
+                //moveDest2 = frog.GetMoveDest() + new Vector3(i * x, 0, i * z);
+
+                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x;
+                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * z * i + playerGO.transform.forward * z;
             }
             else if(crane)
 			{
-                moveDest1 = crane.GetMoveDest() + new Vector3(i * x, 0, -i * z);
-                moveDest2 = crane.GetMoveDest() + new Vector3(i * x, 0, i * z);
+                //moveDest1 = crane.GetMoveDest() + new Vector3(i * x, 0, -i * z);
+                //moveDest2 = crane.GetMoveDest() + new Vector3(i * x, 0, i * z);
+
+                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x;
+                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * z * i + playerGO.transform.forward * z;
             }
 
             newSplitItem1.transform.DOMove(moveDest1, SPLIT_FLY_TIME);
