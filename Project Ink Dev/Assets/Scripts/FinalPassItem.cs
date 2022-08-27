@@ -18,7 +18,7 @@ public class FinalPassItem : MonoBehaviour
             //PlayerPrefs.SetInt("PoMoLevel" + 1, 1);
             DOTween.Clear(true);
             GameMesMananger.Instance().save.hideCollections[2] = GameMesMananger.Instance().GetCurHiddenItemNum(GameMesMananger.Instance().getCurStageNum());
-            //GameMesMananger.Instance().save.isLevelPass[2] = true;
+            GameMesMananger.Instance().save.isLevelPass[3] = true;
             GameMesMananger.Instance().SetStage(-1);
             SaveManager.SaveByJSON(GameMesMananger.Instance().save);
             SceneManager.LoadScene("StartMenu");

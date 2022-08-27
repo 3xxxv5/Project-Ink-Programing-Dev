@@ -7,7 +7,7 @@ using System.IO;
 public class Save
 {
     public List<int> hideCollections = new List<int>() { 0, 0, 0 };
-    public List<bool> isLevelPass = new List<bool>() { true, false, false };
+    public List<bool> isLevelPass = new List<bool>() { true, false, false , false };
     public List<string> itemMap = new List<string>();
 }
 
