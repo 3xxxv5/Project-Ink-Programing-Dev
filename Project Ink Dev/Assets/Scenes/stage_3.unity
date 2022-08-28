@@ -13719,6 +13719,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8103269618783374064, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
+      propertyPath: LAST_TIME
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103269618783374064, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
       propertyPath: coolingFull
       value: 
       objectReference: {fileID: 750127671501350698}
@@ -13730,6 +13734,10 @@ PrefabInstance:
       propertyPath: coolingEmpty
       value: 
       objectReference: {fileID: 5986297967375173393}
+    - target: {fileID: 8103269618783374064, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
+      propertyPath: DEFAULT_DASH_DISTANCE
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8103269618783374064, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
       propertyPath: curv.m_Curve.Array.size
       value: 2
