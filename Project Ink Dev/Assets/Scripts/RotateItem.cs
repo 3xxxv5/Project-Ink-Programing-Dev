@@ -10,7 +10,7 @@ public class RotateItem : PowerFlower1
     [Header("旋转轴相对物体位置")]
     public Vector3 pivot = new Vector3(2, 0, 0);
     [Header("旋转速度")]
-    public float rotateSpeed = 3;
+    public float defaultRotateSpeed = 3;
     public float M_REBIRTHTIME;
     private float rotationRebirthTimeTemp;
 
@@ -29,6 +29,7 @@ public class RotateItem : PowerFlower1
     public override void SetFallingTrack()
     {
         var m = rb1.mass;
+        float rotateSpeed = defaultRotateSpeed * Time.timeScale;
         transform.RotateAround(pivot, Vector3.down, rotateSpeed);
         Vector3 force = new Vector3(0f, -m * m_acceleratetion, 0f);
         rb1.AddForce(force);
