@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 public class PauseMenu : MonoBehaviour
 {
   public static bool GameIsPause = false;
@@ -44,5 +45,12 @@ public class PauseMenu : MonoBehaviour
     GameIsPause = false;
     Time.timeScale = 1.0f;
     SceneManager.LoadScene("StartMenu");
+  }
+
+  public void ReSet()
+  {
+    DOTween.Clear(true);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    Resume();
   }
 }
