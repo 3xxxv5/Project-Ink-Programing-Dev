@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class UserInterface : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class UserInterface : MonoBehaviour
     collectionFull = Resources.Load<Sprite>("Image/collection_full");
     collectionEmpty = Resources.Load<Sprite>("Image/collection_empty");
     ImageList = GameObject.FindGameObjectsWithTag("Collections");
-    }
+    ImageList = ImageList.OrderBy(go => go.transform.GetSiblingIndex()).ToArray();
+  }
 
-	private void Start()
+  private void Start()
   {
     foreach (GameObject image in ImageList)
     {
@@ -27,9 +29,9 @@ public class UserInterface : MonoBehaviour
   }
   public void RefreshScore(int cScore, int tScore)
   {
-      if (cScore == 0 || cScore > tScore)
-          return;
-     ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
+    if (cScore == 0 || cScore > tScore)
+      return;
+    ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
   }
 
   public void RefreshHideScore(int hideScore, int tHideScore)
