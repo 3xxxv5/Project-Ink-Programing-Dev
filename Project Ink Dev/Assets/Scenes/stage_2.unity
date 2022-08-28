@@ -21792,14 +21792,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 1.5
   m_acceleratetion: 0
-  m_rebirthTime: 6
+  m_rebirthTime: 16
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 3, y: 0, z: 0}
+  pivot: {x: 6, y: 0, z: 0}
   rotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &1264785647
@@ -21829,8 +21829,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3262985, y: 0.8290043, z: 0.69504786}
-  m_Center: {x: -0.01112257, y: 0.10449365, z: 0.089928985}
+  m_Size: {x: 1.4890498, y: 0.97227186, z: 0.9694961}
+  m_Center: {x: 0.05820819, y: 0.07761401, z: 0.1817802}
 --- !u!1 &1265690957
 GameObject:
   m_ObjectHideFlags: 0
