@@ -5206,6 +5206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flower_4_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6156118595962d841a377cc6859f9b18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1101990636065546106, guid: 6156118595962d841a377cc6859f9b18, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6081,6 +6085,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: df9abc145c8177d43be54801d1ab1502, type: 3}
       propertyPath: m_Name
       value: Flower_lamp_bend
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df9abc145c8177d43be54801d1ab1502, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1015518987640935371, guid: df9abc145c8177d43be54801d1ab1502, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9738,6 +9746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flower_1_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2659ceb592836c4db1041b6f6de46ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7852646314867539445, guid: b2659ceb592836c4db1041b6f6de46ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12437,6 +12449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flower_1_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5922642602381584cb2007ee36e0664a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2732578220622487643, guid: 5922642602381584cb2007ee36e0664a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12770,6 +12786,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1e4f112393a31094d9acfe974c0f1aaa, type: 3}
       propertyPath: m_Name
       value: leaf
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e4f112393a31094d9acfe974c0f1aaa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1505625957690057654, guid: 1e4f112393a31094d9acfe974c0f1aaa, type: 3}
       propertyPath: m_Materials.Array.data[0]
