@@ -52,6 +52,7 @@ public class GuideCameraMove2 : MonoBehaviour
             {
                 p.moveTime -= Time.deltaTime;
                 cam.position += p.speed * Time.deltaTime;
+                //cam.Rotate(new Vector3(0, p.rotateSpeed, 0), Space.Self);
                 //cam.rotation = Quaternion.LookRotation(Vector3.RotateTowards(cam.forward, p.point.position - cam.position, p.rotateSpeed * Time.deltaTime, 0.0f));
             }
             else
