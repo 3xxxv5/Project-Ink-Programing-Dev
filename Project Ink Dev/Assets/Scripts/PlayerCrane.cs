@@ -60,7 +60,7 @@ public class PlayerCrane : BasePlayer
         //按住鼠标timer开始计时
         if (Input.GetMouseButton(0) && beginCD == false)
         {
-            timer += Time.deltaTime / MAX_DASH_STORAGE_TIME;
+            timer += Time.unscaledDeltaTime / MAX_DASH_STORAGE_TIME;
             if (timer > threshold && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
             {
                 characterGO.GetComponent<CraneAnimator>().Charge();

@@ -12096,6 +12096,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5899538043318426881, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8103269618783374064, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
       propertyPath: coolingFull
       value: 
