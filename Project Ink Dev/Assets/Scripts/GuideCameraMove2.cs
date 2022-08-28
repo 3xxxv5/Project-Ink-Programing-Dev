@@ -52,6 +52,10 @@ public class GuideCameraMove2 : MonoBehaviour
             {
                 p.moveTime -= Time.deltaTime;
                 cam.position += p.speed * Time.deltaTime;
+                cam.LookAt(p.point.position);
+                //Vector3 target = new Vector3(p.point.position.x, 0, p.point.position.z);
+                //float angle = Vector3.Angle(cam.forward, target);
+                //cam.Rotate(cam.up * angle);
                 //cam.Rotate(new Vector3(0, p.rotateSpeed, 0), Space.Self);
                 //cam.rotation = Quaternion.LookRotation(Vector3.RotateTowards(cam.forward, p.point.position - cam.position, p.rotateSpeed * Time.deltaTime, 0.0f));
             }
@@ -71,7 +75,7 @@ public class GuideCameraMove2 : MonoBehaviour
                     player.GetComponent<PlayerFrog>().enabled = true;
                     player.GetComponent<ThirdPersonCamera>().enabled = true;
 
-                    GuideMesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
+                    Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
 
                     front.SetActive(true);
                     cooling.SetActive(true);
