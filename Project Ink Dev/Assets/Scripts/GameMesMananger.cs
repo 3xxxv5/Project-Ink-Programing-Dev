@@ -47,7 +47,7 @@ public class GameMesMananger
 		curStageNum = stageNum;
 		//Debug.Log(curStageNum);
 		//////////////////////////////////
-		DOTween.Clear(true);
+		//DOTween.Clear(true);
 	}
 
 	public  void SetCurMainItemNumAdd(int curStageNum)
