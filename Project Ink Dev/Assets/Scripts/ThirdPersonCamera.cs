@@ -126,7 +126,7 @@ public class ThirdPersonCamera : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.lockState = CursorLockMode.Locked;
         }
 
 
