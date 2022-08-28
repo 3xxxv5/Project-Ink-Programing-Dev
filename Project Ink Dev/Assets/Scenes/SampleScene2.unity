@@ -693,30 +693,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5485958075616533076, guid: 3567a304db7b7ed41a9a679fcecefb10, type: 3}
   m_PrefabInstance: {fileID: 70421801}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &70421804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70421803}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599c2512e829bf649b3c8809053d428f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  interactiveType: 0
-  m_velocity: 1
-  m_acceleratetion: 0
-  m_rebirthTime: 5
-  m_originalPosition: {x: 0, y: 0, z: 0}
-  VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
-  splitItem: {fileID: 0}
-  SPLIT_FLY_TIME: 1
-  pivot: {x: 2, y: 0, z: 0}
-  rotateSpeed: 0.8
-  M_REBIRTHTIME: 0
 --- !u!114 &70421807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4456,6 +4432,18 @@ PrefabInstance:
     - target: {fileID: 1473372429450112691, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: field of view
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473372429450112691, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.62732875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473372429450112691, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.80125755
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473372429450112691, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 1473372429450112692, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: m_LocalPosition.x

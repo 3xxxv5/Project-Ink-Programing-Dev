@@ -28,15 +28,25 @@ public class Obstacle : MonoBehaviour
             var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
             Vector3 aim = playerGo.transform.position - (screenRay.direction  * 5.0f);
             playerGo.transform.DOMove(aim,2.0f);
-            camera.DOShakePosition(0.5f);
-            camera.DOShakeRotation(0.5f);
+            //camera.DOShakePosition(0.5f);
+            //camera.DOShakeRotation(0.5f);
+            if (CameraStatusController.Instance().GetCameraStatus() == CameraStatus.Common)
+            {
+                SetCameraShock();
+            }
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetCameraShock()
     {
-        
+        CameraStatusController.Instance().SetShock();
+        Camera.main.DOShakePosition(0.5f);
+        Camera.main.DOShakeRotation(0.5f);
+
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(CameraStatusController.Instance().SetCommon);
     }
+
 }

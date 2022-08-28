@@ -30,7 +30,7 @@ public class PowerFlower1 : Item
     void CollideWithPlayerBehavior(Collider other)
 	{
         var stageNum = GameMesMananger.Instance().getCurStageNum();
-        Debug.Log(stageNum);
+        //Debug.Log(stageNum);
         if (itemType == ItemType.Main)
         {
             
