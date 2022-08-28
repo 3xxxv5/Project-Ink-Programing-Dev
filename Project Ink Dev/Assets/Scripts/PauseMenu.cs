@@ -44,7 +44,9 @@ public class PauseMenu : MonoBehaviour
   {
     GameIsPause = false;
     Time.timeScale = 1.0f;
+    //SaveManager.SaveByJSON(GameMesMananger.Instance().save);
     SceneManager.LoadScene("StartMenu");
+    //SaveManager.LoadByJSON();
   }
 
   public void ReSet()
