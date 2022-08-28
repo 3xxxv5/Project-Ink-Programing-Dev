@@ -20,10 +20,17 @@ public class PoolManager : MonoBehaviour
 		{
 			map.Add(pool.Prefab, pool);
 
-			Transform poolParent = new GameObject("Pool: " + pool.Prefab.name).transform;
-			poolParent.parent = transform;
-
-			pool.Initialize(poolParent);
+			if (pool.ParentTransform == null)
+			{
+				Transform poolParent = new GameObject("Pool: " + pool.Prefab.name).transform;
+				poolParent.parent = transform;
+				pool.Initialize(poolParent);
+			}
+			else
+			{
+				pool.Initialize(pool.ParentTransform);
+			}
+			
 		}
 	}
 
