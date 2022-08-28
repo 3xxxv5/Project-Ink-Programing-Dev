@@ -12,6 +12,7 @@ public class Guide2 : MonoBehaviour
 
     public GameObject player;
     public TextMeshProUGUI Text;
+    public GameObject target;
 
     void OnEnable()
     {
@@ -59,31 +60,19 @@ public class Guide2 : MonoBehaviour
             timer += Time.unscaledDeltaTime / threshold;
             yield return null;
         }
-        Text.text = "";
+        Text.text = "在花朵变为非透明时可撞击";
         guideStep = EnumSpace.GuideStep.Step2;
         player.GetComponent<ThirdPersonCamera>().enabled = true;
-        Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
+        //Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
     }
 
     void Step2()
     {
-        var camera = Camera.main;
-        var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
-        Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
-        RaycastHit hitInfo;
-        //移动到物体上
-        if (Physics.Raycast(ray, out hitInfo))
+        if (target == null)
         {
-            //GuideMesManager.Instance.guideStatus = EnumSpace.GuideStatus.InGuide;
-            var item = hitInfo.transform.gameObject.GetComponent<PowerFlower3>();
-            Debug.Log(hitInfo.transform.gameObject.name);
-            if(item != null)
-            {
-                Debug.Log(123456789);
-                Text.text = "在花朵变为非透明时可撞击";
-                guideStep = EnumSpace.GuideStep.Step3;
-            }
-            //
+            Text.text = "";
+            Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
+            Destroy(this.gameObject);
         }
     }
 }
