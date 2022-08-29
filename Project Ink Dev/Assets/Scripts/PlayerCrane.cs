@@ -16,6 +16,7 @@ public class PlayerCrane : BasePlayer
     public float MAX_DASH_STORAGE_TIME = 1.0f;
     public float MAX_DASH_MULTI = 3.0f;
     public Image storageFull;
+    public float DEFAULT_DASH_DISTANCE = 150;
 
     void Start()
     {
@@ -32,6 +33,29 @@ public class PlayerCrane : BasePlayer
         if (isMouseButtonUp)
             CheckIsInCD();
         CheckBulletTime();
+    }
+
+    protected void LetMoveDefault()
+    {
+        var camera = Camera.main;
+        var screenRay = (camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0)));
+        Ray ray = new Ray(screenRay.origin + screenRay.direction * 4.3f, screenRay.direction);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, DEFAULT_DASH_DISTANCE))
+        {
+            //print(hitInfo.transform);
+            moveDest = hitInfo.point - ray.direction * 1.0f;
+            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+        }
+        else
+        {
+            moveDest = ray.origin + ray.direction * DEFAULT_DASH_DISTANCE;
+            transform.DOMove(moveDest, LAST_TIME).SetEase(curv);
+        }
+        CameraStatusController.Instance().SetMotionBlurTrue();
+        Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(LAST_TIME);
+        seq.AppendCallback(CameraStatusController.Instance().SetMotionBlurFalse);
     }
 
     protected new void LetMove()
@@ -61,7 +85,7 @@ public class PlayerCrane : BasePlayer
         if (Input.GetMouseButton(0) && beginCD == false)
         {
             timer += Time.unscaledDeltaTime / MAX_DASH_STORAGE_TIME;
-            if (timer > threshold && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
+            if (timer > threshold / MAX_DASH_STORAGE_TIME && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
             {
                 characterGO.GetComponent<CraneAnimator>().Charge();
                 PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Charge);
@@ -76,7 +100,10 @@ public class PlayerCrane : BasePlayer
             isMouseButtonUp = true;
             beginCD = true;
             cd = 1;
-            LetMove();
+            if (timer > threshold / MAX_DASH_STORAGE_TIME)
+                LetMove();
+            else
+                LetMoveDefault();
 
             characterGO.GetComponent<CraneAnimator>().Launch();
             PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Launch);
