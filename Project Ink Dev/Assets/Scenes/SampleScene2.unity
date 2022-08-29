@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19278,8 +19278,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8086315934935121144, guid: 508ba516ec6e6ab458000ef7b08f6eae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508ba516ec6e6ab458000ef7b08f6eae, type: 3}
+--- !u!1 &8018982866788784680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8086315934935121144, guid: 508ba516ec6e6ab458000ef7b08f6eae, type: 3}
+  m_PrefabInstance: {fileID: 8018982866788784679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8018982866788784681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8018982866788784680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30517745b70198243b3489bfb33ad57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edgeDetectShader: {fileID: 4800000, guid: ae66daafe12b16a47b0143a3a50cf5f2, type: 3}
+  edgesOnly: 0.25
+  edgeColor: {r: 0, g: 0, b: 0, a: 1}
+  backgroundColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+--- !u!114 &8018982866788784682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8018982866788784680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 702fc172e80c01a49a61832c0ba5cb55, type: 2}
 --- !u!224 &8031313803742328744
 RectTransform:
   m_ObjectHideFlags: 0
