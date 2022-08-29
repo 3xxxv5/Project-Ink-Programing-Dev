@@ -6,7 +6,11 @@ using UnityEngine;
 {
     public GameObject Prefab => prefab;
 
+    public Transform ParentTransform => parentTransform;
+
     [SerializeField] GameObject prefab;
+
+    [SerializeField] Transform parentTransform;
 
     Queue<GameObject> queue;
 
@@ -14,7 +18,7 @@ using UnityEngine;
 
     Transform parent;
 
-    //初始化对象池
+    //鍒濆鍖栧璞℃睜
     public void Initialize(Transform parent)
 	{
         queue = new Queue<GameObject>();
@@ -61,8 +65,8 @@ using UnityEngine;
     {
         var go = GetObjectOutOfPool();
         go.SetActive(true);
-        go.transform.position = position;
-        go.transform.rotation = rotation;
+        go.transform.localPosition = position;
+        go.transform.localRotation = rotation;
         return go;
     }
 }
