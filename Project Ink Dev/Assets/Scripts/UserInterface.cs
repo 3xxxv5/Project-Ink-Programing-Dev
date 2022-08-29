@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System.Collections;
 
 public class UserInterface : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class UserInterface : MonoBehaviour
     if (cScore == 0 || cScore > tScore)
       return;
     ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
+    StartCoroutine(CollectionsEffect(ImageList[cScore - 1].transform));
   }
 
   public void RefreshHideScore(int hideScore, int tHideScore)
@@ -42,5 +44,25 @@ public class UserInterface : MonoBehaviour
     Image nextEmptyImg = ImageList[length - tHideScore + hideScore - 1].GetComponent<Image>();
     nextEmptyImg.sprite = collectionFull;
     nextEmptyImg.color = Color.blue;
+    StartCoroutine(CollectionsEffect(nextEmptyImg.transform));
+  }
+  private IEnumerator CollectionsEffect(Transform _tf)
+  {
+    float scale = _tf.transform.localScale.x;
+    float min = scale;
+    float max = scale * 2;
+    while (scale < max)
+    {
+      scale += Time.deltaTime * 2;
+      _tf.transform.localScale = new Vector3(scale, scale, scale);
+      yield return null;
+    }
+    while (scale > min)
+    {
+      scale -= Time.deltaTime * 2;
+      _tf.transform.localScale = new Vector3(scale, scale, scale);
+      yield return null;
+    }
+    // Debug.Log("end coroutine");
   }
 }
