@@ -47,7 +47,7 @@ public class Guide2 : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            DOTween.Clear(true);
+            //DOTween.Clear(true);
             StopAllCoroutines();
         }
     }

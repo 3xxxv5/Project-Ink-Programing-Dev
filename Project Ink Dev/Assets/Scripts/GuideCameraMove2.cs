@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class GuideCameraMove2 : MonoBehaviour
 {
@@ -82,6 +83,7 @@ public class GuideCameraMove2 : MonoBehaviour
                     storage.SetActive(true);
 
                     //销毁自身
+                    DOTween.Clear(true);
                     Destroy(cam.gameObject);
                     Destroy(this.gameObject);
                 }
