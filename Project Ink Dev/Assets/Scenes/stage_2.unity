@@ -11881,7 +11881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 3
   m_acceleratetion: 0
   m_rebirthTime: 16
   m_originalPosition: {x: 0, y: 0, z: 0}
@@ -14456,14 +14456,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 4
   m_acceleratetion: 0
   m_rebirthTime: 16
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 3, y: 0, z: 0}
+  pivot: {x: 5, y: 0, z: 0}
   defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!65 &783138929
@@ -18811,12 +18811,12 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 3
   m_acceleratetion: 0
-  m_rebirthTime: 6
+  m_rebirthTime: 10
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  keepTime: 3
+  keepTime: 2
 --- !u!54 &1068313995
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19617,7 +19617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 3
   m_acceleratetion: 0
   m_rebirthTime: 16
   m_originalPosition: {x: 0, y: 0, z: 0}
@@ -19638,8 +19638,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1824205, y: 2.7791145, z: 0.119349465}
-  m_Center: {x: -0.0028447541, y: -0.0026550984, z: 0.024508836}
+  m_Size: {x: 2.4143817, y: 3.2303288, z: 0.41325757}
+  m_Center: {x: 0.036139116, y: -0.00003747279, z: 0.03214493}
 --- !u!54 &1115366203
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19787,7 +19787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 2
   m_acceleratetion: 0
   m_rebirthTime: 100
   m_originalPosition: {x: 0, y: 0, z: 0}
@@ -19805,8 +19805,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3262982, y: 1.4035475, z: 0.10098341}
-  m_Center: {x: 0.00040864947, y: -0.0023210046, z: 0.01319927}
+  m_Size: {x: 1.5507392, y: 1.6538881, z: 0.5809362}
+  m_Center: {x: -0.015594859, y: 0.07962061, z: 0.045577988}
 --- !u!54 &1129908930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22274,7 +22274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1.5
+  m_velocity: 4
   m_acceleratetion: 0
   m_rebirthTime: 16
   m_originalPosition: {x: 0, y: 0, z: 0}
@@ -22687,9 +22687,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 13
+  m_rebirthTime: 33
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -22724,8 +22724,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1653898, y: 2.1129894, z: 0.7127441}
-  m_Center: {x: -0.5275129, y: 0.12495597, z: 0.07073194}
+  m_Size: {x: 3.1653898, y: 2.1129894, z: 1.0437052}
+  m_Center: {x: -0.5275129, y: 0.12495599, z: 0.025785575}
 --- !u!1 &1286099953
 GameObject:
   m_ObjectHideFlags: 0
@@ -22826,14 +22826,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 36
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  pivot: {x: 3, y: 0, z: 0}
+  pivot: {x: 6, y: 0, z: 0}
   defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &1286099958
@@ -26685,7 +26685,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 1.5
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 36
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -33681,12 +33681,12 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 3
   m_acceleratetion: 0
-  m_rebirthTime: 6
+  m_rebirthTime: 14
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
-  keepTime: 3
+  keepTime: 2
 --- !u!54 &1965640064
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33980,7 +33980,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 15
+  m_rebirthTime: 30
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -34488,9 +34488,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 26
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -35320,9 +35320,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 1
+  m_velocity: 3
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 20
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -37162,7 +37162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149244787130}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 336.32626, y: 71.67622, z: -351.72128}
+  m_LocalPosition: {x: 336.32626, y: 71.67622, z: -354.6}
   m_LocalScale: {x: 23.359999, y: 23.359999, z: 23.359999}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -37511,7 +37511,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 1
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 26
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -37580,7 +37580,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 0.3
   m_acceleratetion: 0
-  m_rebirthTime: 100
+  m_rebirthTime: 10
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 0}
   splitItem: {fileID: 0}
@@ -37649,7 +37649,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 36
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -37785,9 +37785,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   interactiveType: 0
-  m_velocity: 5
+  m_velocity: 3.5
   m_acceleratetion: 0
-  m_rebirthTime: 15
+  m_rebirthTime: 50
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -37925,7 +37925,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 26
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -37994,7 +37994,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 16
+  m_rebirthTime: 36
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}
@@ -39195,7 +39195,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1769027075968569734, guid: a121f62924bccd545aed5e1bca650b89, type: 3}
       propertyPath: m_velocity
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1769027075968569734, guid: a121f62924bccd545aed5e1bca650b89, type: 3}
       propertyPath: m_rebirthTime
