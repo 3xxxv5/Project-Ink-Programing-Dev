@@ -46,14 +46,14 @@ public class PauseMenu : MonoBehaviour
     GameIsPause = false;
     Time.timeScale = 1.0f;
     //SaveManager.SaveByJSON(GameMesMananger.Instance().save);
-    SceneManager.LoadScene("StartMenu");
+    SceneManager.LoadSceneAsync("StartMenu");
     GameMesMananger.Instance().save = SaveManager.LoadByJSON();
   }
 
   public void ReSet()
   {
     DOTween.Clear(true);
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     Resume();
   }
 }
