@@ -29,26 +29,28 @@ public class PlayerShrimp : BasePlayer
     protected override void CheckDash()
     {
         //点击鼠标左键加速冲刺
-        if (Input.GetMouseButtonDown(0) && beginCD == false)
+        if (Input.GetMouseButtonDown(0))
         {
-            //Vector3 localPos = characterTran.localPosition;
-            //localPos.z += dashDis;
-            //Vector3 pos = playerTran.TransformPoint(localPos);
-            //playerTran.DOMove(pos, lastTime);
-            //playerTran.DOMove(new Vector3(pos.x, pos.y, pos.z + dashDis), lastTime);
-            LetMove();
-            beginCD = true;
-            cd = 1;
-            isMouseButtonUp = true;
+            if (beginCD == false)
+            {
+                LetMove();
+                beginCD = true;
+                cd = 1;
+                isMouseButtonUp = true;
 
-            //播放冲刺动画
-            characterGO.GetComponent<ShrimpAnimator>().Dash();
-            PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Dash);
-            Sequence seq = DOTween.Sequence();
-            seq.AppendInterval(LAST_TIME);
-            seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
+                //播放冲刺动画
+                characterGO.GetComponent<ShrimpAnimator>().Dash();
+                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Dash);
+                Sequence seq = DOTween.Sequence();
+                seq.AppendInterval(LAST_TIME);
+                seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
+            }
         }
     }
+
+
+
+
 
     protected override void PlayWalkAnim()
     {

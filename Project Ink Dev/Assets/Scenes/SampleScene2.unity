@@ -4302,6 +4302,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 750127672437804769}
     - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
+      propertyPath: coolingEmpty
+      value: 
+      objectReference: {fileID: 5986297965995994842}
+    - target: {fileID: 1473372429247404572, guid: 2c584da161ea9fe4eb05175e13e1fba1, type: 3}
       propertyPath: curv.m_Curve.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -4514,7 +4518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motionBlurShader: {fileID: 4800000, guid: 239b1890cbb808149b61f3a7e09baccd, type: 3}
-  blurAmount: 0.7
+  blurAmount: 0.5
 --- !u!82 &443575992
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19234,6 +19238,10 @@ PrefabInstance:
     - target: {fileID: 8086315934611462252, guid: 508ba516ec6e6ab458000ef7b08f6eae, type: 3}
       propertyPath: m_Name
       value: Guide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086315934611462252, guid: 508ba516ec6e6ab458000ef7b08f6eae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8086315934611462253, guid: 508ba516ec6e6ab458000ef7b08f6eae, type: 3}
       propertyPath: m_RootOrder
