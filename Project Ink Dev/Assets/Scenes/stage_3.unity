@@ -341,7 +341,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &51742652
 Rigidbody:
@@ -480,7 +480,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &62441219
 Rigidbody:
@@ -6880,7 +6880,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &529100747
 Rigidbody:
@@ -7377,7 +7377,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &628281075
 Rigidbody:
@@ -8190,7 +8190,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &653463802
 Rigidbody:
@@ -8499,7 +8499,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &717322490
 Rigidbody:
@@ -8860,7 +8860,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &814644164
 Rigidbody:
@@ -9975,7 +9975,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &1030884041
 Rigidbody:
@@ -13916,7 +13916,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &1775351288
 Rigidbody:
@@ -14447,7 +14447,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 10, y: 0, z: 0}
-  rotateSpeed: 3
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &1871434858
 Rigidbody:
@@ -18491,8 +18491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.99997, y: -233}
-  m_SizeDelta: {x: 161, y: 72}
+  m_AnchoredPosition: {x: 399.99997, y: -224.99998}
+  m_SizeDelta: {x: 160, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &3996481100634158285
 MeshFilter:
@@ -19013,8 +19013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.99997, y: -344.3333}
-  m_SizeDelta: {x: 152, y: 72}
+  m_AnchoredPosition: {x: 399.99997, y: -341.66663}
+  m_SizeDelta: {x: 160, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4938769915029527908
 RectTransform:
@@ -20066,8 +20066,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.99997, y: -113.666664}
-  m_SizeDelta: {x: 191, y: 88}
+  m_AnchoredPosition: {x: 399.99997, y: -108.33333}
+  m_SizeDelta: {x: 160, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &7096098011764094206
 Transform:
