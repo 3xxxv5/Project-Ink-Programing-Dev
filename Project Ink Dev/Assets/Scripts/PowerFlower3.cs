@@ -29,7 +29,7 @@ public class PowerFlower3 : Item
 
     void Boom(Collider other)
     {
-        PoolManager.release(VFXPrefab, other.transform.position, other.transform.rotation);
+        PoolManager.release(VFXPrefab, new Vector3(0, 0, -330.0f), new Quaternion(0, 0, 0, 0));
     }
 
     void SetCameraShock()
