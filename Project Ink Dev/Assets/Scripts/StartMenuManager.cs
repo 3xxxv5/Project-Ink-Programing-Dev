@@ -27,7 +27,7 @@ public class StartMenuManager : MonoBehaviour
 
   private void Start()
   {
-    StartCoroutine(PlayOpeningAnimation());
+    // StartCoroutine(PlayOpeningAnimation());
     oringalWidth = image.rectTransform.sizeDelta.x;
     oringalHeight = image.rectTransform.sizeDelta.y;
   }
@@ -75,8 +75,14 @@ public class StartMenuManager : MonoBehaviour
       yield return null;
     }
   }
+  public void OpenStroy()
+  {
+    openingAnimation.SetActive(true);
+    startMenu.SetActive(false);
+  }
   public void OpenLevelSlection()
   {
+    openingAnimation.SetActive(false);
     startMenu.SetActive(false);
     levelSlection.SetActive(true);
     settingMenu.SetActive(false);
