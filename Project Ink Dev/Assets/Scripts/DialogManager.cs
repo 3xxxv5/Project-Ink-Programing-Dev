@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class DialogManager : MonoBehaviour
 {
   /// <summary>
@@ -45,15 +46,17 @@ public class DialogManager : MonoBehaviour
     imageDic["仙人生气表情"] = sprites[2];
     imageDic["落花的花园，右下角有卷轴"] = sprites[3];
     imageDic["猫咪"] = sprites[4];
-    imageDic["虾和蛙对视"] = sprites[5];
-    imageDic["蛙和仙鹤对视"] = sprites[6];
-    imageDic["仙鹤看到猫尾巴"] = sprites[7];
-    imageDic["仙鹤飞出画卷"] = sprites[8];
+    imageDic["仙人微笑表情"] = sprites[5];
+    imageDic["虾和蛙对视"] = sprites[6];
+    imageDic["蛙和仙鹤对视"] = sprites[7];
+    imageDic["仙鹤看到猫尾巴"] = sprites[8];
+    imageDic["仙鹤飞出画卷"] = sprites[9];
   }
 
   private void Start()
   {
     ShowDialogRow();
+
   }
 
   public void UpdateText(string _name, string _text)
@@ -102,6 +105,22 @@ public class DialogManager : MonoBehaviour
         if (cells[6] == "0")
         {
           gameObject.GetComponent<StartMenuManager>().OpenLevelSlection();
+        }
+        if (cells[6] == "1")
+        {
+          SceneManager.LoadSceneAsync("stage_2");
+        }
+        if (cells[6] == "2")
+        {
+          SceneManager.LoadSceneAsync("stage_3");
+        }
+        if (cells[6] == "3")
+        {
+          SceneManager.LoadSceneAsync("DialogStage4");
+        }
+        if (cells[6] == "4")
+        {
+          SceneManager.LoadSceneAsync("StartMenu");
         }
       }
     }
