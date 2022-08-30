@@ -6,6 +6,7 @@ public class LetJSONMesHiddenItemAppear : MonoBehaviour
 {
     void Start()
     {
+        GameUIManager.updateUI();
         var hasGetHiddenNum = GameMesMananger.Instance().save.hideCollections[GameMesMananger.Instance().getCurStageNum()];
         if(hasGetHiddenNum > 0)
 		{
