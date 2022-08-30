@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: leaf_3h
+  m_Name: leaf_2h
   m_Shader: {fileID: 4800000, guid: 61e72fb1b101ad44c8a9b5599ba01332, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -59,7 +59,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaScale: 0.93
+    - _AlphaScale: 0.94
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -77,6 +77,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5911949, g: 0.77155006, b: 1, a: 1}
+    - _Color: {r: 0.7421383, g: 0.9262434, b: 1, a: 1}
     - _EmissionColor: {r: 0.66977376, g: 0.6886792, b: 0.6475317, a: 1}
   m_BuildTextureStacks: []
