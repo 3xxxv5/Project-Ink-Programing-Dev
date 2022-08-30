@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour
   {
     pauseMenuUI.SetActive(false);
     Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
     Time.timeScale = 1.0f;
     GameIsPause = false;
   }
@@ -44,15 +45,16 @@ public class PauseMenu : MonoBehaviour
   {
     GameIsPause = false;
     Time.timeScale = 1.0f;
-    //SaveManager.SaveByJSON(GameMesMananger.Instance().save);
-    SceneManager.LoadScene("StartMenu");
-    //SaveManager.LoadByJSON();
+        //SaveManager.SaveByJSON(GameMesMananger.Instance().save);
+    GameMesMananger.Instance().SetStage(-1);
+    SceneManager.LoadSceneAsync("StartMenu");
+    GameMesMananger.Instance().save = SaveManager.LoadByJSON();
   }
 
   public void ReSet()
   {
     DOTween.Clear(true);
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     Resume();
   }
 }

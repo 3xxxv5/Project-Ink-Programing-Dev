@@ -16,6 +16,7 @@ public abstract class BasePlayer : MonoBehaviour
 
     public GameObject characterGO;
     public Image coolingFull;
+    public Image coolingEmpty;
     //角色默认移动速度为10
     [Header("默认速度")]
     public float MOVE_SPEED = 10f;
@@ -39,7 +40,17 @@ public abstract class BasePlayer : MonoBehaviour
     }
 
 
+    protected void SetCoolingBlack()
+    {
+        coolingFull.color = Color.black;
+        coolingEmpty.color = Color.black;
+    }
 
+    protected void SetCoolingWhite()
+    {
+        coolingFull.color = Color.white;
+        coolingEmpty.color = Color.white;
+    }
 
 
     public void CheckIsInCD()
@@ -48,6 +59,13 @@ public abstract class BasePlayer : MonoBehaviour
         {
             cd -= Time.deltaTime / dashCD;
             coolingFull.fillAmount = 1 - cd;
+            if (Input.GetMouseButtonDown(0) && coolingFull.fillAmount >0.1f)
+            {
+                SetCoolingBlack();
+                Sequence seq = DOTween.Sequence();
+                seq.AppendInterval(0.2f);
+                seq.AppendCallback(SetCoolingWhite);
+            }
             if (cd <= 0)
             {
                 beginCD = false;

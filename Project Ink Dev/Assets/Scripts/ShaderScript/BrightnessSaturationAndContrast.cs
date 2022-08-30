@@ -21,11 +21,14 @@ public class BrightnessSaturationAndContrast : PostEffectBase {
 	[Range(0.0f, 3.0f)]
 	public float contrast = 1.0f;
 
+	public Color baseColor = Color.white;
+
 	void OnRenderImage(RenderTexture src, RenderTexture dest) {
 		if (material != null) {
 			material.SetFloat("_Brightness", brightness);
 			material.SetFloat("_Saturation", saturation);
 			material.SetFloat("_Contrast", contrast);
+			material.SetColor("_Color", baseColor);
 
 			Graphics.Blit(src, dest, material);
 		} else {

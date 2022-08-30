@@ -6,9 +6,16 @@ using DG.Tweening;
 
 public class FrogItem : MonoBehaviour
 {
+    public GameObject PassLevelImage;
+
     void OnEnable()
     {
         GetComponent<BoxCollider>().isTrigger = true;
+    }
+
+    void LoadNewStage()
+	{
+        SceneManager.LoadScene("stage_2");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,9 +28,23 @@ public class FrogItem : MonoBehaviour
             GameMesMananger.Instance().SetStage(1);
             GameMesMananger.Instance().save.isLevelPass[1] = true;
             SaveManager.SaveByJSON(GameMesMananger.Instance().save);
-            SceneManager.LoadScene("stage_2");
+            Invoke("LoadNewStage", 8.0f);
+            PassLevelImage.SetActive(true);
+            StartCoroutine(Fade());
             GameUIManager.updateUI();
             DOTween.Clear(true);
         }
     }
+
+    IEnumerator Fade()
+	{
+        float alpha = 0.0f;
+        var img = PassLevelImage.GetComponent<CanvasGroup>();
+        while(alpha<1.0f)
+		{
+            alpha += Time.deltaTime / 3.0f;
+            img.alpha = alpha;
+            yield return null;
+		}
+	}
 }

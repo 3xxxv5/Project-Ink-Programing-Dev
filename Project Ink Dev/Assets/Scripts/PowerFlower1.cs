@@ -13,7 +13,10 @@ public class PowerFlower1 : Item
 
     void Boom(Collider other)
 	{
-        PoolManager.release(VFXPrefab, other.transform.position, other.transform.rotation);
+        //var camera = Camera.main;
+        //var centerPosition = camera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        //Debug.Log(centerPosition);
+        PoolManager.release(VFXPrefab,new Vector3(0,0,-330.0f), new Quaternion(0,0,0,0));
 	}
 
 
