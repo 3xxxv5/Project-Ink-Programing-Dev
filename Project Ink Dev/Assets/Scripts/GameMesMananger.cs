@@ -30,7 +30,7 @@ public class GameMesMananger
 	private  int[] hiddenItemNum = new int[3] { 5, 5, 7};
 	private  int[] curGetHiddenItemNum = new int[3] { 0, 0, 0};
 
-	private  int curStageNum = -1;
+	private  int curStageNum = 2;
 	public Save save = SaveManager.LoadByJSON();
 
 	public Dictionary<GameObject, string> map1 = new Dictionary<GameObject, string>();

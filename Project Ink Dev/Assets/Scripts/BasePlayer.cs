@@ -57,7 +57,7 @@ public abstract class BasePlayer : MonoBehaviour
     {
         if (beginCD)
         {
-            cd -= Time.deltaTime / dashCD;
+            cd -= Time.unscaledDeltaTime / dashCD;
             coolingFull.fillAmount = 1 - cd;
             if (Input.GetMouseButtonDown(0) && coolingFull.fillAmount >0.1f)
             {
