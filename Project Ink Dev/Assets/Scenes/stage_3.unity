@@ -17214,7 +17214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103269618783374067, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
       propertyPath: flx
-      value: 2.21
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8103269618783374067, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
       propertyPath: angle
@@ -17230,7 +17230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103269619345796516, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
       propertyPath: blurAmount
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5030deb18cebe3d4ab5c725b743d783d, type: 3}
