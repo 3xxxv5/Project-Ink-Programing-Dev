@@ -59,7 +59,7 @@ public class LevelSelection : MonoBehaviour
         GameMesMananger.Instance().SetStage(2);
       }
       SceneManager.LoadSceneAsync(sceneName);
-      GameUIManager.updateUI();
+      //GameUIManager.updateUI();
       DOTween.Clear(true);
     }
   }

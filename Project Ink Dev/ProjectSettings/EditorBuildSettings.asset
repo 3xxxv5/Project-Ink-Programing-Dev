@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage_3.unity
     guid: c21c27e6cb776ec4b8c3e06418c6bd6e
+  - enabled: 1
+    path: Assets/Scenes/DialogStage1.unity
+    guid: b4109ec6759831748b2d3046e43fb435
+  - enabled: 1
+    path: Assets/Scenes/DialogStage2.unity
+    guid: 46e9937b1a2448848a3cd740d50f9dba
+  - enabled: 1
+    path: Assets/Scenes/DialogStage3.unity
+    guid: 9ecce243529863045982b5565192977c
+  - enabled: 1
+    path: Assets/Scenes/DialogStage4.unity
+    guid: 51680caf78cfc2d44b127d29f1452a93
   m_configObjects: {}

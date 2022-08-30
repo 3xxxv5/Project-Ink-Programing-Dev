@@ -23,13 +23,14 @@ public class GuideCameraMove2 : MonoBehaviour
     public GameObject cooling;
     public GameObject storage;
     public Path[] path = new Path[0];
-    private int id;
+    private int id = 0;
 
 
     void Awake()
     {
         //stage = GameMesMananger.Instance().getCurStageNum();
         cam.position = path[0].point.position;
+        cam.LookAt(path[id + 1].point.position);
         front.SetActive(false);
         cooling.SetActive(false);
         storage.SetActive(false);
@@ -51,9 +52,10 @@ public class GuideCameraMove2 : MonoBehaviour
             Path p = path[id];
             if (p.moveTime > 0)
             {
+                cam.position = p.point.position;
                 p.moveTime -= Time.deltaTime;
-                cam.position += p.speed * Time.deltaTime;
-                cam.LookAt(p.point.position);
+                //cam.position += p.speed * Time.deltaTime;
+                cam.LookAt(path[id + 1].point.position);
                 //Vector3 target = new Vector3(p.point.position.x, 0, p.point.position.z);
                 //float angle = Vector3.Angle(cam.forward, target);
                 //cam.Rotate(cam.up * angle);
@@ -62,20 +64,20 @@ public class GuideCameraMove2 : MonoBehaviour
             }
             else
             {
-                cam.position = p.point.position;
-                id++;
+                //cam.position = p.point.position;
+                id += 2;
                 if (id >= path.Length)
                 {
                     //if (GameMesMananger.Instance().save.isLevelPass[2] == false)
                     //{
                     //    guide.SetActive(true);
                     //}
-                    guide.SetActive(true);
+                    
                     //player.SetActive(true);
 
                     player.GetComponent<PlayerFrog>().enabled = true;
                     player.GetComponent<ThirdPersonCamera>().enabled = true;
-
+                    guide.SetActive(true);
                     Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
 
                     front.SetActive(true);

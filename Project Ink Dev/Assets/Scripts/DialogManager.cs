@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class DialogManager : MonoBehaviour
 {
   /// <summary>
@@ -12,11 +13,7 @@ public class DialogManager : MonoBehaviour
   /// <summary>
   /// 左侧人物立绘
   /// </summary>
-  public SpriteRenderer spriteLeft;
-  /// <summary>
-  /// 右侧人物立绘
-  /// </summary>
-  public SpriteRenderer spriteRight;
+  public Image spriteBg;
   /// <summary>
   /// 角色名字文本
   /// </summary>
@@ -25,7 +22,7 @@ public class DialogManager : MonoBehaviour
   /// 对话文本，按行分割
   /// </summary>
   private string[] dialogRows;
-  private int dialogIndex;
+  private int dialogIndex = 0;
   /// <summary>
   /// 对话内容文本
   /// </summary>
@@ -44,31 +41,39 @@ public class DialogManager : MonoBehaviour
   private void Awake()
   {
     ReadText(dialogDataFile);
-    // imageDic["仙人"] = sprites[0];
-    // imageDic["虾"] = sprites[1];
+    imageDic["花园繁花似锦"] = sprites[0];
+    imageDic["仙人抬手抚花"] = sprites[1];
+    imageDic["仙人生气表情"] = sprites[2];
+    imageDic["落花的花园，右下角有卷轴"] = sprites[3];
+    imageDic["猫咪"] = sprites[4];
+    imageDic["仙人微笑表情"] = sprites[5];
+    imageDic["虾和蛙对视"] = sprites[6];
+    imageDic["蛙和仙鹤对视"] = sprites[7];
+    imageDic["仙鹤看到猫尾巴"] = sprites[8];
+    imageDic["仙鹤飞出画卷"] = sprites[9];
   }
 
   private void Start()
   {
-    // UpdateText("仙人", "你吃了吗？");
+    ShowDialogRow();
+
   }
 
   public void UpdateText(string _name, string _text)
   {
-    nameText.text = _name;
-    dialogText.text = _text;
+    // nameText.text = _name;
+    if (_name == "右")
+      dialogText.text = _text;
+    else
+      nameText.text = _text;
   }
 
-  public void UpdateImage(string _name, string _position)
+  public void UpdateImage(string _name)
   {
-    if (_position == "左")
-    {
-      spriteLeft.sprite = imageDic[_name];
-    }
-    else if (_position == "右")
-    {
-      spriteRight.sprite = imageDic[_name];
-    }
+    if (_name == "长图从左往右")
+      spriteBg.sprite = sprites[3];
+    else
+      spriteBg.sprite = imageDic[_name];
   }
 
   public void ReadText(TextAsset _textAsset)
@@ -83,8 +88,8 @@ public class DialogManager : MonoBehaviour
       if (cells[0] == "#" && int.Parse(cells[1]) == dialogIndex)
       {
         nextButton.gameObject.SetActive(true);
-        UpdateText(cells[2], cells[4]);
-        // UpdateImage(cells[2], cells[3]);
+        UpdateText(cells[3], cells[4]);
+        UpdateImage(cells[2]);
 
         dialogIndex = int.Parse(cells[5]);
         break;
@@ -97,6 +102,26 @@ public class DialogManager : MonoBehaviour
       else if (cells[0] == "END" && int.Parse(cells[1]) == dialogIndex)
       {
         Debug.Log("剧情结束");
+        if (int.Parse(cells[6]) == 0)
+        {
+          gameObject.GetComponent<StartMenuManager>().OpenLevelSlection();
+        }
+        if (int.Parse(cells[6]) == 1)
+        {
+          SceneManager.LoadSceneAsync("stage_2");
+        }
+        if (int.Parse(cells[6]) == 2)
+        {
+          SceneManager.LoadSceneAsync("stage_3");
+        }
+        if (int.Parse(cells[6]) == 3)
+        {
+          SceneManager.LoadSceneAsync("DialogStage4");
+        }
+        if (int.Parse(cells[6]) == 4)
+        {
+          SceneManager.LoadSceneAsync("StartMenu");
+        }
       }
     }
   }

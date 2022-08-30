@@ -649,7 +649,7 @@ MonoBehaviour:
   interactiveType: 0
   m_velocity: 2
   m_acceleratetion: 0
-  m_rebirthTime: 3
+  m_rebirthTime: 10
   m_originalPosition: {x: 0, y: 0, z: 0}
   VFXPrefab: {fileID: 228892914543378026, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
   splitItem: {fileID: 0}

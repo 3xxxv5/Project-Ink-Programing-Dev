@@ -17,16 +17,17 @@ public class StartMenuManager : MonoBehaviour
   [SerializeField]
   private GameObject settingMenu;
   [SerializeField]
-  private Animation fade1;
+  private CanvasGroup fade;
   [SerializeField]
-  private Animation fade2;
+  private float fadeDuration;
+  private bool isFade;
 
   private float oringalWidth;
   private float oringalHeight;
 
   private void Start()
   {
-    StartCoroutine(PlayOpeningAnimation());
+    // StartCoroutine(PlayOpeningAnimation());
     oringalWidth = image.rectTransform.sizeDelta.x;
     oringalHeight = image.rectTransform.sizeDelta.y;
   }
@@ -37,30 +38,29 @@ public class StartMenuManager : MonoBehaviour
   private IEnumerator PlayOpeningAnimation()
   {
     EditImg(image, openingSprites[0]);
+    yield return Fade(0);
     yield return new WaitForSecondsRealtime(4.0f);
 
-    fade1.Play();
-    yield return new WaitForSecondsRealtime(1.0f);
-
+    yield return Fade(1);
     EditImg(image, openingSprites[1]);
+    yield return Fade(0);
     yield return new WaitForSecondsRealtime(4.0f);
 
-    fade1.Play();
-    yield return new WaitForSecondsRealtime(1.0f);
-
+    yield return Fade(1);
     EditImg(image, openingSprites[2]);
     image.rectTransform.sizeDelta = new Vector2(3415, 1080);
     StartCoroutine(MoveImgFromLeftToRight(image));
+    yield return Fade(0);
     yield return new WaitForSecondsRealtime(4.0f);
 
-    fade1.Play();
-    yield return new WaitForSecondsRealtime(1.0f);
-
+    yield return Fade(1);
     image.rectTransform.sizeDelta = new Vector2(oringalWidth, oringalHeight);
     image.rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
     EditImg(image, openingSprites[3]);
+    yield return Fade(0);
     yield return new WaitForSecondsRealtime(4.0f);
 
+    yield return Fade(1);
     SkipAnimation();
   }
   private IEnumerator MoveImgFromLeftToRight(Image _image)
@@ -75,8 +75,14 @@ public class StartMenuManager : MonoBehaviour
       yield return null;
     }
   }
+  public void OpenStroy()
+  {
+    openingAnimation.SetActive(true);
+    startMenu.SetActive(false);
+  }
   public void OpenLevelSlection()
   {
+    openingAnimation.SetActive(false);
     startMenu.SetActive(false);
     levelSlection.SetActive(true);
     settingMenu.SetActive(false);
@@ -100,7 +106,28 @@ public class StartMenuManager : MonoBehaviour
   }
   public void SkipAnimation()
   {
+    StopAllCoroutines();
+    StartCoroutine(Fade(1));
     openingAnimation.SetActive(false);
     startMenu.SetActive(true);
+    fade.gameObject.SetActive(false);
+  }
+
+  private IEnumerator Fade(float targetAlpha)
+  {
+    isFade = true;
+
+    fade.blocksRaycasts = true;
+
+    float speed = Mathf.Abs(fade.alpha - targetAlpha) / fadeDuration;
+
+    while (!Mathf.Approximately(fade.alpha, targetAlpha))
+    {
+      fade.alpha = Mathf.MoveTowards(fade.alpha, targetAlpha, speed * Time.deltaTime);
+      yield return null;
+    }
+    fade.blocksRaycasts = false;
+
+    isFade = false;
   }
 }

@@ -47,7 +47,7 @@ public class GameMesMananger
 		curStageNum = stageNum;
 		//Debug.Log(curStageNum);
 		//////////////////////////////////
-		//DOTween.Clear(true);
+		DOTween.Clear(true);
 	}
 
 	public  void SetCurMainItemNumAdd(int curStageNum)
@@ -90,7 +90,17 @@ public class GameMesMananger
 		return hiddenItemNum[curStageNum];
 	}
 
-
+	public void Clear()
+	{
+		curGetMainItemNum[0] = 0;
+		curGetMainItemNum[1] = 0;
+		curGetMainItemNum[2] = 0;
+		curGetHiddenItemNum[0] = 0;
+		curGetHiddenItemNum[1] = 0;
+		curGetHiddenItemNum[2] = 0;
+		map1.Clear();
+		map2.Clear();
+	}
 
 	void OnEnable()
     {	

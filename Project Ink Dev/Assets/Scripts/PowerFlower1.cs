@@ -56,7 +56,7 @@ public class PowerFlower1 : Item
                     return;
                 }
 
-                SpawnSplitItem(10.0f, 30.0f);
+                SpawnSplitItem(15.0f, 70.0f);
             }
         }
 
@@ -87,7 +87,7 @@ public class PowerFlower1 : Item
                     return;
                 }
 
-                SpawnSplitItem(10.0f, 30.0f);
+                SpawnSplitItem(15.0f, 70.0f);
             }
         }
 
