@@ -45,6 +45,8 @@ public abstract class Item : MonoBehaviour
         m_originalPosition = pos;
 	}
 
+    static int mult = 0;
+
     protected void SpawnSplitItem(float x,float z)
 	{
         var playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -74,7 +76,7 @@ public abstract class Item : MonoBehaviour
 
             Vector3 moveDest1 = Vector3.zero;
             Vector3 moveDest2 = Vector3.zero;
-            i = i < 0 ? -1 : 1;
+            i = i < 0 ? -1 : 2;
             if(shrimp)
 			{
                 //moveDest1 = shrimp.GetMoveDest() + new Vector3(i * x, 0, -i * z);
@@ -88,16 +90,16 @@ public abstract class Item : MonoBehaviour
                 //moveDest1 = frog.GetMoveDest() + new Vector3(i * x, 0, -i * z);
                 //moveDest2 = frog.GetMoveDest() + new Vector3(i * x, 0, i * z);
 
-                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x;
-                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * z * i + playerGO.transform.forward * z;
+                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x * Mathf.Abs(i);
+                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * z * i + playerGO.transform.forward * z * Mathf.Abs(i);
             }
             else if(crane)
 			{
                 //moveDest1 = crane.GetMoveDest() + new Vector3(i * x, 0, -i * z);
                 //moveDest2 = crane.GetMoveDest() + new Vector3(i * x, 0, i * z);
 
-                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x;
-                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * z * i + playerGO.transform.forward * z;
+                moveDest1 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * x * Mathf.Abs(i);
+                moveDest2 = crane.GetMoveDest() + playerGO.transform.right * x * i + playerGO.transform.forward * z * Mathf.Abs(i);
             }
 
             newSplitItem1.transform.DOMove(moveDest1, SPLIT_FLY_TIME);
