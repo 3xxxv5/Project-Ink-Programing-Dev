@@ -48,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         //SaveManager.SaveByJSON(GameMesMananger.Instance().save);
     GameMesMananger.Instance().SetStage(-1);
     SceneManager.LoadSceneAsync("StartMenu");
+    GameMesMananger.Instance().Clear();
     GameMesMananger.Instance().save = SaveManager.LoadByJSON();
   }
 
@@ -55,6 +56,7 @@ public class PauseMenu : MonoBehaviour
   {
     DOTween.Clear(true);
     SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    GameMesMananger.Instance().Clear();
     Resume();
   }
 }
