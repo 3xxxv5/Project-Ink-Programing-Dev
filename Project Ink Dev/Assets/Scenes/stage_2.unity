@@ -2108,6 +2108,8 @@ GameObject:
   - component: {fileID: 128132411}
   - component: {fileID: 128132413}
   - component: {fileID: 128132412}
+  - component: {fileID: 128132414}
+  - component: {fileID: 128132415}
   m_Layer: 0
   m_Name: GuideCamera
   m_TagString: Untagged
@@ -2220,6 +2222,35 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &128132414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128132410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30517745b70198243b3489bfb33ad57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edgeDetectShader: {fileID: 4800000, guid: ae66daafe12b16a47b0143a3a50cf5f2, type: 3}
+  edgesOnly: 0.25
+  edgeColor: {r: 0, g: 0, b: 0, a: 1}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &128132415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128132410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 702fc172e80c01a49a61832c0ba5cb55, type: 2}
 --- !u!1001 &146816104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15299,7 +15330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motionBlurShader: {fileID: 4800000, guid: 239b1890cbb808149b61f3a7e09baccd, type: 3}
-  blurAmount: 0.7
+  blurAmount: 0.5
 --- !u!82 &789456585
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15396,6 +15427,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &789456587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789456578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 702fc172e80c01a49a61832c0ba5cb55, type: 2}
 --- !u!1 &793829939
 GameObject:
   m_ObjectHideFlags: 0

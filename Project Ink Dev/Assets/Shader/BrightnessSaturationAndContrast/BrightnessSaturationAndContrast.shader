@@ -6,6 +6,7 @@ Shader "Post Effect/BrightnessSaturationAndContrast" {
 		_Brightness ("Brightness", Float) = 1
 		_Saturation("Saturation", Float) = 1
 		_Contrast("Contrast", Float) = 1
+		_Color("Color",Color) = (1, 1, 1, 1)
 	}
 	SubShader {
 		Pass {  
@@ -23,6 +24,7 @@ Shader "Post Effect/BrightnessSaturationAndContrast" {
 			half _Brightness;
 			half _Saturation;
 			half _Contrast;
+			fixed4 _Color;
 			  
 			struct v2f {
 				float4 pos : SV_POSITION;
@@ -43,7 +45,7 @@ Shader "Post Effect/BrightnessSaturationAndContrast" {
 				fixed4 renderTex = tex2D(_MainTex, i.uv);  
 				  
 				// Apply brightness
-				fixed3 finalColor = renderTex.rgb * _Brightness;
+				fixed3 finalColor = renderTex.rgb * _Brightness * _Color;
 				
 				// Apply saturation
 				fixed luminance = 0.2125 * renderTex.r + 0.7154 * renderTex.g + 0.0721 * renderTex.b;
