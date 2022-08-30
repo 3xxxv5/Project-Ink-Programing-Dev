@@ -630,7 +630,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.028301895, g: 0.028168395, b: 0.028168395, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -905,6 +905,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c055dbda4a22f1345bbbb646715b4c3d, type: 3}
   - {fileID: 21300000, guid: 220bab2a7522467458b87c72762b420e, type: 3}
   - {fileID: 21300000, guid: afd24021cc40d8d4b8dd5d8c349548a6, type: 3}
+  - {fileID: 21300000, guid: 45b4ffcaa7d676e4bb30f4d26f1351be, type: 3}
+  - {fileID: 21300000, guid: 6382f18e099535d429e3c2ff104ff898, type: 3}
   nextButton: {fileID: 866295789}
   optionButton: {fileID: 304979931116694659, guid: f07fb92cc5e4204428d85f9cfb333b95, type: 3}
   buttonGroup: {fileID: 985340784}
