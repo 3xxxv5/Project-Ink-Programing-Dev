@@ -102,23 +102,23 @@ public class DialogManager : MonoBehaviour
       else if (cells[0] == "END" && int.Parse(cells[1]) == dialogIndex)
       {
         Debug.Log("剧情结束");
-        if (cells[6] == "0")
+        if (int.Parse(cells[6]) == 0)
         {
           gameObject.GetComponent<StartMenuManager>().OpenLevelSlection();
         }
-        if (cells[6] == "1")
+        if (int.Parse(cells[6]) == 1)
         {
           SceneManager.LoadSceneAsync("stage_2");
         }
-        if (cells[6] == "2")
+        if (int.Parse(cells[6]) == 2)
         {
           SceneManager.LoadSceneAsync("stage_3");
         }
-        if (cells[6] == "3")
+        if (int.Parse(cells[6]) == 3)
         {
           SceneManager.LoadSceneAsync("DialogStage4");
         }
-        if (cells[6] == "4")
+        if (int.Parse(cells[6]) == 4)
         {
           SceneManager.LoadSceneAsync("StartMenu");
         }
