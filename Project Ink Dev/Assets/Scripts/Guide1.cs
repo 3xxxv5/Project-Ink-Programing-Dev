@@ -90,7 +90,8 @@ public class Guide1 : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && timer <= 0)
         {
-            Text.text = "<rotate=90>收集所有花朵吧";
+            Text.text = "<rotate=90>撞击收集齐全部掉落的花叶，寻找并撞向真正的采花贼";
+            Text.fontSize = 110;
             Debug.Log(Text.text);
             StartCoroutine(FinishGuide());
         }
