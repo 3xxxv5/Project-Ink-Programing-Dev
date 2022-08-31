@@ -981,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 228892914651007608, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 300
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 228892914651007608, guid: a2bf6df0d16a9b0408cb30dd415df7de, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -1223,7 +1223,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -1776,7 +1776,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 300
+    maxNumParticles: 70
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
