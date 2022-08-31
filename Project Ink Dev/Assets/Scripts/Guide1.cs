@@ -20,6 +20,7 @@ public class Guide1 : MonoBehaviour
         Text.text = "<rotate=90>点击左键撞击花朵来收集";
         //初始时禁用相机跟随，禁止视角移动
         player.GetComponent<ThirdPersonCamera>().enabled = false;
+        player.GetComponent<PlayerShrimp>().enabled = false;
     }
 
     void Update()
@@ -51,6 +52,7 @@ public class Guide1 : MonoBehaviour
             //第一次点击后开启相机跟随，以及视角允许转动
             //可能需要更改
             player.GetComponent<ThirdPersonCamera>().enabled = true;
+            player.GetComponent<PlayerShrimp>().enabled = true;
             //冲刺结束后修改文字
             StartCoroutine(FinishStep1());
         }
