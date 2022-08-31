@@ -9,6 +9,7 @@ public class Guide2 : MonoBehaviour
     private EnumSpace.GuideStep guideStep;
     private float threshold = 0.2f;
     private float timer = 0f;
+    private bool isFinished = false;
 
     public GameObject player;
     public TextMeshProUGUI Text;
@@ -23,11 +24,13 @@ public class Guide2 : MonoBehaviour
         Text.fontSize = 80;
         Debug.Log(Text.text);
         Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.InGuide;
-        player.GetComponent<ThirdPersonCamera>().enabled = false;
+
+        //player.GetComponent<ThirdPersonCamera>().enabled = false;
     }
 
     void Update()
     {
+        //player.transform.LookAt(transform.position);
         switch (guideStep)
         {
             case EnumSpace.GuideStep.Step1:
@@ -50,7 +53,7 @@ public class Guide2 : MonoBehaviour
             player.GetComponent<PlayerFrog>().enabled = true;
             StartCoroutine(ChargeStart());
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && isFinished)
         {
             //DOTween.Clear(true);
             string content = "<rotate=90>在花朵变为非透明时可撞击";
@@ -58,7 +61,7 @@ public class Guide2 : MonoBehaviour
             Text.fontSize = 120;
             Debug.Log(Text.text);
             guideStep = EnumSpace.GuideStep.Step2;
-            StopAllCoroutines();
+            //StopAllCoroutines();
         }
     }
 
@@ -69,7 +72,8 @@ public class Guide2 : MonoBehaviour
             timer += Time.unscaledDeltaTime / threshold;
             yield return null;
         }
-        
+        timer = 0;
+        isFinished = true;
         //guideStep = EnumSpace.GuideStep.Step2;
         //player.GetComponent<ThirdPersonCamera>().enabled = true;
         //Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
@@ -77,13 +81,29 @@ public class Guide2 : MonoBehaviour
 
     void Step2()
     {
-        player.GetComponent<ThirdPersonCamera>().enabled = true;
-        if (target == null)
+        //player.GetComponent<ThirdPersonCamera>().enabled = true;
+        //player.transform.LookAt(transform.position);
+        //if (target == null)
+        //{
+        //    Destroy(Text.gameObject);
+        //    //Debug.Log(Text.text);
+        //    Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
+        //    Destroy(this.gameObject);
+        //}
+        timer = 0;
+        StartCoroutine(TextOut());
+    }
+
+    IEnumerator TextOut()
+    {
+        while(timer < 1f)
         {
-            Destroy(Text.gameObject);
-            //Debug.Log(Text.text);
-            Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
-            Destroy(this.gameObject);
+            timer += Time.unscaledDeltaTime / 10f;
+            yield return null;
         }
+
+        Destroy(Text.gameObject);
+        Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
+        Destroy(this.gameObject);
     }
 }
