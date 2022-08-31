@@ -9,12 +9,14 @@ public class LevelSelection : MonoBehaviour
   private Button m_button;
   private Image m_image;
   private int stageIndex;
+  private Image m_seal;
 
   private void Start()
   {
     m_button = gameObject.GetComponent<Button>();
     m_image = gameObject.GetComponent<Image>();
     stageIndex = int.Parse(m_button.gameObject.name);
+    m_seal = gameObject.GetComponentInChildren<Image>();
   }
 
   private void Update()
@@ -39,6 +41,8 @@ public class LevelSelection : MonoBehaviour
     {
       m_button.enabled = true;
       m_image.color = Color.white;
+      if (GameMesMananger.Instance().save.hideCollections[stageIndex - 1] == GameMesMananger.Instance().GetHiddenItemNum(0))
+        m_seal.gameObject.SetActive(true);
     }
   }
 
