@@ -104,10 +104,11 @@ public class DialogManager : MonoBehaviour
             }
             else if (cells[0] == "END" && int.Parse(cells[1]) == dialogIndex)
             {
-                AudioClip clip = Resources.Load<AudioClip>("music/bgmUI");
-                player.clip = clip;
-                player.volume = 0.2f;
-                player.Play();
+                //AudioClip clip = Resources.Load<AudioClip>("music/bgmUI");
+                //if(clip)
+                //    player.clip = clip;
+                //player.volume = 0.2f;
+                //player.Play();
                 Debug.Log("剧情结束");
                 if (int.Parse(cells[6]) == 0)
                 {
