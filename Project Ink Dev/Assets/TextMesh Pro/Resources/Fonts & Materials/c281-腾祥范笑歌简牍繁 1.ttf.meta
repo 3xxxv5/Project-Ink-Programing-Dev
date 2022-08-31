@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 81e293ae73dcd8f4a9a3c157ce06e445
+guid: e13a9270243cbba4b9b8ab283fa69082
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Tensentype FanXiaoGeJianDuF
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 81e293ae73dcd8f4a9a3c157ce06e445, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
