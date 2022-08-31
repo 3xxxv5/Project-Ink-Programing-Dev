@@ -18,8 +18,9 @@ public class Guide2 : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         guideStep = EnumSpace.GuideStep.Step1;
-        string content = "化身青蛙可使用【蛙跳】蓄力技能增加冲撞距离，请长按鼠标左键蓄力";
+        string content = "<rotate=90>化身青蛙可使用，蛙跳，蓄力技能增加冲撞距离，请长按鼠标左键蓄力";
         Text.text = content;
+        Text.fontSize = 80;
         Debug.Log(Text.text);
         Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.InGuide;
         player.GetComponent<ThirdPersonCamera>().enabled = false;
@@ -52,7 +53,10 @@ public class Guide2 : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             //DOTween.Clear(true);
-            
+            string content = "<rotate=90>在花朵变为非透明时可撞击";
+            Text.text = content;
+            Text.fontSize = 120;
+            Debug.Log(Text.text);
             guideStep = EnumSpace.GuideStep.Step2;
             StopAllCoroutines();
         }
@@ -65,9 +69,7 @@ public class Guide2 : MonoBehaviour
             timer += Time.unscaledDeltaTime / threshold;
             yield return null;
         }
-        string content = "在花朵变为非透明时可撞击";
-        Text.text = content;
-        Debug.Log(Text.text);
+        
         //guideStep = EnumSpace.GuideStep.Step2;
         //player.GetComponent<ThirdPersonCamera>().enabled = true;
         //Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;

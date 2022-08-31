@@ -11,7 +11,7 @@ public class Guide3 : MonoBehaviour
     void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        string content = "鹤眼：化身仙鹤后，可长按鼠标右键增加瞄准时间";
+        string content = "<rotate=90>鹤眼：化身仙鹤后，可长按鼠标右键增加瞄准时间";
         Text.text = content;
         Debug.Log(Text.text);
         Guide3MesManager.Instance.guideStatus = EnumSpace.GuideStatus.InGuide;

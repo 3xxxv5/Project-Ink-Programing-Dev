@@ -17,7 +17,7 @@ public class Guide1 : MonoBehaviour
     void OnEnable()
     {
         guideStep = EnumSpace.GuideStep.Step1;
-        Text.text = "点击左键撞击花朵来收集";
+        Text.text = "<rotate=90>点击左键撞击花朵来收集";
         //初始时禁用相机跟随，禁止视角移动
         player.GetComponent<ThirdPersonCamera>().enabled = false;
     }
@@ -64,7 +64,7 @@ public class Guide1 : MonoBehaviour
             yield  return null;
         }
         timer = 0;
-        Text.text = "移动准心瞄准目标";
+        Text.text = "<rotate=90>移动准心瞄准目标";
         Debug.Log(Text.text);
         guideStep = EnumSpace.GuideStep.Step2;
     }
@@ -78,7 +78,7 @@ public class Guide1 : MonoBehaviour
         //移动到物体上
         if(Physics.Raycast(ray, out hitInfo))
         {
-            Text.text = "撞击！";
+            Text.text = "<rotate=90>撞击！";
             Debug.Log(Text.text);
             guideStep = EnumSpace.GuideStep.Step3;
         }
@@ -88,7 +88,7 @@ public class Guide1 : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && timer <= 0)
         {
-            Text.text = "收集所有花朵吧";
+            Text.text = "<rotate=90>收集所有花朵吧";
             Debug.Log(Text.text);
             StartCoroutine(FinishGuide());
         }
