@@ -922,6 +922,7 @@ MonoBehaviour:
   settingMenu: {fileID: 1586653061}
   fade: {fileID: 1233445754}
   fadeDuration: 1
+  player: {fileID: 800113339}
 --- !u!4 &404796818
 Transform:
   m_ObjectHideFlags: 0
@@ -967,6 +968,7 @@ MonoBehaviour:
   nextButton: {fileID: 866295789}
   optionButton: {fileID: 304979931116694659, guid: f07fb92cc5e4204428d85f9cfb333b95, type: 3}
   buttonGroup: {fileID: 985340784}
+  player: {fileID: 800113339}
 --- !u!1 &429973912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1156,6 @@ GameObject:
   - component: {fileID: 522575859}
   - component: {fileID: 522575860}
   - component: {fileID: 522575861}
-  - component: {fileID: 522575862}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1224,7 +1225,8 @@ Transform:
   m_LocalPosition: {x: 866, y: 1219, z: -658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 800113338}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 83.838, y: 379.152, z: 27.475}
@@ -1353,19 +1355,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &522575862
+--- !u!1 &800113337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800113338}
+  - component: {fileID: 800113339}
+  m_Layer: 0
+  m_Name: bgm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800113338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800113337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 522575858}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &800113339
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522575855}
+  m_GameObject: {fileID: 800113337}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 81a11717eb84d304fab32a4bcdc2340f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

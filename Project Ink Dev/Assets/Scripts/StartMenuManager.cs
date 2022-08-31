@@ -20,6 +20,8 @@ public class StartMenuManager : MonoBehaviour
   private CanvasGroup fade;
   [SerializeField]
   private float fadeDuration;
+  [SerializeField]
+  private AudioSource player;
   private bool isFade;
 
   private float oringalWidth;
@@ -79,6 +81,10 @@ public class StartMenuManager : MonoBehaviour
   {
     openingAnimation.SetActive(true);
     startMenu.SetActive(false);
+    AudioClip clip = Resources.Load<AudioClip>("music/bgmDialog");
+    player.clip = clip;
+    player.volume = 0.2f;
+    player.Play();
   }
   public void OpenLevelSlection()
   {
