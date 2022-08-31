@@ -25,6 +25,7 @@ public class DropMusicPlay : MonoBehaviour
         //Debug.Log(musicName);
         waitPlay = Resources.Load<AudioClip>(musicName);
         music.clip = waitPlay;
+        music.volume = 0.4f;
         music.Play();
     }
 

@@ -49,4 +49,10 @@ namespace EnumSpace
         InGuide,
         OutGuide,
     }
+
+    public enum IsNeedSFX
+    {
+        Need,
+        DontNeed,
+    }
 }

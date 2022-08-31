@@ -9,6 +9,7 @@ public class SpawnItem : MonoBehaviour{
 
     Queue<GameObject> queue = new Queue<GameObject>();
     private const string MUSIC_PATH = "music/cut3";
+    private EnumSpace.IsNeedSFX isNeed = EnumSpace.IsNeedSFX.Need;
     void SpawnItemFunc()
     {
         if(queue.Count>0)
@@ -17,9 +18,6 @@ public class SpawnItem : MonoBehaviour{
             if (GameMesMananger.Instance().save.itemMap.Find(x => x.Equals(item.name)) == null)
             {
                 item.SetActive(true);
-                AudioClip clip = Resources.Load<AudioClip>(MUSIC_PATH);
-                AudioSource audioSource = item.GetComponent<AudioSource>();
-                audioSource.PlayOneShot(clip);
             }
         }
 
@@ -29,6 +27,13 @@ public class SpawnItem : MonoBehaviour{
     {
         if(other.gameObject.tag.Contains("Player"))
         {
+            if (isNeed == EnumSpace.IsNeedSFX.Need)
+            {
+                AudioClip clip = Resources.Load<AudioClip>(MUSIC_PATH);
+                AudioSource audioSource = this.GetComponent<AudioSource>();
+                audioSource.PlayOneShot(clip, 0.4f);
+                isNeed = EnumSpace.IsNeedSFX.DontNeed;
+            }
             
             Sequence seq = DOTween.Sequence();
             for(int i=0;i<queue.Count;++i)
@@ -45,11 +50,11 @@ public class SpawnItem : MonoBehaviour{
         for(int i=0;i<transform.childCount;++i)
         {
             var go = transform.GetChild(i).gameObject;
-            go.AddComponent<AudioSource>();
+            //go.AddComponent<AudioSource>();
             queue.Enqueue(go);
             go.SetActive(false);
         }
-
+        this.gameObject.AddComponent<AudioSource>();
         GetComponent<BoxCollider>().isTrigger = true;
     }
 
