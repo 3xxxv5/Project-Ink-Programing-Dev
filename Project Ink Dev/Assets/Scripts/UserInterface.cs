@@ -43,23 +43,28 @@ public class UserInterface : MonoBehaviour
     int length = ImageList.Length;
     Image nextEmptyImg = ImageList[length - tHideScore + hideScore - 1].GetComponent<Image>();
     nextEmptyImg.sprite = collectionFull;
-    nextEmptyImg.color = Color.blue;
+    Color hideCollectionsColor = new Color(101f / 255, 168f / 255, 1, 1);
+    if (nextEmptyImg.color == hideCollectionsColor)
+    {
+      return;
+    }
+    nextEmptyImg.color = hideCollectionsColor;
     StartCoroutine(CollectionsEffect(nextEmptyImg.transform));
   }
   private IEnumerator CollectionsEffect(Transform _tf)
   {
-    float scale = _tf.transform.localScale.x;
+    float scale = 0.3f;
     float min = scale;
     float max = scale * 2;
     while (scale < max)
     {
-      scale += Time.deltaTime * 2;
+      scale += Time.fixedDeltaTime * 2;
       _tf.transform.localScale = new Vector3(scale, scale, scale);
       yield return null;
     }
     while (scale > min)
     {
-      scale -= Time.deltaTime * 2;
+      scale -= Time.fixedDeltaTime * 2;
       _tf.transform.localScale = new Vector3(scale, scale, scale);
       yield return null;
     }

@@ -170,6 +170,7 @@ MonoBehaviour:
   nextButton: {fileID: 1939929256}
   optionButton: {fileID: 304979931116694659, guid: f07fb92cc5e4204428d85f9cfb333b95, type: 3}
   buttonGroup: {fileID: 2015766740}
+  player: {fileID: 0}
 --- !u!4 &301605086
 Transform:
   m_ObjectHideFlags: 0
@@ -245,8 +246,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u70B9\u51FB\u7EE7\u7EED"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d9e562abc80fb9341b496c9bfaa6e11a, type: 2}
-  m_sharedMaterial: {fileID: -7600510008516421993, guid: d9e562abc80fb9341b496c9bfaa6e11a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76c71fac4f18e5b479b205df3d993aab, type: 2}
+  m_sharedMaterial: {fileID: 8387459944275773422, guid: 76c71fac4f18e5b479b205df3d993aab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -637,8 +638,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d9e562abc80fb9341b496c9bfaa6e11a, type: 2}
-  m_sharedMaterial: {fileID: -7600510008516421993, guid: d9e562abc80fb9341b496c9bfaa6e11a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76c71fac4f18e5b479b205df3d993aab, type: 2}
+  m_sharedMaterial: {fileID: 8387459944275773422, guid: 76c71fac4f18e5b479b205df3d993aab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -971,8 +972,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d9e562abc80fb9341b496c9bfaa6e11a, type: 2}
-  m_sharedMaterial: {fileID: -7600510008516421993, guid: d9e562abc80fb9341b496c9bfaa6e11a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76c71fac4f18e5b479b205df3d993aab, type: 2}
+  m_sharedMaterial: {fileID: 8387459944275773422, guid: 76c71fac4f18e5b479b205df3d993aab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
