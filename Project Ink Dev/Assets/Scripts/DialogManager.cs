@@ -77,21 +77,50 @@ public class DialogManager : MonoBehaviour
       nameText.CrossFadeAlpha(1, 2.0f, false);
     }
   }
+  private IEnumerator MoveImgFromLeftToRight(Image _image)
+  {
+    float fromPos = 747.0f;
+    float toPos = -747.0f;
+    float speed = 500;
+    while (fromPos > toPos)
+    {
+      fromPos -= speed * Time.fixedDeltaTime;
+      _image.rectTransform.anchoredPosition3D = new Vector3(fromPos, 0, 0);
+      yield return null;
+    }
+  }
 
   public IEnumerator UpdateImage(string _name)
   {
-    if (_name != "长图从左往右" && spriteBg.sprite == imageDic[_name])
-    {
-      yield break;
-    }
     // yield return new WaitForSeconds(0.8f);
     spriteBg.canvasRenderer.SetAlpha(0.0f);
-    if (_name == "长图从左往右")
+    if (_name == "长图右")
     {
-      spriteBg.sprite = sprites[3];
+      StopCoroutine("MoveImgFromLeftToRight");
+      spriteBg.rectTransform.sizeDelta = new Vector2(3415, 1080);
+      spriteBg.rectTransform.anchoredPosition3D = new Vector3(-747.0f, 0, 0);
+      spriteBg.sprite = imageDic["落花的花园，右下角有卷轴"];
+      spriteBg.canvasRenderer.SetAlpha(1.0f);
+      yield break;
+    }
+    else if (_name == "落花的花园，右下角有卷轴" || _name == "长图左" || _name == "长图动")
+    {
+      spriteBg.rectTransform.sizeDelta = new Vector2(3415, 1080);
+      spriteBg.rectTransform.anchoredPosition3D = new Vector3(747.0f, 0, 0);
+      spriteBg.sprite = imageDic["落花的花园，右下角有卷轴"];
+      if (_name == "长图动")
+      {
+        StartCoroutine("MoveImgFromLeftToRight", spriteBg);
+      }
     }
     else
     {
+      if (spriteBg.sprite == imageDic[_name])
+      {
+        yield break;
+      }
+      spriteBg.rectTransform.sizeDelta = new Vector2(1920, 1080);
+      spriteBg.rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
       spriteBg.sprite = imageDic[_name];
     }
     spriteBg.CrossFadeAlpha(1, 0.8f, false);
