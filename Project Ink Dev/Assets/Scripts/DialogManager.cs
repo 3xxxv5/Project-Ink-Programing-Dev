@@ -80,7 +80,7 @@ public class DialogManager : MonoBehaviour
 
   public IEnumerator UpdateImage(string _name)
   {
-    if (spriteBg.sprite == imageDic[_name])
+    if (_name != "长图从左往右" && spriteBg.sprite == imageDic[_name])
     {
       yield break;
     }
