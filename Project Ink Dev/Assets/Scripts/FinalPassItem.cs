@@ -21,6 +21,8 @@ public class FinalPassItem : MonoBehaviour
       GameMesMananger.Instance().save.isLevelPass[3] = true;
       GameMesMananger.Instance().SetStage(-1);
       SaveManager.SaveByJSON(GameMesMananger.Instance().save);
+      Cursor.visible = true;
+      Cursor.lockState = CursorLockMode.None;
       SceneManager.LoadSceneAsync("DialogStage3");
       GameMesMananger.Instance().save = SaveManager.LoadByJSON();
       //GameUIManager.updateUI();

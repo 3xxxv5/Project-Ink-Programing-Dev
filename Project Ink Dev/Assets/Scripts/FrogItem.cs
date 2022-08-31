@@ -21,6 +21,8 @@ public class FrogItem : MonoBehaviour
       GameMesMananger.Instance().SetStage(1);
       GameMesMananger.Instance().save.isLevelPass[1] = true;
       SaveManager.SaveByJSON(GameMesMananger.Instance().save);
+      Cursor.visible = true;
+      Cursor.lockState = CursorLockMode.None;
       SceneManager.LoadSceneAsync("DialogStage1");
       GameUIManager.updateUI();
       DOTween.Clear(true);

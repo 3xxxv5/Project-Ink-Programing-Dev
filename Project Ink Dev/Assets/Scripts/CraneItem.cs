@@ -21,6 +21,8 @@ public class CraneItem : MonoBehaviour
       GameMesMananger.Instance().save.isLevelPass[2] = true;
       GameMesMananger.Instance().SetStage(2);
       SaveManager.SaveByJSON(GameMesMananger.Instance().save);
+      Cursor.visible = true;
+      Cursor.lockState = CursorLockMode.None;
       SceneManager.LoadSceneAsync("DialogStage2");
       GameUIManager.updateUI();
       DOTween.Clear(true);
