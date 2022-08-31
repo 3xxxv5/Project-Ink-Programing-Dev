@@ -8,7 +8,7 @@ public class FinalPassItem : MonoBehaviour
 {
   void Start()
   {
-    GetComponent<BoxCollider>().isTrigger = true;
+    //GetComponent<BoxCollider>().isTrigger = true;
         DOTween.Clear(true);
         GameMesMananger.Instance().save.hideCollections[2] = GameMesMananger.Instance().GetCurHiddenItemNum(GameMesMananger.Instance().getCurStageNum());
         GameMesMananger.Instance().save.isLevelPass[3] = true;
