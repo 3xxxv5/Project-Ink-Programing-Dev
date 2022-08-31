@@ -15,14 +15,7 @@ public class StartMenuManager : MonoBehaviour
   [SerializeField]
   private GameObject levelSlection;
   [SerializeField]
-  private GameObject settingMenu;
-  [SerializeField]
-  private CanvasGroup fade;
-  [SerializeField]
-  private float fadeDuration;
-  [SerializeField]
   private AudioSource player;
-  private bool isFade;
 
   private float oringalWidth;
   private float oringalHeight;
@@ -36,34 +29,6 @@ public class StartMenuManager : MonoBehaviour
   private void EditImg(Image _img, Sprite _sprite)
   {
     _img.sprite = _sprite;
-  }
-  private IEnumerator PlayOpeningAnimation()
-  {
-    EditImg(image, openingSprites[0]);
-    yield return Fade(0);
-    yield return new WaitForSecondsRealtime(4.0f);
-
-    yield return Fade(1);
-    EditImg(image, openingSprites[1]);
-    yield return Fade(0);
-    yield return new WaitForSecondsRealtime(4.0f);
-
-    yield return Fade(1);
-    EditImg(image, openingSprites[2]);
-    image.rectTransform.sizeDelta = new Vector2(3415, 1080);
-    StartCoroutine(MoveImgFromLeftToRight(image));
-    yield return Fade(0);
-    yield return new WaitForSecondsRealtime(4.0f);
-
-    yield return Fade(1);
-    image.rectTransform.sizeDelta = new Vector2(oringalWidth, oringalHeight);
-    image.rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
-    EditImg(image, openingSprites[3]);
-    yield return Fade(0);
-    yield return new WaitForSecondsRealtime(4.0f);
-
-    yield return Fade(1);
-    SkipAnimation();
   }
   private IEnumerator MoveImgFromLeftToRight(Image _image)
   {
@@ -91,18 +56,15 @@ public class StartMenuManager : MonoBehaviour
     openingAnimation.SetActive(false);
     startMenu.SetActive(false);
     levelSlection.SetActive(true);
-    settingMenu.SetActive(false);
   }
   public void OpenSettingMenu()
   {
     startMenu.SetActive(false);
     levelSlection.SetActive(false);
-    settingMenu.SetActive(true);
   }
   public void OpenStartMenu()
   {
     startMenu.SetActive(true);
-    settingMenu.SetActive(false);
     levelSlection.SetActive(false);
   }
   public void EndingGame()
@@ -110,30 +72,5 @@ public class StartMenuManager : MonoBehaviour
     //UnityEditor.EditorApplication.isPlaying = false;
     Application.Quit();
   }
-  public void SkipAnimation()
-  {
-    StopAllCoroutines();
-    StartCoroutine(Fade(1));
-    openingAnimation.SetActive(false);
-    startMenu.SetActive(true);
-    fade.gameObject.SetActive(false);
-  }
 
-  private IEnumerator Fade(float targetAlpha)
-  {
-    isFade = true;
-
-    fade.blocksRaycasts = true;
-
-    float speed = Mathf.Abs(fade.alpha - targetAlpha) / fadeDuration;
-
-    while (!Mathf.Approximately(fade.alpha, targetAlpha))
-    {
-      fade.alpha = Mathf.MoveTowards(fade.alpha, targetAlpha, speed * Time.deltaTime);
-      yield return null;
-    }
-    fade.blocksRaycasts = false;
-
-    isFade = false;
-  }
 }
