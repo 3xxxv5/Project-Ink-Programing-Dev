@@ -7,6 +7,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] AudioSource sFXPlayer;
     private const string ENTER_SFX_PATH = "music/clickSFX1";
     private const string QUIT_SFX_PATH = "music/clickSFX2";
+    private const string HOVER_SFX_PATH = "music/hoverSFX";
 
     public void PlaySFX(AudioData audioData)
     {
@@ -27,6 +28,12 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayClickQuitSFX()
     {
         AudioClip clip = Resources.Load<AudioClip>(QUIT_SFX_PATH);
+        sFXPlayer.PlayOneShot(clip, 1f);
+    }
+
+    public void PlayHoverSFX()
+    {
+        AudioClip clip = Resources.Load<AudioClip>(HOVER_SFX_PATH);
         sFXPlayer.PlayOneShot(clip, 1f);
     }
 }
