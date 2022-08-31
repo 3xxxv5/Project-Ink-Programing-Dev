@@ -101,9 +101,9 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 1.03
-        threshold: 0.37
-        softKnee: 0.775
+        intensity: 0.65
+        threshold: 0.69
+        softKnee: 0.714
         radius: 1
         antiFlicker: 1
       lensDirt:
@@ -126,7 +126,7 @@ MonoBehaviour:
         tint: 18
         hueShift: 9
         saturation: 1.54
-        contrast: 0.99
+        contrast: 0.91
       channelMixer:
         red: {x: 0.94, y: 0, z: 0}
         green: {x: 0.15, y: 0.76, z: 0.3}
@@ -167,7 +167,7 @@ MonoBehaviour:
               outWeight: 0
             - serializedVersion: 3
               time: 1
-              value: 0.66426885
+              value: 1
               inSlope: 0.6702308
               outSlope: 0.6702308
               tangentMode: 0
@@ -333,9 +333,9 @@ MonoBehaviour:
           m_Range: 1
         e_CurrentEditingCurve: 0
         e_CurveY: 1
-        e_CurveR: 1
-        e_CurveG: 1
-        e_CurveB: 1
+        e_CurveR: 0
+        e_CurveG: 0
+        e_CurveB: 0
   userLut:
     m_Enabled: 0
     m_Settings:
