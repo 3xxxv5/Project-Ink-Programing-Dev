@@ -51,8 +51,8 @@ public class DialogManager : MonoBehaviour
     imageDic["仙人微笑表情"] = sprites[5];
     imageDic["虾和蛙对视"] = sprites[6];
     imageDic["蛙和仙鹤对视"] = sprites[7];
-    imageDic["仙鹤看到猫尾巴"] = sprites[8];
-    imageDic["仙鹤飞出画卷"] = sprites[9];
+    imageDic["仙鹤靠近猫尾巴和画卷"] = sprites[8];
+    imageDic["仙鹤看到猫尾巴（远景）"] = sprites[9];
   }
 
   private void Start()
