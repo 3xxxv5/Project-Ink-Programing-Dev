@@ -25,7 +25,7 @@ public class Guide2 : MonoBehaviour
         Debug.Log(Text.text);
         Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.InGuide;
 
-        //player.GetComponent<ThirdPersonCamera>().enabled = false;
+        player.GetComponent<ThirdPersonCamera>().enabled = false;
     }
 
     void Update()
@@ -49,7 +49,7 @@ public class Guide2 : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         if(Input.GetMouseButton(0) && timer == 0)
         {
-            //player.GetComponent<ThirdPersonCamera>().enabled = true;
+            player.GetComponent<ThirdPersonCamera>().enabled = true;
             player.GetComponent<PlayerFrog>().enabled = true;
             StartCoroutine(ChargeStart());
         }
