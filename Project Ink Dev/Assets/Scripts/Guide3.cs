@@ -23,9 +23,8 @@ public class Guide3 : MonoBehaviour
     {
         if(Input.GetMouseButton(1))
         {
-            string content = "";
-            Text.text = content;
-            Debug.Log(Text.text);
+            Destroy(Text.gameObject);
+            //Debug.Log(Text.text);
             player.GetComponent<ThirdPersonCamera>().enabled = true;
             Guide3MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
             Destroy(this.gameObject);

@@ -78,9 +78,8 @@ public class Guide2 : MonoBehaviour
         player.GetComponent<ThirdPersonCamera>().enabled = true;
         if (target == null)
         {
-            string content = "";
-            Text.text = content;
-            Debug.Log(Text.text);
+            Destroy(Text.gameObject);
+            //Debug.Log(Text.text);
             Guide2MesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
             Destroy(this.gameObject);
         }
