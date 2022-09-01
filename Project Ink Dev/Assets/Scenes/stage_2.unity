@@ -17719,6 +17719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crane
       objectReference: {fileID: 0}
+    - target: {fileID: 9124382686282829185, guid: 594c338c84c401c4888e5f75bd15503f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18106fd156aa2f34c9f6d72ad57296fd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594c338c84c401c4888e5f75bd15503f, type: 3}
 --- !u!1001 &914520352
@@ -33254,15 +33258,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829208783}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.617, y: 6.788, z: 21.75}
-  m_LocalScale: {x: 204.8912, y: 204.8912, z: 204.8912}
+  m_LocalRotation: {x: -0, y: -0.9872697, z: -0, w: 0.15905556}
+  m_LocalPosition: {x: -130.2, y: 24.9, z: -77.4}
+  m_LocalScale: {x: 660.2332, y: 660.2332, z: 660.2332}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1545854903}
   m_Father: {fileID: 0}
   m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -161.696, z: 0}
 --- !u!114 &1829208786
 MonoBehaviour:
   m_ObjectHideFlags: 0
