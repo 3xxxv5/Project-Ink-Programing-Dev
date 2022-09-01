@@ -37,7 +37,7 @@ public class LevelSelection : MonoBehaviour
     if (this.m_unlock == false)
     {
       m_button.enabled = false;
-      m_image.color = Color.gray;
+      m_image.color = new Color(1, 1, 1, 0);
     }
     else
     {
