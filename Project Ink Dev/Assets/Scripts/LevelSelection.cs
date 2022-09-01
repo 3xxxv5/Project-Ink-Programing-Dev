@@ -17,7 +17,7 @@ public class LevelSelection : MonoBehaviour
     m_image = gameObject.GetComponent<Image>();
     stageIndex = int.Parse(m_button.gameObject.name);
     m_seal = transform.Find("Image");
-    Camera.main.transform.DOMove(new Vector3(884, 698, -630), 1.5f);
+    //Camera.main.transform.DOMove(new Vector3(884, 698, -630), 1.5f);
   }
 
   private void Update()
