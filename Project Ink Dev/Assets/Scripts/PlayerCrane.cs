@@ -17,6 +17,7 @@ public class PlayerCrane : BasePlayer
     public float MAX_DASH_MULTI = 3.0f;
     public Image storageFull;
     public float DEFAULT_DASH_DISTANCE = 150;
+    public Image image;
 
     void Start()
     {
@@ -131,7 +132,9 @@ public class PlayerCrane : BasePlayer
             {
                 BulletTimeController.Instance.StartBulletTime(BULLET_TIME_DURATION);
                 bulletTimeStatus = EnumSpace.BulletTimeStatus.IN;
-                StartCoroutine(StartBulletTime());
+                image.gameObject.SetActive(true);
+                
+                StartCoroutine("StartBulletTime");
             }
             if (Input.GetMouseButtonUp(1))
             {
@@ -152,18 +155,21 @@ public class PlayerCrane : BasePlayer
 
     void StopBulletTime()
     {
-        Debug.Log(123455);
         BulletTimeController.Instance.StopBulletTime();
         bulletTimeStatus = EnumSpace.BulletTimeStatus.OUT;
-        StopCoroutine(StartBulletTime());
+        StopCoroutine("StartBulletTime");
+        image.transform.localScale = Vector3.one;
+        image.gameObject.SetActive(false);
     }
 
     IEnumerator StartBulletTime()
     {
-        float t = 0f;
-        while(t < 1f)
+        image.transform.localScale = Vector3.one;
+        float t = 1f;
+        while(t > 0f)
         {
-            t += Time.unscaledDeltaTime / BULLET_TIME_DURATION;
+            t -= Time.unscaledDeltaTime / BULLET_TIME_DURATION;
+            image.transform.localScale = Vector3.one * t;
             yield return null;
         }
         //结束将状态置为OUT
