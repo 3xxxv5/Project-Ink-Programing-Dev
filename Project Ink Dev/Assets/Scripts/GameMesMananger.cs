@@ -36,6 +36,23 @@ public class GameMesMananger
 	public Dictionary<GameObject, string> map1 = new Dictionary<GameObject, string>();
 	public Dictionary<string, int> map2 = new Dictionary<string, int>();
 
+	private EnumSpace.GameMode GAME_MODE = EnumSpace.GameMode.Start;
+
+	public EnumSpace.GameMode getGameMode()
+	{
+		return GAME_MODE;
+	}
+
+	public void SetGameModeStart()
+	{
+		GAME_MODE = EnumSpace.GameMode.Start;
+	}
+
+	public void SetGameModeEnd()
+	{
+		GAME_MODE = EnumSpace.GameMode.End;
+	}
+
 	public  int getCurStageNum()
 	{
 		return curStageNum;
@@ -100,6 +117,7 @@ public class GameMesMananger
 		curGetHiddenItemNum[2] = 0;
 		map1.Clear();
 		map2.Clear();
+		SetGameModeStart();
 	}
 
 	void OnEnable()

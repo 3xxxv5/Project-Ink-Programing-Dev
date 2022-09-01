@@ -10,6 +10,7 @@ public class LevelSelection : MonoBehaviour
   private Image m_image;
   private int stageIndex;
   private Transform m_seal;
+  
 
   private void Start()
   {
@@ -63,6 +64,7 @@ public class LevelSelection : MonoBehaviour
       {
         GameMesMananger.Instance().SetStage(2);
       }
+      GameMesMananger.Instance().SetGameModeStart();
       SceneManager.LoadSceneAsync(sceneName);
       //GameUIManager.updateUI();
       DOTween.Clear(true);

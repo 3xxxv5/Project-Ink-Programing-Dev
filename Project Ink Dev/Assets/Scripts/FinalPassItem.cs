@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class FinalPassItem : MonoBehaviour
 {
+  public GameObject UICamera;
+  
   void Start()
   {
     //GetComponent<BoxCollider>().isTrigger = true;
@@ -14,8 +16,8 @@ public class FinalPassItem : MonoBehaviour
     GameMesMananger.Instance().save.isLevelPass[3] = true;
     GameMesMananger.Instance().SetStage(-1);
     SaveManager.SaveByJSON(GameMesMananger.Instance().save);
-    Cursor.visible = true;
-    Cursor.lockState = CursorLockMode.None;
+    GameMesMananger.Instance().SetGameModeEnd();
+    UICamera.SetActive(false);
     StartCoroutine(SlowlyLoadScene());
     GameMesMananger.Instance().save = SaveManager.LoadByJSON();
     //GameUIManager.updateUI();
@@ -33,7 +35,10 @@ public class FinalPassItem : MonoBehaviour
 
   private IEnumerator SlowlyLoadScene()
   {
-    yield return new WaitForSeconds(1);
+    yield return new WaitForSeconds(2);
+    Cursor.visible = true;
+    Cursor.lockState = CursorLockMode.None;
+    GameMesMananger.Instance().Clear();
     SceneManager.LoadSceneAsync("DialogStage3");
   }
 }

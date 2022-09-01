@@ -55,4 +55,10 @@ namespace EnumSpace
         Need,
         DontNeed,
     }
+
+    public enum GameMode
+    {
+      Start,
+      End,
+    }
 }
