@@ -32,24 +32,43 @@ public class UserInterface : MonoBehaviour
   {
     if (cScore == 0 || cScore > tScore)
       return;
-    ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
-    StartCoroutine(CollectionsEffect(ImageList[cScore - 1].transform));
+    StartCoroutine(SetCollectionImg(ImageList, cScore - 1, false, collectionFull));
+    // ImageList[cScore - 1].GetComponent<Image>().sprite = collectionFull;
+    // StartCoroutine(CollectionsEffect(ImageList[cScore - 1].transform));
+  }
+  private IEnumerator SetCollectionImg(GameObject[] _imgList, int _offset, bool _isHide, Sprite _collectionFull) {
+    int length = 0;
+    while (length == 0) {
+      length = ImageList.Length;
+    }
+    Image img = _isHide ? ImageList[length + _offset].GetComponent<Image>() : ImageList[_offset].GetComponent<Image>();
+    img.sprite = _collectionFull;
+    Color hideCollectionsColor = new Color(101f / 255, 168f / 255, 1, 1);
+    if (img.color == hideCollectionsColor) {
+      yield break;
+    }
+    if (_isHide) {
+    img.color = hideCollectionsColor;
+    }
+    StartCoroutine(CollectionsEffect(img.transform));
   }
 
   public void RefreshHideScore(int hideScore, int tHideScore)
   {
     if (hideScore == 0 || hideScore > tHideScore)
       return;
-    int length = ImageList.Length;
-    Image nextEmptyImg = ImageList[length - tHideScore + hideScore - 1].GetComponent<Image>();
-    nextEmptyImg.sprite = collectionFull;
-    Color hideCollectionsColor = new Color(101f / 255, 168f / 255, 1, 1);
-    if (nextEmptyImg.color == hideCollectionsColor)
-    {
-      return;
-    }
-    nextEmptyImg.color = hideCollectionsColor;
-    StartCoroutine(CollectionsEffect(nextEmptyImg.transform));
+    StartCoroutine(SetCollectionImg(ImageList, - tHideScore + hideScore - 1, true, collectionFull));
+    // int length = ImageList.Length;
+    
+    // Image nextEmptyImg = ImageList[length - tHideScore + hideScore - 1].GetComponent<Image>();
+    // nextEmptyImg.sprite = collectionFull;
+    // Color hideCollectionsColor = new Color(101f / 255, 168f / 255, 1, 1);
+    // if (nextEmptyImg.color == hideCollectionsColor)
+    // {
+    //   return;
+    // }
+    // nextEmptyImg.color = hideCollectionsColor;
+    // StartCoroutine(CollectionsEffect(nextEmptyImg.transform));
   }
   private IEnumerator CollectionsEffect(Transform _tf)
   {
