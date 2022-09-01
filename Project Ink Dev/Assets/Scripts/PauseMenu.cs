@@ -48,8 +48,9 @@ public class PauseMenu : MonoBehaviour
         //SaveManager.SaveByJSON(GameMesMananger.Instance().save);
     GameMesMananger.Instance().SetStage(-1);
     SceneManager.LoadSceneAsync("StartMenu");
-    GameMesMananger.Instance().Clear();
+
     GameMesMananger.Instance().save = SaveManager.LoadByJSON();
+    GameMesMananger.Instance().Clear();
   }
 
   public void ReSet()
