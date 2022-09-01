@@ -431,7 +431,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 20, y: 0, z: 0}
-  defaultRotateSpeed: 10
+  defaultRotateSpeed: 6
   M_REBIRTHTIME: 0
 --- !u!54 &51742652
 Rigidbody:
@@ -570,7 +570,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 40, y: 0, z: 0}
-  defaultRotateSpeed: 3
+  defaultRotateSpeed: 0.5
   M_REBIRTHTIME: 0
 --- !u!54 &62441219
 Rigidbody:
@@ -8044,7 +8044,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 20, y: 0, z: 0}
-  defaultRotateSpeed: 10
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &529100747
 Rigidbody:
@@ -9937,7 +9937,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 40, y: 0, z: 0}
-  defaultRotateSpeed: 10
+  defaultRotateSpeed: 2
   M_REBIRTHTIME: 0
 --- !u!54 &653463802
 Rigidbody:
@@ -10297,7 +10297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   interactiveType: 0
-  m_velocity: 25
+  m_velocity: 12
   m_acceleratetion: 0
   m_rebirthTime: 6
   m_originalPosition: {x: 0, y: 0, z: 0}
@@ -11045,7 +11045,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 30, y: 0, z: 0}
-  defaultRotateSpeed: 10
+  defaultRotateSpeed: 2.5
   M_REBIRTHTIME: 0
 --- !u!54 &814644164
 Rigidbody:
@@ -12546,7 +12546,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 20, y: 0, z: 0}
-  defaultRotateSpeed: 3
+  defaultRotateSpeed: 1.5
   M_REBIRTHTIME: 0
 --- !u!54 &1030884041
 Rigidbody:
@@ -18185,7 +18185,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 100, y: 0, z: 0}
-  defaultRotateSpeed: 3
+  defaultRotateSpeed: 1
   M_REBIRTHTIME: 0
 --- !u!54 &1775351288
 Rigidbody:
@@ -19155,7 +19155,7 @@ MonoBehaviour:
   splitItem: {fileID: 0}
   SPLIT_FLY_TIME: 1
   pivot: {x: 30, y: 0, z: 0}
-  defaultRotateSpeed: 13
+  defaultRotateSpeed: 3
   M_REBIRTHTIME: 0
 --- !u!54 &1871434858
 Rigidbody:
@@ -21450,8 +21450,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.51, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5355023, y: 0.4816533, z: 0.5}
+  m_Center: {x: 0.011233592, y: 0.014173345, z: 0}
 --- !u!1 &919132148014143299
 GameObject:
   m_ObjectHideFlags: 0
@@ -21726,8 +21726,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.41, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.2666138, y: 0.41, z: 0.5}
+  m_Center: {x: -0.008306816, y: 0, z: 0}
 --- !u!1 &919132148589215090
 GameObject:
   m_ObjectHideFlags: 0
