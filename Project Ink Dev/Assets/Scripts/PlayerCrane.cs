@@ -81,55 +81,62 @@ public class PlayerCrane : BasePlayer
 
     protected override void CheckDash()
     {
-        //按住鼠标timer开始计时
-        if (Input.GetMouseButton(0) && beginCD == false)
+        if(GameMesMananger.Instance().getGameMode()==EnumSpace.GameMode.Start)
         {
-            timer += Time.unscaledDeltaTime / MAX_DASH_STORAGE_TIME;
-            if (timer > threshold / MAX_DASH_STORAGE_TIME && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
+            //按住鼠标timer开始计时
+            if (Input.GetMouseButton(0) && beginCD == false)
             {
-                characterGO.GetComponent<CraneAnimator>().Charge();
-                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Charge);
+                timer += Time.unscaledDeltaTime / MAX_DASH_STORAGE_TIME;
+                if (timer > threshold / MAX_DASH_STORAGE_TIME && PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Charge)
+                {
+                    characterGO.GetComponent<CraneAnimator>().Charge();
+                    PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Charge);
+                }
+                if (timer > 1.0f)
+                    timer = 1.0f;
+                storageFull.fillAmount = timer;
             }
-            if (timer > 1.0f)
-                timer = 1.0f;
-            storageFull.fillAmount = timer;
-        }
 
-        if (Input.GetMouseButtonUp(0) && beginCD == false)
-        {
-            isMouseButtonUp = true;
-            beginCD = true;
-            cd = 1;
-            if (timer > threshold / MAX_DASH_STORAGE_TIME)
-                LetMove();
-            else
-                LetMoveDefault();
-
-            characterGO.GetComponent<CraneAnimator>().Launch();
-            PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Launch);
-            Sequence seq = DOTween.Sequence();
-            seq.AppendInterval(LAST_TIME);
-            seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
-            timer = 0;
-            storageFull.fillAmount = timer;
-            if (bulletTimeStatus == EnumSpace.BulletTimeStatus.IN)
+            if (Input.GetMouseButtonUp(0) && beginCD == false)
             {
-                StopBulletTime();
+                isMouseButtonUp = true;
+                beginCD = true;
+                cd = 1;
+                if (timer > threshold / MAX_DASH_STORAGE_TIME)
+                    LetMove();
+                else
+                    LetMoveDefault();
+
+                characterGO.GetComponent<CraneAnimator>().Launch();
+                PlayerStatusManager.Instance().SetMoveStatus(EnumSpace.PlayStatus.Launch);
+                Sequence seq = DOTween.Sequence();
+                seq.AppendInterval(LAST_TIME);
+                seq.AppendCallback(PlayerStatusManager.Instance().SetStatusToIdle);
+                timer = 0;
+                storageFull.fillAmount = timer;
+                if (bulletTimeStatus == EnumSpace.BulletTimeStatus.IN)
+                {
+                    StopBulletTime();
+                }
             }
         }
     }
 
     protected void CheckBulletTime()
     {
-        if (Input.GetMouseButtonDown(1))
+        if(GameMesMananger.Instance().getGameMode()==EnumSpace.GameMode.Start && 
+        PlayerStatusManager.Instance().GetPlayerMoveStatus() != EnumSpace.PlayStatus.Launch)
         {
-            BulletTimeController.Instance.StartBulletTime(BULLET_TIME_DURATION);
-            bulletTimeStatus = EnumSpace.BulletTimeStatus.IN;
-            StartCoroutine(StartBulletTime());
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            StopBulletTime();
+            if (Input.GetMouseButtonDown(1))
+            {
+                BulletTimeController.Instance.StartBulletTime(BULLET_TIME_DURATION);
+                bulletTimeStatus = EnumSpace.BulletTimeStatus.IN;
+                StartCoroutine(StartBulletTime());
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                StopBulletTime();
+            }
         }
     }
 

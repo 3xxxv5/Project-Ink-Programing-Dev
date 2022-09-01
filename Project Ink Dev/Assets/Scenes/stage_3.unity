@@ -12782,6 +12782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df248f7f6e7b6654789decb767f05126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICamera: {fileID: 288300243}
 --- !u!1 &1088032210
 GameObject:
   m_ObjectHideFlags: 0
@@ -13479,6 +13480,10 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 5ca15738c92970842885c13fb3720fe4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2901e694ae040df4cae76f9b18959465, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca15738c92970842885c13fb3720fe4, type: 3}
 --- !u!1001 &1199841962
