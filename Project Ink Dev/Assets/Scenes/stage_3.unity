@@ -8450,8 +8450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeDetectShader: {fileID: 4800000, guid: ae66daafe12b16a47b0143a3a50cf5f2, type: 3}
-  edgesOnly: 0.25
-  edgeColor: {r: 0, g: 0, b: 0, a: 1}
+  edgesOnly: 0.16
+  edgeColor: {r: 0.26666668, g: 0.23529412, b: 0.23529412, a: 1}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &591811640
 MonoBehaviour:
@@ -8901,8 +8901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeDetectShader: {fileID: 4800000, guid: ae66daafe12b16a47b0143a3a50cf5f2, type: 3}
-  edgesOnly: 0.25
-  edgeColor: {r: 0, g: 0, b: 0, a: 1}
+  edgesOnly: 0.16
+  edgeColor: {r: 0.26666668, g: 0.23529412, b: 0.23529412, a: 1}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &627213483 stripped
 GameObject:
