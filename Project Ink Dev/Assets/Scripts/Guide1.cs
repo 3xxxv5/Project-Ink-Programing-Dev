@@ -102,7 +102,7 @@ public class Guide1 : MonoBehaviour
     {
         while(timer < 1f)
         {
-            timer += Time.unscaledDeltaTime / duration;
+            timer += Time.unscaledDeltaTime / 7f;
             yield return null;
         }
         GuideMesManager.Instance.guideStatus = EnumSpace.GuideStatus.OutGuide;
