@@ -125,22 +125,22 @@ MonoBehaviour:
         temperature: 34
         tint: 18
         hueShift: 9
-        saturation: 1.54
-        contrast: 0.91
+        saturation: 1.53
+        contrast: 0.87
       channelMixer:
         red: {x: 0.94, y: 0, z: 0}
         green: {x: 0.15, y: 0.76, z: 0.3}
         blue: {x: 0.18, y: 0.48, z: 0.82}
         currentEditingChannel: 2
       colorWheels:
-        mode: 1
+        mode: 0
         log:
           slope: {r: 1, g: 0.81098694, b: 0.47347957, a: 0.0478632}
           power: {r: 0.9573762, g: 1, b: 0.51722395, a: -0.059894297}
           offset: {r: 0.9292903, g: 1, b: 0.46353847, a: -0.061538465}
         linear:
           lift: {r: 0.90289444, g: 1, b: 0.72166836, a: -0.03076923}
-          gamma: {r: 1, g: 0.6227031, b: 0.7333285, a: -0.03076923}
+          gamma: {r: 1, g: 0.6227031, b: 0.7333285, a: 0.026784725}
           gain: {r: 0.9510888, g: 1, b: 0, a: 0.12307692}
       curves:
         master:
