@@ -117,13 +117,14 @@ public class DialogManager : MonoBehaviour
     {
       if (spriteBg.sprite == imageDic[_name])
       {
+        spriteBg.canvasRenderer.SetAlpha(1.0f);
         yield break;
       }
       spriteBg.rectTransform.sizeDelta = new Vector2(1920, 1080);
       spriteBg.rectTransform.anchoredPosition3D = new Vector3(0, 0, 0);
       spriteBg.sprite = imageDic[_name];
     }
-    spriteBg.CrossFadeAlpha(1, 0.8f, false);
+    spriteBg.CrossFadeAlpha(1, 0.5f, false);
     yield return null;
   }
 
